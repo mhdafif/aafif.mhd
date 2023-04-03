@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face {
+  font-family: "Circular Std";
+  src: url(../assets/fonts/CircularStd-Light.otf) format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Circular Std";
+  src: url(../assets/fonts/CircularStd-Medium.otf) format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Circular Std";
+  src: url(../assets/fonts/CircularStd-Bold.otf) format("opentype");
+  font-weight: bold;
+} */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  /* font-family: "Circular Std", sans-serif; */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  font-family: "Circular Std", sans-serif;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.tooltip-triangle::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent green transparent;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
