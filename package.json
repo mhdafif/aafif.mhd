@@ -7,11 +7,19 @@
     "prestart": "if [ $(node -v) != \"$(cat .nvmrc)\" ]; then echo \"Error: Node.js version does not match the required version. Please use Node.js $(cat .nvmrc).\"; exit 1; fi",
     "dev": "yarn prestart && vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier:check": "prettier . --ignore-path .gitignore --check",
+    "prettier:fix": "prettier . --ignore-path .gitignore --write",
+    "lint": "eslint --ext .tsx,.ts .",
+    "lint:fix": "eslint --fix-dry-run --ext .tsx,.ts .",
+    "type:check": "tsc",
+    "validate": "run-p lint type:check prettier:check",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
@@ -19,7 +27,17 @@
     "@vitejs/plugin-react-swc": "^3.0.0",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.0",
+    "eslint": "^8.37.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-security": "^1.7.1",
+    "husky": "^8.0.3",
     "postcss": "^8.4.21",
+    "prettier": "^2.8.7",
     "tailwindcss": "^3.3.1",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
