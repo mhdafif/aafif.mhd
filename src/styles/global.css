@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-uv-green: #4caf50;
+  --color-off-white: #faf9f6;
+  --color-blacki: #141d26;
+  --color-charcoal: #1e293b;
+  --color-slate: #243447;
+  --color-gunmetal: #2a3b4c;
+  --color-graphite: #2c2f36;
+  --color-deep-gray: #1f2937;
+  --color-dark-shadow: rgba(255, 255, 255, 0.03);
+  --color-star: #e7bb67;
+
+  --radius-5: 5px;
+  --radius-10: 10px;
+  --radius-20: 20px;
+  --radius-30: 30px;
+  --radius-50: 50px;
+
+  --breakpoint-laptop: 1024px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-mobile: 480px;
+}
+
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  @apply scroll-smooth
+  /* font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal; */;
+}
+
+.snap-x-items-list {
+  @apply overflow-x-auto snap-x snap-mandatory scroll-smooth;
+  /* overflow-x: auto; */
+  -webkit-overflow-scrolling: touch;
+  /* scroll-snap-type;: "x mandatory";
+  scroll-behavior: : "smooth"; */
+}
+.hide-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.shadow-dark {
+  @apply shadow-[0_6px_12px_rgba(0,0,0,0.1)];
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); */
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.card {
+  @apply shadow-[0_6px_12px_rgba(0,0,0,0.1)] bg-charcoal rounded-2xl px-6 py-4;
+}
+
+/* NAV */
+
+.nav-item {
+  @apply px-3 text-lg font-semibold py-2 relative overflow-hidden dark:text-off-white;
+}
+.nav-item.active {
+  @apply dark:bg-star dark:text-blacki rounded-5;
+}
+.nav-item::before,
+.nav-item::after {
+  content: "";
+  @apply absolute bg-star h-1 w-1/2 rounded-full;
+  -webkit-transition: transform 0.4s ease-out;
+  transition: transform 0.4s ease-out;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+}
+.nav-item::before {
+  @apply top-0 right-0;
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+.nav-wrapper:not(:has(.active)) .nav-item:hover::before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transform-origin: right;
+  transform-origin: right;
+}
+.nav-item::after {
+  @apply bottom-0 left-0;
+  -webkit-transform-origin: right;
+  transform-origin: right;
+}
+.nav-wrapper:not(:has(.active)) .nav-item:hover::after {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}

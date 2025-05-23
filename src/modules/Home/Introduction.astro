@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components";
+import myCV from "@/assets/muhammad afif - CV.pdf";
+const getYearsOfExperience = () => {
+  const startDate = new Date("2018-09-01");
+  const currentDate = new Date();
+  const years = currentDate.getFullYear() - startDate.getFullYear();
+  const months = currentDate.getMonth() - startDate.getMonth();
+
+  return months < 0 ? years - 1 : years;
+};
+const yearsOfExperience = getYearsOfExperience();
+---
+
+<div class="card laptop:!px-8 laptop:!py-6 space-y-8">
+  <p class="text-off-white/50 font-semibold text-xl mb-4">Hello world!</p>
+  <p class="text-off-white/90 text-2xl font-medium mb-6">
+    I'm a passionate and detail-oriented <span class="text-star text-2xl"
+      >Frontend Developer
+    </span> with over <span class="text-star text-2xl">
+      {yearsOfExperience} years
+    </span> of experience specializing in building modern, scalable, and performant
+    web applications.
+  </p>
+
+  <div class="flex items-center gap-2 mb-5">
+    <div class="bg-green-500 w-2.5 h-2.5 rounded-full"></div>
+    <span class="text-off-white/50 font-medium">Available for freelance</span>
+  </div>
+
+  <a
+    class="flex items-center gap-1.5 dark:bg-star dark:text-blacki rounded-5 px-3.5 py-1.5 font-semibold cursor-pointer hover:bg-star/80 transition-colors w-fit group"
+    download
+    href={myCV}
+  >
+    <span class="text-lg">Download CV</span>
+    <div class="relative w-5 h-5 overflow-hidden">
+      <Icon
+        name="ic:round-download"
+        class="w-5 h-5 absolute transition-all duration-400 -top-6 group-hover:top-0 right-0"
+      />
+      <Icon
+        name="ic:round-download"
+        class="w-5 h-5 absolute transition-all duration-400 top-0 group-hover:top-6 right-0"
+      />
+    </div>
+  </a>
+</div>

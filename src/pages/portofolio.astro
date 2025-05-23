@@ -2,11 +2,9 @@
 import Layout from "@/components/Layout/Layout.astro";
 import MenuMini from "@/components/Menu/MenuMini.astro";
 import Profile from "@/components/Profile.astro";
-import Company from "@/modules/Home/Company.astro";
-import Introduction from "@/modules/Home/Introduction.astro";
 ---
 
-<Layout title="Home">
+<Layout title="About">
   <div class="w-full grid laptop:grid-cols-3 gap-5">
     <div class="h-fit col-span-1 space-y-5 laptop:sticky top-5 overflow-hidden">
       <div class="hidden laptop:block">
@@ -16,9 +14,8 @@ import Introduction from "@/modules/Home/Introduction.astro";
       <Profile />
     </div>
 
-    <div class="col-span-1 laptop:col-span-2 space-y-5">
-      <Introduction />
-      <Company />
-    </div>
+    <div class="col-span-1 laptop:col-span-2 space-y-5">About</div>
   </div>
 </Layout>
+
+<style></style>

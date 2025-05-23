@@ -1,0 +1,28 @@
+---
+const currentPath = new URL(Astro.request.url).pathname;
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/resume", label: "Resume" },
+  { href: "/portofolio", label: "Portofolio" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<nav class="laptop:block pl-4 shift">
+  <ul class="flex items-center gap-2">
+    {
+      navLinks.map((link) => (
+        <li class="nav-wrapper">
+          <a
+            href={link.href}
+            aria-disabled={currentPath === link.href}
+            class={`nav-item aria-disabled:pointer-events-none ${currentPath === link.href ? "active" : ""}`}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

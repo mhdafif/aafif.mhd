@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+import SkillIcon from "@/assets/icon/skill.svg";
+
+const skills = [
+  {
+    name: "HTML5",
+    icon: "devicon:html5",
+  },
+  {
+    name: "CSS3",
+    icon: "devicon:css3",
+  },
+  {
+    name: "JavaScript",
+    icon: "devicon:javascript",
+  },
+  {
+    name: "TypeScript",
+    icon: "devicon:typescript",
+  },
+  {
+    name: "React",
+    icon: "devicon:react",
+  },
+  {
+    name: "Vue",
+    icon: "devicon:vuejs",
+  },
+  {
+    name: "Next",
+    icon: "devicon:nextjs",
+  },
+  {
+    name: "Nuxt",
+    icon: "devicon:nuxtjs",
+  },
+  {
+    name: "Remix",
+    icon: "devicon:remix",
+  },
+  {
+    name: "Astro",
+    icon: "devicon:astro",
+  },
+  {
+    name: "Vite",
+    icon: "devicon:vitejs",
+  },
+  {
+    name: "Vitest",
+    icon: "devicon:vitest",
+  },
+  {
+    name: "Git",
+    icon: "devicon:git",
+  },
+];
+---
+
+<div class="card laptop:!px-8 laptop:!py-6 space-y-8">
+  <div class="font-bold text-2xl capitalize">
+    <span>My</span>
+    <span class="text-star">Skills</span>
+    <SkillIcon class="inline-block text-star w-7 h-7" />
+  </div>
+  <div class="flex flex-wrap gap-x-12 gap-y-10 justify-center">
+    {
+      skills.map((item) => (
+        <div class="group">
+          <div class="transition-all p-3 laptop:p-4 relative mb-6">
+            <Icon
+              name={item.icon}
+              class="w-12 h-12 laptop:w-16 laptop:h-16 z-[3] relative grayscale-100 group-hover:grayscale-0 transition-all duration-700"
+            />
+            <div class="w-full h-full aspect-square bg-blacki absolute top-0 left-0 z-[2] rounded-5 rotate-45 group-hover:rotate-[135deg] transition-all duration-700" />
+            <div class="w-full h-full aspect-square absolute top-0 left-0 z-[3] rounded-5 border-4 border-gunmetal group-hover:rotate-[-90deg] transition-all duration-700" />
+          </div>
+          <p class="text-off-white text-center text-sm laptop:text-lg font-medium group-hover:text-star transition-all duration-700">
+            {item.name}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script></script>
+
+<style is:inline lang="scss"></style>

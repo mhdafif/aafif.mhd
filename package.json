@@ -3,12 +3,31 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "predev": "if [ $(node -v) != \"$(cat .nvmrc)\" ]; then echo \"Error: Node.js version does not match the required version. Please use Node.js $(cat .nvmrc).\"; exit 1; fi",
+    "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "enable:toolbar": "astro preferences enable devToolbar",
+    "disable:toolbar": "astro preferences disable devToolbar",
+    "prepare": "husky",
+    "prettier:check": "prettier . --ignore-path .prettierignore --check",
+    "prettier:fix": "prettier . --ignore-path .prettierignore --write",
+    "validate": "pnpm prettier:check"
   },
   "dependencies": {
-    "astro": "^5.7.10"
+    "@tailwindcss/vite": "^4.1.5",
+    "astro": "^5.7.10",
+    "tailwindcss": "^4.1.5"
+  },
+  "devDependencies": {
+    "@iconify-json/cib": "^1.2.2",
+    "@iconify-json/devicon": "^1.2.24",
+    "@iconify-json/ic": "^1.2.2",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "astro-icon": "^1.1.5",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "vite-plugin-devtools-json": "^0.1.0"
   }
 }

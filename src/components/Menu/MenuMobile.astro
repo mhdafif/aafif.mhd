@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+const currentPath = new URL(Astro.request.url).pathname;
+const navLinkLeft = [
+  { href: "/about", label: "About", icon: "ic:baseline-person" },
+  { href: "/resume", label: "Resume", icon: "ic:baseline-auto-stories" },
+];
+const navLinkRight = [
+  { href: "/portofolio", label: "Portofolio", icon: "ic:baseline-interests" },
+  { href: "/contact", label: "Contact", icon: "ic:baseline-perm-phone-msg" },
+];
+---
+
+<div class="laptop:hidden fixed bottom-0 left-0 w-full z-10">
+  <!-- 1. Background layer with notch -->
+  <div class="relative h-16 mask-notch bg-charcoal z-0"></div>
+
+  <!-- 2. Foreground content -->
+  <div class="absolute bottom-0 left-0 w-full h-16 flex items-center z-10">
+    <div class="w-[calc((100%-72px)/2)] h-full grid grid-cols-2">
+      {
+        navLinkLeft.map((link) => (
+          <a
+            href={link.href}
+            aria-disabled={currentPath === link.href}
+            class={`flex flex-col gap-0.5 items-center justify-center aria-disabled:pointer-events-none ${
+              currentPath === link.href
+                ? "dark:text-star font-medium"
+                : "text-gray-400"
+            }`}
+          >
+            <Icon name={link.icon} class="w-7 h-7" />
+            <span class="text-xs">{link.label}</span>
+          </a>
+        ))
+      }
+    </div>
+    <div class="w-[72px]"></div>
+    <div class="w-[calc((100%-72px)/2)] h-full grid grid-cols-2">
+      {
+        navLinkRight.map((link) => (
+          <a
+            href={link.href}
+            aria-disabled={currentPath === link.href}
+            class={`flex flex-col gap-0.5 items-center justify-center aria-disabled:pointer-events-none ${
+              currentPath === link.href ? "dark:text-star" : "text-gray-400"
+            }`}
+          >
+            <Icon name={link.icon} class="w-7 h-7" />
+            <span class="text-xs">{link.label}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- 3. Floating button -->
+  <a
+    class={`absolute -top-7 left-1/2 transform -translate-x-1/2 w-14 h-14 rounded-full flex items-center justify-center shadow-xl z-20 aria-disabled:pointer-events-none ${currentPath === "/" ? "bg-star text-deep-gray" : "bg-deep-gray text-star"}`}
+    href="/"
+  >
+    <Icon name="ic:round-home" class="w-7 h-7" />
+  </a>
+</div>
+
+<style is:global>
+  .mask-notch {
+    -webkit-mask-image: radial-gradient(
+      circle 36px at center top,
+      transparent 36px,
+      white 36px
+    );
+    mask-image: radial-gradient(
+      circle 36px at center top,
+      transparent 36px,
+      white 36px
+    );
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+</style>

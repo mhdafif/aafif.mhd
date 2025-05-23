@@ -1,0 +1,72 @@
+---
+import dewatiket from "@/assets/company/dewatiket.png";
+import heymale from "@/assets/company/heymale.png";
+import prospace from "@/assets/company/prospace-logo.png";
+import ultravoucher from "@/assets/company/uv-logo.png";
+import xsis from "@/assets/company/xsis-logo.png";
+import { Image } from "astro:assets";
+
+const companies = [
+  {
+    name: "Ultravoucher",
+    logo: ultravoucher,
+  },
+  {
+    name: "Prospace",
+    logo: prospace,
+  },
+  {
+    name: "XSIS Mitra Utama",
+    logo: xsis,
+  },
+];
+const freelances = [
+  {
+    name: "Dewatiket",
+    logo: dewatiket,
+  },
+  {
+    name: "Heymale",
+    logo: heymale,
+  },
+];
+---
+
+<div class="card laptop:!px-8 laptop:!py-6 space-y-8">
+  <p class="font-bold text-2xl">
+    <span class="text-star">Company</span> I Worked With
+  </p>
+
+  <div class="grid grid-cols-2 laptop:grid-cols-3 gap-5">
+    {
+      companies.map((item) => (
+        <div
+          class={`relative group ${item.name.toLowerCase() === "ultravoucher" ? "col-span-2 laptop:col-span-1" : ""}`}
+        >
+          <Image
+            src={item.logo}
+            alt={item.name}
+            class="h-36 w-auto mx-auto grayscale group-hover:grayscale-0 transition-all duration-300"
+          />
+          <div class="bg-star text-deep-gray px-2 py-1 font-semibold absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-xl shadow-dark transition-all duration-300 scale-0 group-hover:scale-100 text-nowrap">
+            {item.name}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="text-center font-bold text-2xl">Others</p>
+
+  <div class="grid laptop:grid-cols-2 gap-5">
+    {
+      freelances.map((item) => (
+        <Image src={item.logo} alt={item.name} class="h-20 w-auto mx-auto" />
+      ))
+    }
+  </div>
+</div>
+
+<script></script>
+
+<style></style>

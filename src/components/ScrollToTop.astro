@@ -1,0 +1,59 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  id="scrollToTop"
+  class="fixed right-2 laptop:right-6 bottom-[4.5rem] laptop:bottom-4 opacity-0 transition-all duration-500 z-50 w-12 h-12 bg-deep-gray shadow-[0_6px_12px_rgba(0,0,0,0.1)] rounded-full flex items-center justify-center group cursor-pointer"
+  aria-label="Scroll to top"
+>
+  <svg class="absolute w-12 h-12 transform -rotate-90" viewBox="0 0 100 100">
+    <circle
+      cx="50"
+      cy="50"
+      r="45"
+      stroke="#e7bb67"
+      stroke-width="5"
+      fill="none"
+      class="progress-circle"
+      stroke-dasharray="282.6"
+      stroke-dashoffset="282.6"></circle>
+  </svg>
+  <Icon
+    name="ic:baseline-keyboard-double-arrow-up"
+    class="z-10 text-star text-2xl"
+  />
+</button>
+
+<script>
+  const scrollBtn = document.getElementById("scrollToTop");
+  const progressCircle = scrollBtn.querySelector(
+    ".progress-circle"
+  ) as SVGCircleElement;
+  const circumference = 2 * Math.PI * 45;
+
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = Math.min(scrollTop / docHeight, 1);
+    const offset = circumference * (1 - scrollPercent);
+    progressCircle.style.strokeDashoffset = offset.toString();
+
+    if (scrollTop > 300) {
+      scrollBtn.classList.remove("bottom-0", "opacity-0");
+      scrollBtn.classList.add("bottom-4", "opacity-100");
+    } else {
+      scrollBtn.classList.remove("bottom-4", "opacity-100");
+      scrollBtn.classList.add("bottom-0", "opacity-0");
+    }
+  }
+
+  window.addEventListener("scroll", updateScrollProgress);
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  window.addEventListener("load", updateScrollProgress);
+</script>

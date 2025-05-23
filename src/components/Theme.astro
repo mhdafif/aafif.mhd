@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button type="button" id="theme-selector" class="">
+  <Icon
+    id="light-mode-icon"
+    name="ic:baseline-light-mode"
+    class="text-star w-8 h-8 hidden"
+  />
+  <Icon
+    id="dark-mode-icon"
+    name="ic:baseline-dark-mode"
+    class="text-[#091e36] w-8 h-8 hidden"
+  />
+</button>
+
+<script>
+  const themeSelector = document.getElementById("theme-selector");
+  const lightModeIcon = document.getElementById("light-mode-icon");
+  const darkModeIcon = document.getElementById("dark-mode-icon");
+
+  function updateIcons() {
+    if (localStorage.theme === "dark") {
+      lightModeIcon.classList.remove("hidden");
+      darkModeIcon.classList.add("hidden");
+    } else {
+      lightModeIcon.classList.add("hidden");
+      darkModeIcon.classList.remove("hidden");
+    }
+  }
+
+  updateIcons();
+
+  themeSelector.addEventListener("click", () => {
+    if (localStorage.theme === "dark") {
+      localStorage.theme = "light";
+      document.documentElement.classList.remove("dark");
+    } else {
+      localStorage.theme = "dark";
+      document.documentElement.classList.add("dark");
+    }
+    updateIcons();
+  });
+</script>

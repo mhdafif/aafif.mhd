@@ -1,0 +1,65 @@
+---
+import "@/styles/global.css";
+import Navbar from "@/components/Navbar.astro";
+import ScrollToTop from "@/components/ScrollToTop.astro";
+import Footer from "@/components/Footer.astro";
+import MenuMobile from "../Menu/MenuMobile.astro";
+const { title = "Mhd Afif" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <meta name="generator" content={Astro.generator} /> -->
+    <!-- <title>{Astro.props.title}</title> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
+    <title>{title}</title>
+  </head>
+  <body
+    class="dark:bg-blacki dark:text-[#f1f5f9] bg-off-white text-black transition-all"
+  >
+    <main
+      class="container min-h-dvh max-w-7xl mx-auto flex flex-col relative px-6 pt-6 pb-24 laptop:p-6"
+    >
+      <div class="w-full">
+        <div class="space-y-7">
+          <Navbar />
+          <slot />
+          <Footer />
+        </div>
+      </div>
+
+      <ScrollToTop />
+    </main>
+
+    <!-- <div
+      class="block laptop:hidden fixed right-2 top-2 z-50"
+    >
+      <Theme />
+    </div> -->
+    <div class="block laptop:hidden fixed bottom-0 left-0 z-50 w-full">
+      <MenuMobile />
+    </div>
+  </body>
+</html>

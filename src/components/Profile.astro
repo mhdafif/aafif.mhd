@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import afif from "@/assets/afif.png";
+const profileLinks = [
+  {
+    href: "https://www.instagram.com/nonieck_/",
+    label: "Instagram",
+    icon: "cib:instagram",
+  },
+  {
+    href: "https://www.linkedin.com/in/mhdafif/",
+    label: "LinkedIn",
+    icon: "cib:linkedin",
+  },
+  { href: "https://github.com/mhdafif", label: "GitHub", icon: "cib:github" },
+];
+---
+
+<div class="card laptop:!py-8 space-y-5">
+  <div>
+    <Image src={afif} alt="my-picture" class="w-52 mx-auto z-10 img-profile" />
+  </div>
+  <p class="font-bold text-3xl text-center">Muhammad Afif</p>
+  <div class="font-bold text-xl text-center text-off-white/50">
+    <p>I am a frontend engineer</p>
+    <p>soon to be fullstack?!</p>
+  </div>
+
+  <div class="flex gap-5 justify-around items-center">
+    {
+      profileLinks.map((link) => (
+        <a
+          href={link.href}
+          class="bg-blacki border-2 border-blacki rounded-10 text-off-white/40 hover:text-star hover:border-star p-1.5 transition-all"
+          target="_blank"
+        >
+          <Icon name={link.icon} class="w-7 h-7" />
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .img-profile {
+    mask: linear-gradient(0deg, transparent, white 20%, white 95%, transparent);
+    -webkit-mask: linear-gradient(
+      0deg,
+      transparent,
+      white 20%,
+      white 95%,
+      transparent
+    );
+  }
+</style>
