@@ -1,0 +1,293 @@
+---
+const testimonies = [
+  {
+    name: "Ogy Rahmawan",
+    role: "Engineer Manager",
+    text: "I had the opportunity to work closely with Afif, and I can confidently say that he is a highly capable Frontend Developer. His technical skills in building clean, responsive, and user-friendly interfaces are top-notch. Afif has a strong eye for detail and always ensures that the user experience is smooth and intuitive. \r\n What sets Afif apart is his ability to quickly adapt to new technologies and turn complex designs into fully functional front-end applications. He's also a great collaborator — open to feedback, communicative, and dependable in delivering high-quality work on time. \r\n Any team would be lucky to have Afif on board. I highly recommend him for any frontend development role.",
+  },
+  {
+    name: "Zaki Prasasti",
+    role: "Technology Department Head - System Quality & Analyst",
+    text: "Afif is a talented Frontend Engineer who consistently handles multiple projects with great attention to detail. His high initiative and dedication shine through in every task, and he's always eager to drive positive change by implementing the latest technologies. Afif is a true asset to any development team.",
+  },
+  {
+    name: "Aditya Renaldi",
+    role: "Frontend Developer",
+    text: "I highly recommend Afif as a front-end developer. I've had the chance to work with him, and it's clear that he brings both strong technical skills and a great attitude to the team.\r\n He is solid with React, Vue, Nuxt, and Next.js, and he has a great handle on modern state management using tools like Zustand. He writes clean, maintainable code and always thinks about performance, usability, and how to improve the overall user experience.\r\n On top of that, he's easy to work with, communicates well, and is always willing to jump in and help out. If you're looking for someone dependable, talented, and genuinely great to have on the team, he is definitely your guy.",
+  },
+];
+---
+
+<div class="card laptop:!px-8 laptop:!py-6 space-y-8 !pb-10">
+  <div class="font-bold text-2xl capitalize">
+    <span>People</span>
+    <span class="text-star">thought</span>
+  </div>
+
+  <div class="pb-6">
+    <div
+      id="carousel-testimonies"
+      class="carousel carousel--markers carousel--paged laptop:space-x-5"
+    >
+      <div class="carousel__slide" data-label="Slide 1">
+        <div class="card-carousel bg-blacki" tabindex="0">1</div>
+      </div>
+      <div class="carousel__slide" data-label="Slide 2">
+        <div class="card-carousel bg-blacki" tabindex="0">2</div>
+      </div>
+      <div class="carousel__slide" data-label="Slide 3">
+        <div class="card-carousel bg-blacki" tabindex="0">3</div>
+      </div>
+      <!-- <div class="carousel__slide" data-label="Slide 4">
+        <div class="card-carousel bg-blacki" tabindex="0">4</div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<!-- <script>
+  const updateCarouselClass = () => {
+    const isLaptop = window.matchMedia("(min-width: 1024px)").matches;
+    const carousel = document.getElementById("carousel-testimonies");
+    if (isLaptop) {
+      carousel.classList.add("carousel--buttons");
+    } else {
+      carousel.classList.remove("carousel--buttons");
+    }
+  };
+
+  window.addEventListener("load", updateCarouselClass);
+  window.addEventListener("resize", updateCarouselClass);
+</script> -->
+
+<style is:inline lang="scss">
+  .carousel {
+    --shadow-strength: 10%;
+    --shadow-color: 220 40% 2%;
+    --shadow-2:
+      0 3px 5px -2px
+        hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)),
+      0 7px 14px -5px
+        hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%));
+
+    /* Scrolling behavior. */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+
+    /* Styles and layout */
+    // padding: 1rem;
+    padding: 0rem;
+    scroll-padding: 1rem;
+
+    // container-type: inline-size scroll-state;
+    // inline-size: 1024px;
+    // max-inline-size: 100vw;
+
+    anchor-name: --carousel;
+
+    @media (width >= 1024px) {
+      mask-image: linear-gradient(
+        to right,
+        hsl(0 0% 0% / 0),
+        hsl(0 0% 0% / 1) 5%,
+        hsl(0 0% 0% / 1) 95%,
+        hsl(0 0% 0% / 0)
+      );
+    }
+
+    &.carousel--paged {
+      columns: 1;
+      block-size: 12.5lh;
+      // block-size: inherit;
+      @media (width >= 1024px) {
+        block-size: 13lh;
+      }
+      // resize: both;
+      text-align: center;
+
+      & > .carousel__slide {
+        block-size: 100%;
+        // margin: 0 0.5rem;
+      }
+
+      &::column {
+        scroll-snap-align: center;
+        container-type: scroll-state;
+      }
+    }
+
+    // &:not(.carousel--paged) {
+    //   display: grid;
+    //   grid-auto-flow: column;
+    //   grid-auto-columns: 20ch;
+    //   gap: 1.25rem;
+
+    //   & > .carousel__slide {
+    //     scroll-snap-align: center;
+    //     container-type: scroll-state;
+    //   }
+    // }
+
+    & .carousel__slide {
+      container-type: scroll-state;
+      // padding: 0;
+      display: inline-grid;
+      counter-increment: item;
+    }
+
+    & .card-carousel {
+      display: inline-flex;
+      place-items: center;
+      place-content: center;
+
+      aspect-ratio: 1/1;
+
+      // background: light-dark(white, #343a40);
+
+      // border: 1px solid #495057;
+      // box-shadow: var(--shadow-2);
+      border-radius: 10px;
+
+      // font-size: 2rem;
+
+      // &:focus {
+      //   outline: 2px solid #91a7ff;
+      // }
+    }
+
+    /* Scroll marker pages */
+    &.carousel--markers {
+      scroll-marker-group: after;
+
+      &::scroll-marker-group {
+        position: fixed;
+        position-anchor: --carousel;
+        position-area: block-end;
+        margin-block-start: 1rem;
+
+        display: grid;
+        grid-auto-columns: 1rem;
+        grid-auto-flow: column;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    /* Scroll markers */
+    &.carousel--paged::column::scroll-marker {
+      content: " ";
+      aspect-ratio: 1;
+      border-radius: 100%;
+      border: 2px solid var(--color-off-white);
+    }
+
+    &.carousel--paged::column::scroll-marker:target-current {
+      background: var(--color-star);
+      border-color: var(--color-star);
+    }
+
+    &.carousel--paged::column::scroll-marker:focus-visible {
+      outline-offset: 2px;
+      outline: 2px solid #91a7ff;
+    }
+
+    // &:not(.carousel--paged) > .carousel__slide {
+    //   &::scroll-marker {
+    //     content: "" / attr(data-label);
+    //     cursor: pointer;
+    //     aspect-ratio: 1;
+    //     border-radius: 1e5px;
+    //     border: 1px solid #868e96;
+    //   }
+
+    //   &::scroll-marker:target-current {
+    //     background: #91a7ff;
+    //     border-color: #91a7ff;
+    //   }
+
+    //   &::scroll-marker:focus-visible {
+    //     outline-offset: 2px;
+    //     outline: 2px solid #91a7ff;
+    //   }
+    // }
+
+    /* Scroll icon buttons */
+    &.carousel--buttons {
+      &::scroll-button(right),
+      &::scroll-button(left) {
+        cursor: pointer;
+
+        position: fixed;
+        position-anchor: --carousel;
+
+        // font-size: 1.25rem;
+        // inline-size: 44px;
+
+        // font-family: "Material Symbols Outlined";
+        // line-height: 1;
+        // font-variation-settings:
+        //   "FILL" 0,
+        //   "wght" 100,
+        //   "GRAD" 0,
+        //   "opsz" 24;
+
+        display: flex;
+        place-items: center;
+        place-content: center;
+        aspect-ratio: 1;
+        background: #212529;
+        color: #ced4da;
+        border: 1px solid #495057;
+        border-radius: 1e5px;
+        // margin: 1rem;
+      }
+      &::scroll-button(right):not(:disabled):hover,
+      &::scroll-button(left):not(:disabled):hover {
+        background: light-dark(white, #343a40);
+        border-color: #868e96;
+        color: #f1f3f5;
+        // font-variation-settings: "opsz" 30;
+      }
+      &::scroll-button(right):focus-visible,
+      &::scroll-button(left):focus-visible {
+        background: light-dark(white, #343a40);
+        outline-offset: 2px;
+        outline: 2px solid #91a7ff;
+      }
+      &::scroll-button(right):disabled,
+      &::scroll-button(left):disabled {
+        cursor: not-allowed;
+        opacity: 0.25;
+      }
+      &::scroll-button(right) {
+        --_inner: center span-inline-start;
+        --_outer: inline-end center;
+
+        position-area: var(--_outer);
+        content: url("/src/assets//icon/next.svg");
+      }
+      &::scroll-button(left) {
+        --_inner: center span-inline-end;
+        --_outer: inline-start center;
+
+        position-area: var(--_outer);
+        content: url("/src/assets//icon/prev.svg");
+      }
+
+      @media (width < 1200px) {
+        &::scroll-button(right) {
+          position-area: var(--_inner);
+          right: -1rem;
+        }
+        &::scroll-button(left) {
+          position-area: var(--_inner);
+          left: -1rem;
+        }
+      }
+    }
+  }
+</style>

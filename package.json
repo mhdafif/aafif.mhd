@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "predev": "if [ $(node -v) != \"$(cat .nvmrc)\" ]; then echo \"Error: Node.js version does not match the required version. Please use Node.js $(cat .nvmrc).\"; exit 1; fi",
-    "dev": "astro dev --host",
+    "dev": "astro dev --host --port 4321",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",

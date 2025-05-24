@@ -38,11 +38,11 @@ const navLinks = [
 </div>
 
 <script>
-  import { isLaptop } from "@/utils/isHelper";
   const menuInfo = document.getElementById("menu");
   const scrollThreshold = 72;
 
   function updateMenuPosition() {
+    const isLaptop = window.matchMedia("(min-width: 1024px)").matches;
     if (!isLaptop) return;
     // apply only when the viewport is larger than 1024px
     if (window.scrollY >= scrollThreshold) {
@@ -54,9 +54,11 @@ const navLinks = [
     }
   }
 
-  // Run once on load
   window.addEventListener("load", updateMenuPosition);
-
-  // Run on scroll
   window.addEventListener("scroll", updateMenuPosition);
+
+  window.addEventListener("unload", () => {
+    window.removeEventListener("load", updateMenuPosition);
+    window.removeEventListener("scroll", updateMenuPosition);
+  });
 </script>

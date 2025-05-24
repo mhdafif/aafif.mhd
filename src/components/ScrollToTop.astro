@@ -27,7 +27,7 @@ import { Icon } from "astro-icon/components";
 
 <script>
   const scrollBtn = document.getElementById("scrollToTop");
-  const progressCircle = scrollBtn.querySelector(
+  const progressCircle = scrollBtn?.querySelector(
     ".progress-circle"
   ) as SVGCircleElement;
   const circumference = 2 * Math.PI * 45;
@@ -49,11 +49,18 @@ import { Icon } from "astro-icon/components";
     }
   }
 
-  window.addEventListener("scroll", updateScrollProgress);
-
-  scrollBtn.addEventListener("click", () => {
+  function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  }
 
+  window.addEventListener("scroll", updateScrollProgress);
   window.addEventListener("load", updateScrollProgress);
+  scrollBtn?.addEventListener("click", scrollToTop);
+
+  // ✅ Cleanup on unload
+  window.addEventListener("unload", () => {
+    window.removeEventListener("scroll", updateScrollProgress);
+    window.removeEventListener("load", updateScrollProgress);
+    scrollBtn?.removeEventListener("click", scrollToTop);
+  });
 </script>
