@@ -1,0 +1,35 @@
+---
+
+---
+
+<div class="layer-container">
+  <span class="layer" style="--i:1"></span>
+  <span class="layer" style="--i:2"></span>
+  <span class="layer" style="--i:3"></span>
+</div>
+
+<style>
+  .layer-container {
+    position: relative;
+    display: grid;
+    place-items: center;
+    top: 50px;
+  }
+
+  .layer {
+    position: absolute;
+    width: 100px;
+    height: 70px;
+    background: var(--color-off-white);
+    transform: rotateX(60deg) rotateY(15deg) rotateZ(-80deg) skew(20deg, 20deg);
+    transition: 0.5s ease-in-out;
+  }
+
+  .layer-container:hover .layer {
+    background-color: var(--color-star);
+    transform: rotateX(60deg) rotateY(15deg) rotateZ(-80deg) skew(20deg, 20deg) translateX(-20px) translateZ(calc(var(--i) * 30px));
+    opacity: calc(var(--i) * 0.33);
+  }
+
+  
+</style>

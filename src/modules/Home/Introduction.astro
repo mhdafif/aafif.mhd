@@ -14,6 +14,16 @@ const yearsOfExperience = getYearsOfExperience();
 
 <div class="card laptop:!px-8 laptop:!py-6 space-y-8">
   <p class="text-off-white/50 font-semibold text-xl mb-4">Hello world!</p>
+
+  <!-- <div class="bouncing-hello font-semibold text-xl mb-4">
+    <span>H</span>
+    <span>e</span>
+    <span>l</span>
+    <span>l</span>
+    <span>o</span>
+    <span>!</span>
+  </div> -->
+
   <p class="text-off-white/90 text-2xl font-medium mb-6">
     I'm a passionate and detail-oriented <span class="text-star text-2xl"
       >Frontend Developer
@@ -46,3 +56,60 @@ const yearsOfExperience = getYearsOfExperience();
     </div>
   </a>
 </div>
+
+<style is:inline lang="scss">
+  .bouncing-hello {
+    span {
+      text-transform: uppercase;
+      position: relative;
+      top: 10px;
+      color: var(--color-off-white);
+      // font-size: 2rem;
+      text-shadow:
+        0 1px 0 #b7b7b7,
+        0 2px 0 #b7b7b7,
+        0 3px 0 #b7b7b7,
+        0 4px 0 #b7b7b7,
+        0 5px 0 #b7b7b7,
+        0 6px 0 transparent,
+        0 7px 0 transparent,
+        0 8px 0 transparent,
+        0 9px 0 transparent,
+        0 10px 10px rgba(0, 0, 0, 0.5);
+
+      animation: bouncing 0.7s ease infinite alternate;
+
+      &:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      &:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      &:nth-child(5) {
+        animation-delay: 0.4s;
+      }
+      &:nth-child(6) {
+        animation-delay: 0.5s;
+      }
+    }
+  }
+  @keyframes bouncing {
+    100% {
+      top: -10px;
+      text-shadow:
+        0 1px 0 #ccc,
+        0 2px 0 #ccc,
+        0 3px 0 #ccc,
+        0 4px 0 #ccc,
+        0 5px 0 #ccc,
+        0 6px 0 #ccc,
+        0 7px 0 #ccc,
+        0 8px 0 #ccc,
+        0 9px 0 #ccc,
+        0 60px 30px rgba(0, 0, 0, 0.5);
+    }
+  }
+</style>

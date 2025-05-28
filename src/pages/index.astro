@@ -8,17 +8,17 @@ import Introduction from "@/modules/Home/Introduction.astro";
 
 <Layout title="Home">
   <div class="w-full grid laptop:grid-cols-3 gap-5">
-    <div class="h-fit col-span-1 space-y-5 laptop:sticky top-5 overflow-hidden">
+    <section class="h-fit col-span-1 space-y-5 laptop:sticky top-5 overflow-hidden">
       <div class="hidden laptop:block">
         <MenuMini />
       </div>
 
       <Profile />
-    </div>
+    </section>
 
-    <div class="col-span-1 laptop:col-span-2 space-y-5">
+    <section class="col-span-1 laptop:col-span-2 space-y-5">
       <Introduction />
       <Company />
-    </div>
+    </section>
   </div>
 </Layout>

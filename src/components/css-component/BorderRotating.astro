@@ -1,0 +1,57 @@
+---
+
+---
+
+<div>
+  <div class="card-muter">
+    <h2 class="text-3xl font-semibold text-off-white z-[1]">Card</h2>
+  </div>
+</div>
+
+<style is:inline lang="scss">
+  .card-muter {
+    width: 190px;
+    height: 254px;
+    background: #07182e;
+    position: relative;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .card-muter::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    // background: linear-gradient(rgb(0, 183, 255), rgb(255, 48, 255));
+    height: 130%;
+    animation: rotateRgb 3s linear infinite;
+    // animation-play-state: paused;
+    transition: all 0.3s linear;
+    background: linear-gradient(rgb(0, 183, 255), rgb(255, 48, 255));
+  }
+
+  // .card-muter:hover::before {
+    // animation-play-state: running;
+    // background: linear-gradient(rgb(0, 183, 255), rgb(255, 48, 255));
+  // }
+
+  @keyframes rotateRgb {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .card-muter::after {
+    content: "";
+    position: absolute;
+    background: #07182e;
+    inset: 5px;
+    border-radius: 15px;
+  }
+</style>
