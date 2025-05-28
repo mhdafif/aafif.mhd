@@ -6,10 +6,11 @@ const navLinks = [
   { href: "/resume", label: "Resume" },
   { href: "/portofolio", label: "Portofolio" },
   { href: "/contact", label: "Contact" },
+  { href: "/css-playground", label: "CSS" },
 ];
 ---
 
-<nav class="laptop:block pl-4 shift">
+<nav class="laptop:block pl-4 shift" aria-label="nav-desktop">
   <ul class="flex items-center gap-2">
     {
       navLinks.map((link) => (
@@ -17,7 +18,7 @@ const navLinks = [
           <a
             href={link.href}
             aria-disabled={currentPath === link.href}
-            class={`nav-item aria-disabled:pointer-events-none ${currentPath === link.href ? "active" : ""}`}
+            class={`nav-item px-3 text-lg font-semibold py-2 relative overflow-hidden dark:text-off-white aria-disabled:pointer-events-none ${currentPath === link.href ? "active" : ""}`}
           >
             {link.label}
           </a>
@@ -26,3 +27,48 @@ const navLinks = [
     }
   </ul>
 </nav>
+
+<style is:inline lang="scss">
+  .nav-item.active {
+    background: var(--color-star);
+    color: var(--color-blacki);
+    border-radius: var(--radius-5);
+  }
+  .nav-item::before,
+  .nav-item::after {
+    content: "";
+    position: absolute;
+    background: var(--color-star);
+    height: 0.25rem;
+    width: 50%;
+    border: var(--radius-4xl);
+    -webkit-transition: transform 0.4s ease-out;
+    transition: transform 0.4s ease-out;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+  }
+  .nav-item::before {
+    top: 0;
+    right: 0;
+    -webkit-transform-origin: left;
+    transform-origin: left;
+  }
+  .nav-wrapper:not(:has(.active)) .nav-item:hover::before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+  }
+  .nav-item::after {
+    bottom: 0;
+    left: 0;
+    -webkit-transform-origin: right;
+    transform-origin: right;
+  }
+  .nav-wrapper:not(:has(.active)) .nav-item:hover::after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+  }
+</style>

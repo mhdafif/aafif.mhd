@@ -11,9 +11,10 @@ const navLinks = [
 ];
 ---
 
-<div
+<nav
   id="menu"
   class="card flex items-center justify-between transition-all duration-500 ease-in-out -mt-[92px] relative"
+  aria-label="nav-desktop-mini"
 >
   {
     navLinks.map((link) => (
@@ -35,7 +36,7 @@ const navLinks = [
     ))
   }
   <div class="absolute w-full h-0.5 bg-blacki left-0"></div>
-</div>
+</nav>
 
 <script>
   const menuInfo = document.getElementById("menu");
