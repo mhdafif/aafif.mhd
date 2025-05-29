@@ -6,8 +6,10 @@ const navLinks = [
   { href: "/resume", label: "Resume" },
   { href: "/portofolio", label: "Portofolio" },
   { href: "/contact", label: "Contact" },
-  { href: "/css-playground", label: "CSS" },
 ];
+if (import.meta.env.MODE === "development") {
+  navLinks.push({ href: "/css-playground", label: "CSS" });
+}
 ---
 
 <nav class="laptop:block pl-4 shift" aria-label="nav-desktop">
@@ -17,8 +19,8 @@ const navLinks = [
         <li class="nav-wrapper">
           <a
             href={link.href}
-            aria-disabled={currentPath === link.href}
-            class={`nav-item px-3 text-lg font-semibold py-2 relative overflow-hidden dark:text-off-white aria-disabled:pointer-events-none ${currentPath === link.href ? "active" : ""}`}
+            aria-dbled={currentPath === link.href}
+            class={`nav-item px-3 text-lg font-semibold py-2 relative overflow-hidden dark:text-off-white aria-disabled:pointer-events-none ${currentPath === link.href ? "active shadow-star-glow" : ""}`}
           >
             {link.label}
           </a>

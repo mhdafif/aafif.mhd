@@ -1,0 +1,35 @@
+---
+const text = "Hover Me!";
+---
+
+<div class="text-2xl font-mono text-white cursor-pointer">
+  <span class="scramble-text" data-text={text}>{text}</span>
+</div>
+
+<script type="module">
+  const chars =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}|:<>?-=[];',.";
+
+  function scrambleText(el, finalText) {
+    let iterations = 0;
+    const maxIterations = finalText.length;
+
+    const interval = setInterval(() => {
+      el.textContent = finalText
+        .split("")
+        .map((char, i) => {
+          if (i < iterations) return finalText[i];
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join("");
+
+      if (iterations >= maxIterations) clearInterval(interval);
+      iterations += 1 / 2;
+    }, 50);
+  }
+
+  document.querySelectorAll(".scramble-text").forEach((el) => {
+    const finalText = el.dataset.text;
+    el.addEventListener("mouseenter", () => scrambleText(el, finalText));
+  });
+</script>
