@@ -2,9 +2,10 @@
 import Layout from "@/components/Layout/Layout.astro";
 import MenuMini from "@/components/Menu/MenuMini.astro";
 import Profile from "@/components/Profile.astro";
+import ConstructionIcon from "@/assets/icon/construction.svg";
 ---
 
-<Layout title="About">
+<Layout title="Portofolio">
   <div class="w-full grid laptop:grid-cols-3 gap-5">
     <div class="h-fit col-span-1 space-y-5 laptop:sticky top-5 overflow-hidden">
       <div class="hidden laptop:block">
@@ -14,8 +15,21 @@ import Profile from "@/components/Profile.astro";
       <Profile />
     </div>
 
-    <div class="col-span-1 laptop:col-span-2 space-y-5">About</div>
+    <div class="col-span-1 laptop:col-span-2 space-y-5 flex-center">
+      <div class="flex flex-col gap-5">
+        <ConstructionIcon class="inline-block text-star w-28 h-28 mx-auto" />
+        <h1 class="typewriter-once text-3xl font-bold text-center capitalize">
+          under maintenance!
+        </h1>
+      </div>
+    </div>
   </div>
 </Layout>
 
-<style></style>
+<style lang="scss">
+  .typewriter-once {
+    animation:
+      typing-once 2s steps(20, end),
+      blink-caret 0.5s step-end infinite;
+  }
+</style>
