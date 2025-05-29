@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+// import { Icon } from "astro-icon/components";
 const educations = [
   {
     school: "Telkom University",
@@ -14,20 +14,22 @@ const educations = [
   <p class="font-bold text-2xl capitalize">
     <span>My</span>
     <span class="text-star">Education </span>
-    <Icon name="ic:round-school" class="inline-block text-star w-7 h-7" />
+    <!-- <Icon name="ic:round-school" class="inline-block text-star w-7 h-7" /> -->
   </p>
-  <div class="resume-container border-l-[3px] border-solid border-off-white/50">
+  <div
+    class="education-container border-l-[3px] border-solid border-off-white/50"
+  >
     {
       educations.map((item) => (
-        <div class="resume-item flex flex-col laptop:flex-row flex-wrap mt-8">
-          <div class="resume-date self-start laptop:flex-[0_0_8rem] laptop:max-w-32 pl-8 laptop:pl-5 relative laptop:mt-[1px]">
+        <div class="education-item flex flex-col laptop:flex-row flex-wrap mt-8">
+          <div class="education-date self-start laptop:flex-[0_0_8rem] laptop:max-w-32 pl-8 laptop:pl-5 relative laptop:mt-[1px]">
             <h6 class="text-off-white/50 font-medium">
               {item.startYear} - {item.endYear}
             </h6>
           </div>
-          <div class="resume-detail relative pl-8 laptop:pl-9">
-            <p class="mb-0 font-bold text-xl text-star">{item.degree}</p>
-            <p class="text-off-white font-semibold">{item.school}</p>
+          <div class="education-detail relative pl-8 laptop:pl-9">
+            <h3 class="mb-0 font-bold text-xl text-star">{item.degree}</h3>
+            <h4 class="text-off-white font-semibold">{item.school}</h4>
           </div>
         </div>
       ))
@@ -35,30 +37,10 @@ const educations = [
   </div>
 </div>
 
-<script></script>
-
 <style is:inline lang="scss">
-  .resume-container {
-    // border-left: 3px solid rgb(250, 249, 246, 0.5);
-
-    .resume-item {
-      // display: flex;
-      // margin-top: 30px;
-      // flex-wrap: wrap;
-      // @media (width < 768) {
-      //   flex-direction: column;
-      // }
-
-      .resume-date {
-        // @media (width < 768) {
-        //   flex: "0 0 0";
-        // }
-        // align-self: flex-start;
-        // flex: 0 0 128px;
-        // max-width: 128px;
-        // padding-left: 20px;
-        // position: relative;
-
+  .education-container {
+    .education-item {
+      .education-date {
         &::before {
           content: "";
           position: absolute;
@@ -68,21 +50,11 @@ const educations = [
           width: 15px;
           border-radius: 100%;
           background: #1e293b;
-          border: 3px solid rgb(250, 249, 246, 0.5);
-        }
-
-        .resume-date-year {
-          // color: gray;
-          // margin-bottom: 0;
+          border: 3px solid var(--color-star);
         }
       }
 
-      .resume-detail {
-        // position: relative;
-        // padding-left: 36px;
-        // @media (width < 768) {
-        //   padding-left: 30px;
-        // }
+      .education-detail {
         &::before {
           @media (width < 768) {
             width: 20px;
@@ -95,37 +67,6 @@ const educations = [
           width: 24px;
           background: rgb(250, 249, 246, 0.5);
         }
-        // h5 {
-        //   color: blue;
-        //   margin-bottom: 0;
-        //   font-weight: bold;
-        // }
-        // .resume-detail-company {
-        //   color: white;
-        // }
-        // p {
-        //   margin-bottom: 0;
-        // }
-        // ul {
-        //   margin-bottom: 0;
-        //   margin-left: 18px;
-        //   list-style: none;
-        //   position: relative;
-
-        //   li {
-        //     &::before {
-        //       content: "";
-        //       position: absolute;
-        //       margin: 7px 7px 0 0;
-        //       right: 100%;
-        //       height: 10px;
-        //       width: 10px;
-        //       border-color: transparent transparent transparent blue;
-        //       border-style: solid;
-        //       border-width: 5px;
-        //     }
-        //   }
-        // }
       }
     }
   }
