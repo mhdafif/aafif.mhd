@@ -25,6 +25,13 @@
   --breakpoint-laptop: 1024px;
   --breakpoint-tablet: 768px;
   --breakpoint-mobile: 480px;
+
+  --shadow-star-glow:
+    0 0 8px var(--color-star), 0 0 8px var(--color-star) inset;
+  --shadow-charcoal-glow:
+    0 0 8px var(--color-charcoal), 0 0 8px var(--color-charcoal) inset;
+  --shadow-blacki-glow:
+    0 0 8px var(--color-blacki), 0 0 8px var(--color-blacki) inset;
 }
 
 * {
@@ -73,25 +80,41 @@ body {
     0 1px 2px rgba(255, 255, 255, 0.05) inset; */
 }
 
-.sadow-01 {
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.4),
-    0 1px 2px rgba(255, 255, 255, 0.05) inset;
+.flex-center {
+  @apply flex items-center justify-center;
 }
 
-.sadow-02 {
-  box-shadow:
-    0 8px 16px rgba(0, 0, 0, 0.5),
-    0 0 2px rgba(255, 255, 255, 0.03);
+/* Typewriter once */
+/* source: https://css-tricks.com/snippets/css/typewriter-effect/   */
+
+.typewriter-once {
+  overflow: hidden;
+  border-right: 0.15em solid var(--color-star);
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  margin-right: auto;
+  margin-left: auto;
+
+  animation:
+    typing-once 3.5s steps(35, end),
+    blink-caret 0.5s step-end infinite;
 }
 
-.sadow-03 {
-  box-shadow:
-    0 6px 12px rgba(0, 0, 0, 0.6),
-    0 0 4px rgba(231, 187, 103, 0.2);
+@keyframes typing-once {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
-.sadow-04 {
-  /* color: rgb(231, 187, 103); */
-  box-shadow: 0 4px 10px rgba(231, 187, 103, 0.06);
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
 }
