@@ -3,6 +3,9 @@ import BorderRotating from "@/components/css-component/BorderRotating.astro";
 import BouncingText from "@/components/css-component/BouncingText.astro";
 import FlipFlop from "@/components/css-component/FlipFlop.astro";
 import Layer from "@/components/css-component/Layer.astro";
+import RandomText from "@/components/css-component/RandomText.astro";
+import TypeWriter from "@/components/css-component/TypeWriter.astro";
+import TypeWriter2 from "@/components/css-component/TypeWriter2.astro";
 import Layout from "@/components/Layout/Layout.astro";
 ---
 
@@ -24,17 +27,32 @@ import Layout from "@/components/Layout/Layout.astro";
       </div>
 
       <div class="card place-content-start place-items-center">
-        <h2 class="text-2xl font-semibold text-off-white mb-6">
-          Flip Flop
-        </h2>
+        <h2 class="text-2xl font-semibold text-off-white mb-6">Flip Flop</h2>
         <FlipFlop />
       </div>
-      
+
+      <div class="card place-content-start place-items-center">
+        <h2 class="text-2xl font-semibold text-off-white mb-16">Layer</h2>
+        <Layer />
+      </div>
+
+      <div class="card place-content-start place-items-center">
+        <h2 class="text-2xl font-semibold text-off-white mb-16">Random Text</h2>
+        <RandomText />
+      </div>
+
       <div class="card place-content-start place-items-center">
         <h2 class="text-2xl font-semibold text-off-white mb-16">
-          Layer
+          Typewriter Text
         </h2>
-        <Layer />
+        <TypeWriter />
+      </div>
+
+      <div class="card place-content-start place-items-center">
+        <h2 class="text-2xl font-semibold text-off-white mb-16">
+          Typewriter 2 Text
+        </h2>
+        <TypeWriter2 />
       </div>
     </div>
   </div>
