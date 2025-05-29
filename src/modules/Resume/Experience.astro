@@ -1,0 +1,245 @@
+---
+import { Icon } from "astro-icon/components";
+const experiences = [
+  {
+    company: "Ultravoucher",
+    position: "Frontend Engineer",
+    start: "Jan 2022",
+    end: "May 2025",
+    details: [
+      "Lead and direct the frontend team to ensure consistent implementation of best practices",
+      "Implement UI/UX designs from Figma into production-ready applications",
+      "Build and maintain responsive applications optimized for desktop, webview, and webapp environments",
+      "Ensure compatibility across all devices, including older mobile devices",
+      "Refactor and revamp legacy applications using modern frontend technologies",
+      "Design and develop complex UI/UX for internal dashboards",
+      "Design and build a custom internal UI framework tailored for company-wide use",
+      "Create a standardized boilerplate to streamline setup for new frontend projects",
+      "Establish and implement frontend SOPs for the team",
+      "Propose and implement new ideas to improve development workflow and scalability",
+      "Conduct code cleaning and implement a ticket-based review system",
+      "Enhance SEO and performance for various key products",
+      "Collaborate with cross-functional teams to ensure high-quality, consistent frontend delivery",
+    ],
+  },
+  {
+    company: "Prospace",
+    position: "Frontend Engineer",
+    start: "Oct 2020",
+    end: "Dec 2021",
+    details: [
+      "Maintain and develop B2B products tailored to client needs",
+      "Implement UI features and enhancements based on client requirements",
+      "Design and maintain unit testing strategy for application stability",
+      "Ensure the smooth release and deployment of applications",
+      "Collaborate with backend and QA teams to fix bugs and refine functionality",
+      "Create an internal UI framework to standardize frontend development",
+      "Contribute to performance optimization and UI consistency across products",
+    ],
+  },
+  {
+    company: "Xsis Mitra Utama",
+    position: "Frontend Engineer",
+    start: "Sep 2018",
+    end: "Sep 2020",
+    details: [
+      "Revamped Employee Self Service application from Web Forms to microservice architecture using React and TypeScript",
+      "Collaborated with backend teams to transition legacy systems into modern frontend architecture",
+      // "Handled bug fixes and ongoing maintenance to ensure application stability",
+      // "Maintained and improved UI/UX components for internal HR applications",
+    ],
+  },
+];
+---
+
+<div class="card laptop:!px-8 laptop:!py-6 space-y-8">
+  <div class="font-bold text-2xl capitalize">
+    <span>My</span>
+    <span class="text-star">Experiences</span>
+  </div>
+  <div class="experience-container">
+    {
+      experiences.map((item) => (
+        <div class="experience-item pt-4 pb-5 first:pt-0">
+          <div class="flex flex-wrap relative px-4 laptop:px-8 laptop:pl-9">
+            <div class="experience-place-time w-full">
+              <h3 class="mb-0 font-bold text-xl text-star">{item.company}</h3>
+              <h4 class="text-off-white font-semibold">{item.position}</h4>
+              <h6 class="text-off-white/50 font-medium">
+                {item.start} - {item.end}
+              </h6>
+              <div class="bg-blacki px-2 py-3 mt-3 rounded-lg">
+                <input
+                  type="checkbox"
+                  class="peer hidden"
+                  id={`experience-${item.company}`}
+                />
+
+                {/* show first 3 of details */}
+                <ul class="experience-details space-y-1">
+                  {item.details.slice(0, 3).map((detail) => (
+                    <li class="experience-details-item text-off-white font-medium">
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* show the rest */}
+                <ul class="experience-details peer-checked:block hidden">
+                  {item.details.slice(3).map((detail) => (
+                    <li class="experience-details-item text-off-white font-medium">
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* 🔽 Show when NOT checked */}
+                <label
+                  for={`experience-${item.company}`}
+                  class={
+                    item.details.length <= 3
+                      ? "hidden"
+                      : "mt-2 experience-details-arrow block peer-checked:hidden cursor-pointer text-star hover:underline w-full place-items-center"
+                  }
+                >
+                  <Icon
+                    name="ic:round-keyboard-double-arrow-down"
+                    class="text-3xl"
+                  />
+                </label>
+
+                {/* 🔼 Show when checked */}
+                <label
+                  for={`experience-${item.company}`}
+                  class="mt-2 hidden peer-checked:block cursor-pointer text-star hover:underline w-full place-items-center"
+                >
+                  <Icon
+                    name="ic:round-keyboard-double-arrow-up"
+                    class="text-3xl"
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  .experience-container {
+    .experience-item {
+      position: relative;
+      &:nth-of-type(odd) {
+        border-left: 3px solid;
+        border-bottom: 3px dashed;
+        border-color: rgba(250, 249, 246, 0.5);
+
+        .experience-place-time {
+          &::before {
+            left: 0;
+          }
+          &::after {
+            left: -9px;
+          }
+        }
+
+        .experience-details {
+          &-item {
+            padding-left: 1.5rem;
+            &::before {
+              left: 0;
+            }
+          }
+        }
+      }
+      &:nth-of-type(even) {
+        border-right: 3px solid;
+        border-bottom: 3px dashed;
+        border-color: rgba(250, 249, 246, 0.5);
+        text-align: end;
+
+        .experience-place-time {
+          &::before {
+            right: 0;
+          }
+          &::after {
+            right: -9px;
+          }
+        }
+
+        .experience-details {
+          &-item {
+            padding-right: 1.5rem;
+            &::before {
+              right: 0;
+            }
+          }
+        }
+      }
+      &:last-child {
+        border: none;
+        padding-left: 3px;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 24px;
+          width: 3px;
+          background-color: rgba(250, 249, 246, 0.5);
+        }
+      }
+
+      .experience-place-time {
+        &::before {
+          @media (width < 1024px) {
+            display: none;
+          }
+          content: "";
+          position: absolute;
+          // left: 0;
+          top: 12px;
+          height: 2px;
+          width: 24px;
+          background: rgb(250, 249, 246, 0.5);
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          // left: -9px;
+          top: 6px;
+          height: 15px;
+          width: 15px;
+          border-radius: 100%;
+          background: var(--color-star);
+          outline: 6px solid var(--color-charcoal);
+        }
+      }
+
+      .experience-details {
+        &-item {
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            height: 2px;
+            width: 12px;
+            background: rgb(250, 249, 246, 0.5);
+          }
+        }
+      }
+
+      .experience-details-arrow {
+        mask-image: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 1) 70%,
+          rgba(0, 0, 0, 1) 100%
+        );
+      }
+    }
+  }
+</style>
