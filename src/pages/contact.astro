@@ -114,9 +114,6 @@ const contacts = [
 <style lang="scss">
   .contacts {
     &::before {
-      @media (width < 1024px) {
-        display: none;
-      }
       content: "";
       position: absolute;
       top: 0;
@@ -125,17 +122,16 @@ const contacts = [
       width: 4px;
       height: 100%;
       background-color: rgba(250, 249, 246, 0.5);
-      // border-radius: 100px;
       border-radius: calc(infinity * 1px);
+      @media (width < 1024px) {
+        display: none;
+      }
     }
 
     &-item {
       &:nth-of-type(2),
       &:nth-of-type(8) {
         &::after {
-          @media (width < 1024px) {
-            display: none;
-          }
           content: "";
           position: absolute;
           top: 50%;
@@ -144,13 +140,13 @@ const contacts = [
           width: calc(2.5rem - 2px);
           height: 4px;
           border: 2px dashed rgba(250, 249, 246, 0.5);
+          @media (width < 1024px) {
+            display: none;
+          }
         }
       }
       &:nth-of-type(2) {
         &::before {
-          @media (width < 1024px) {
-            display: none;
-          }
           content: "";
           position: absolute;
           top: 39px;
@@ -159,6 +155,9 @@ const contacts = [
           width: 4px;
           height: 50%;
           background-color: var(--color-blacki);
+          @media (width < 1024px) {
+            display: none;
+          }
         }
       }
 
@@ -167,9 +166,6 @@ const contacts = [
       &:nth-of-type(5),
       &:nth-of-type(11) {
         &::before {
-          @media (width < 1024px) {
-            display: none;
-          }
           content: "";
           position: absolute;
           top: 50%;
@@ -178,13 +174,13 @@ const contacts = [
           width: calc(2.5rem - 2px);
           height: 4px;
           border: 2px dashed rgba(250, 249, 246, 0.5);
+          @media (width < 1024px) {
+            display: none;
+          }
         }
       }
       &:nth-of-type(11) {
         &::after {
-          @media (width < 1024px) {
-            display: none;
-          }
           content: "";
           position: absolute;
           bottom: -43px;
@@ -193,6 +189,9 @@ const contacts = [
           width: 4px;
           height: 50%;
           background-color: var(--color-blacki);
+          @media (width < 1024px) {
+            display: none;
+          }
         }
       }
     }

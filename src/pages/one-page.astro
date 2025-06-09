@@ -1,0 +1,26 @@
+---
+import Layout from "@/components/Layout/Layout-one-page.astro";
+import LeftSection from "@/modules/OnePage/LeftSection/LeftSection.astro";
+import MiddleSection from "@/modules/OnePage/MiddleSection/MiddleSection.astro";
+import RightSection from "@/modules/OnePage/RightSection/RightSection.astro";
+---
+
+<Layout title="Home">
+  <div
+    class="z-[2] relative w-full max-w-[72rem] aspect-video bg-charcoal rounded-20 shadow-blacki-glow border-2 border-solid border-blacki p-10"
+  >
+    <div class="grid grid-cols-10 gap-3">
+      <div class="col-span-3">
+        <LeftSection />
+      </div>
+      <div class="col-span-4">
+        <MiddleSection />
+      </div>
+      <!-- <div class="col-span-3">
+        <RightSection />
+      </div> -->
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss"></style>

@@ -1,0 +1,78 @@
+---
+
+---
+
+<!-- <div class="border-rotating">
+  <h2 class="text-3xl font-semibold text-off-white z-[1]">Card</h2>
+</div> -->
+<div class="card-rotate">
+  <h2 class="text-3xl font-semibold text-off-white z-[1]">Card</h2>
+</div>
+
+<style lang="scss">
+  @property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+  .card-rotate {
+    margin: 0 auto;
+    padding: 2em;
+    width: 100px;
+    height: 150px;
+    background: #07182e;
+    position: relative;
+    border-radius: 10px;
+    box-sizing: initial;
+    place-content: center;
+    place-items: center;
+  }
+  .card-rotate::before,
+  .card-rotate::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    // background-image: conic-gradient(
+    //   from var(--angle),
+    //   transparent 0% 30%,
+    //   #00b7ff 50%,
+    //   transparent 50% 80%,
+    //   #ff30ff 100%
+    // );
+    // background-image: conic-gradient(
+    //   from var(--angle),
+    //   transparent 0% 40%,
+    //   #00b7ff 40% 50%,
+    //   transparent 50% 90%,
+    //   #ff30ff 90% 100%
+    // );
+    // background-image: conic-gradient(
+    //   from var(--angle),
+    //   transparent 80%,
+    //   var(--color-star)
+    // );
+    z-index: -1;
+    padding: 3px;
+    box-sizing: initial;
+    border-radius: 10px;
+    animation: 3s rotate linear infinite;
+  }
+
+  .card-rotate::before {
+    filter: blur(1.5em);
+    opacity: 0.5;
+  }
+
+  @keyframes rotate {
+    0% {
+      --angle: 0deg;
+    }
+    100% {
+      --angle: 360deg;
+    }
+  }
+</style>

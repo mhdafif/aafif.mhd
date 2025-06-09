@@ -1,0 +1,69 @@
+---
+
+---
+
+<!-- Fixed Fullscreen Grid -->
+<div id="grid" class="z-1 fixed top-0 left-0 w-full h-full">
+  <div id="grid-container" class="grid grid-cols-4 laptop:grid-cols-12">
+    <!-- Will be filled by JS -->
+  </div>
+</div>
+
+<script type="module">
+  const gridContainer = document.getElementById("grid-container");
+
+  function createGrid() {
+    // 1. Width per column
+    const windowWidth = window.innerWidth / 12;
+    // 2. How many rows we need
+    const heightCount = window.innerHeight / windowWidth;
+    // 3. Total cells
+    const totalCount = Math.ceil(heightCount) * 12;
+
+    // Clear existing grid
+    gridContainer.innerHTML = "";
+
+    // Generate new grid
+    for (let i = 0; i < totalCount; i++) {
+      const div = document.createElement("div");
+      div.className =
+        "square-item w-full aspect-square border border-solid border-charcoal hover:bg-charcoal transition-all duration-300 ease-in-out hover:shadow-blacki-glow";
+      gridContainer.appendChild(div);
+    }
+  }
+
+  // Initial load
+  createGrid();
+
+  // Update on window resize
+  window.addEventListener("resize", () => {
+    createGrid();
+  });
+</script>
+
+<style lang="scss">
+  /* Optional: Add smooth transition */
+  #grid-container > div {
+    transition: all 0.3s ease;
+  }
+  /* Optional: Add hover effect */
+  // #grid-container > div:hover {
+
+  // .square-item:hover ~ .square-item:not(:hover) {
+  //   filter: blur(4px);
+  // }
+
+  // #grid-container .square-item {
+  //   filter: none;
+  //   transition: filter 0.3s;
+  // }
+
+  // #grid-container:hover .square-item {
+  //   filter: blur(2px);
+  // }
+
+  // /* Remove blur on the hovered item */
+  // #grid-container .square-item:hover {
+  //   filter: none;
+  // }
+</style>

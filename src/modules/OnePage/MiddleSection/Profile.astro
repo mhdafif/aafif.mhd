@@ -1,0 +1,156 @@
+---
+import { Image } from "astro:assets";
+import afif2 from "@/assets/afif-02.jpg";
+---
+
+<!-- <div class="card-blacki border border-solid border-off-white/10"> -->
+<div class="card-blacki border border-solid border-blacki">
+  <div class="glare-hover" style="
+">
+    <Image
+      src={afif2}
+      alt="my-picture"
+      class="img-profile w-full mx-auto z-10 opacity-70 rounded-lg"
+    />
+  </div>
+</div>
+
+<style lang="scss">
+  * {
+    --gh-width: 100%;
+    --gh-height: 100%;
+    --gh-angle: -45deg;
+    --gh-duration: 800ms;
+    --gh-size: 300%;
+    --gh-rgba: rgba(255, 255, 255, 0.3);
+    --gh-border: #333;
+  }
+  .glare-hover {
+    width: var(--gh-width);
+    height: var(--gh-height);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        var(--gh-angle),
+        hsla(0, 0%, 0%, 0) 60%,
+        var(--gh-rgba) 70%,
+        hsla(0, 0%, 0%, 0),
+        hsla(0, 0%, 0%, 0) 100%
+      );
+      transition: var(--gh-duration) ease;
+      background-size:
+        var(--gh-size) var(--gh-size),
+        100% 100%;
+      background-repeat: no-repeat;
+      background-position:
+        -100% -100%,
+        0 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 300px;
+      width: 300px;
+      top: -200px;
+      right: -50px;
+      background: linear-gradient(
+        to left,
+        rgba(231, 187, 103, 1) 0%,
+        rgba(231, 187, 103, 0) 100%
+      );
+      -webkit-transition: transform 0.4s ease-out;
+      transition: transform 0.4s ease-out;
+      rotate: 315deg;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transform-origin: right;
+      transform-origin: right;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      &::before {
+        background-position:
+          100% 100%,
+          0 0;
+      }
+      &::after {
+        transition-delay: 300ms;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  .glare-hover--play-once {
+    &:hover {
+      &::before {
+        transition: var(--gh-duration) ease;
+        background-position:
+          100% 100%,
+          0 0;
+      }
+    }
+
+    &::before {
+      transition: none;
+    }
+  }
+
+  .img-profile {
+    transition:
+      transform var(--gh-duration) ease-in-out,
+      opacity var(--gh-duration) ease-in-out;
+
+    &:hover {
+      transition-delay: 100ms;
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+  }
+
+  // .glare-hover::before {
+  //   content: "";
+  //   position: absolute;
+  //   inset: 0;
+  //   background: linear-gradient(
+  //     var(--gh-angle),
+  //     hsla(0, 0%, 0%, 0) 60%,
+  //     var(--gh-rgba) 70%,
+  //     hsla(0, 0%, 0%, 0),
+  //     hsla(0, 0%, 0%, 0) 100%
+  //   );
+  //   transition: var(--gh-duration) ease;
+  //   background-size:
+  //     var(--gh-size) var(--gh-size),
+  //     100% 100%;
+  //   background-repeat: no-repeat;
+  //   background-position:
+  //     -100% -100%,
+  //     0 0;
+  // }
+
+  // .glare-hover:hover {
+  //   cursor: pointer;
+  // }
+
+  // .glare-hover:hover::before {
+  //   background-position:
+  //     100% 100%,
+  //     0 0;
+  // }
+
+  // .glare-hover--play-once::before {
+  //   transition: none;
+  // }
+</style>

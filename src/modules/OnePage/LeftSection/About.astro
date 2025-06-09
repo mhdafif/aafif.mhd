@@ -1,0 +1,166 @@
+---
+import { Icon } from "astro-icon/components";
+const items = [
+  {
+    title: "About",
+    icon: "ic:baseline-info",
+  },
+  {
+    title: "Education",
+    icon: "ic:baseline-school",
+  },
+  {
+    title: "Thought",
+    icon: "ic:baseline-people-alt",
+  },
+];
+---
+
+<!-- <div class="gradient-to-top-charcoal px-4 py-4 rounded-lg border border-solid border-off-white/10"> -->
+<div
+  class="about-container card-blacki p-4 rounded-lg border border-solid border-off-white/10 group relative"
+>
+  <div
+    class="absolute right-0 top-0 font-semibold text-lg bg-star text-blacki rounded-tr-sm rounded-bl-sm w-7 aspect-square flex items-center justify-center outline-4 outline-solid outline-charcoal hover:animate-pulse cursor-pointer z-[1]"
+  >
+    1
+  </div>
+  <div class="about-items flex flex-col gap-8 relative">
+    {
+      items.map((item) => (
+        <div class="about-item relative">
+          <span class=" font-semibold text-lg relative hover:text-star transition-all duration-300 ease-out cursor-default z-[1] bg-blacki">
+            {item.title}
+          </span>
+          <div class="line" />
+        </div>
+      ))
+    }
+    <button class="absolute right-0 bottom-[-1.5px] cursor-pointer z-[1]">
+      <Icon
+        name="ic:round-more"
+        class="relative rotate-180 w-8 h-8 text-star open-more"
+      />
+    </button>
+  </div>
+</div>
+
+<!-- <div class="relative">
+  <div
+    class="card-blacki tes-clip w-[312px] h-[160px] border border-solid border-off-white/10"
+  >
+  </div>
+  <div class="absolute top-4 w-1/2 h-[32px] p-1 pl-0">
+    <div class="w-full rounded-sm text-lg">About</div>
+  </div>
+</div> -->
+
+<style lang="scss">
+  .about-container {
+    .open-more {
+      animation-duration: 0.6s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-out;
+      &:hover {
+        animation-name: throb;
+      }
+    }
+    .about-item {
+      &:nth-child(odd) {
+        span {
+          border-right: 4px solid rgba(250, 249, 246, 0.1);
+          padding-right: 0.5rem;
+          // &:hover {
+          //   border-color: var(--color-star);
+          // }
+        }
+      }
+      &:nth-child(even) {
+        text-align: end;
+        span {
+          border-left: 4px solid rgba(250, 249, 246, 0.1);
+          padding-left: 0.5rem;
+          // &:hover {
+          //   border-color: var(--color-star);
+          // }
+        }
+      }
+      .line {
+        &::after {
+          content: "";
+          top: 11.5px;
+          height: calc(100% + 1rem);
+          position: absolute;
+          border-width: 4px;
+          border-style: dashed;
+          border-color: rgba(250, 249, 246, 0.1);
+          transition: all 0.3s ease-out;
+        }
+        // &:hover {
+        //   &::after {
+        //     border-color: var(--color-star);
+        //   }
+        // }
+      }
+      &:nth-child(1) {
+        .line {
+          &::after {
+            left: 64px;
+            border-left: 0;
+            border-bottom: 0;
+            border-top-right-radius: 4px;
+            width: calc(100% - 64px - 40px);
+          }
+        }
+      }
+      &:nth-child(2) {
+        .line {
+          &::after {
+            right: 97px;
+            border-right: 0;
+            border-bottom: 0;
+            border-top-left-radius: 4px;
+            width: calc(100% - 97px - 36px);
+          }
+        }
+      }
+      &:nth-child(3) {
+        .line {
+          &::after {
+            left: 84px;
+            border-right: 0;
+            border-bottom: 0;
+            border-left: 0;
+            width: calc(100% - 84px - 36px);
+          }
+        }
+        // &:hover ~ button {
+        //   > svg {
+        //     color: var(--color-star);
+        //   }
+        // }
+      }
+      &:hover {
+        span {
+          border-color: var(--color-star);
+        }
+        > .line::after {
+          border-color: rgba(250, 249, 246, 0.8);
+        }
+      }
+    }
+  }
+  .tes-clip {
+    clip-path: path(
+      " M 8,0 L 304,0 A 8,8 0,0,1 312,8 L 312,60 A 4,4 0,0,1 308,64 L 160,64 A 4,4 0,0,0 156,68 L 156,92 A 4,4 0,0,0 160,96 L 308,96 A 4,4 0,0,1 312,100 L 312,152 A 8,8 0,0,1 304,160 L 8,160 A 8,8 0,0,1 0,152 L 0,148 A 4,4 0,0,1 4,144 L 152,144 A 4,4 0,0,0 156,140 L 156,116 A 4,4 0,0,0 152,112 L 4,112 A 4,4 0,0,1 0,108 L 0,52 A 4,4 0,0,1 4,48 L 152,48 A 4,4 0,0,0 156,44 L 156,20 A 4,4 0,0,0 152,16 L 4,16 A 4,4 0,0,1 0,12 L 0,8 A 8,8 0,0,1 8,0 Z"
+    );
+  }
+  .gradient-to-top-charcoal {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 45%,
+      var(--color-blacki) 100%
+    );
+  }
+</style>

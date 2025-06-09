@@ -1,0 +1,73 @@
+---
+
+---
+
+<div class="relative">
+  <!-- <div class="clip-path circle"></div> -->
+  <!-- <div class="clip-path ellipse"></div> -->
+  <!-- <div class="clip-path inset"></div> -->
+  <!-- <div class="clip-path polygon"></div> -->
+  <div class="relative">
+    <div class="title">Title</div>
+    <div class="clip-path path relative"></div>
+  </div>
+</div>
+
+<style lang="scss">
+  .clip-path {
+    width: 200px;
+    height: 200px;
+    background: var(--color-star);
+  }
+  .circle {
+    // clip-path: circle(radius at cx cy);
+    // clip-path: circle(50px at 50px 50px);
+    // clip-path: circle(50px at left top);
+    // clip-path: circle(50px at left);
+    // clip-path: circle(50px at top);
+    clip-path: circle(50px at right);
+  }
+  .ellipse {
+    // clip-path: ellipse(rxrx ty at cx cy);
+    // clip-path: ellipse(50px 80px at 50px 50px);
+    clip-path: ellipse(80px 50px at center);
+  }
+  .inset {
+    // clip-path: inset(top right bottom left round radius);
+    // clip-path: inset(0 0 0 50px round 0);
+    // clip-path: inset(0 0 0 50px);
+    // clip-path: inset(50px);
+    // clip-path: inset(20px 30px 40px 50px round 30px);
+    clip-path: inset(0 0 40px 50px round 30px 0);
+  }
+  .polygon {
+    // clip-path: polygon(
+    //   50% 0%,
+    //   100% 100%,
+    //   0% 100%
+    // );
+    // clip-path: polygon((0 0, 100% 0%, 100% 80%, 0% 100%));
+    clip-path: polygon(75% 0, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+  }
+  .path {
+    // format path => X,Y
+    clip-path: path(
+      " M 10,40 L 70,40 A 10,10 0,0,0 80,30 L 80,10 A 10,10 0,0,1 90,0 L 140,0 A 10,10 0,0,1 150,10 L 150,190 A 10,10 0,0,1 140,200 L 10,200 A 10,10 0,0,1 0,190 L 0,50 A 10,10 0,0,1 10,40 Z"
+    );
+  }
+  .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90px;
+    height: 50px;
+    background: var(--color-star);
+    color: var(--color-blacki);
+    font-size: 12px;
+    font-weight: bold;
+    // clip-path: inset(0.5px round 8px 0);
+    clip-path: path(
+      " M 6,0 L 78,0 A 6,10 0,0,0 74,6 L 74,28 A 6,6 0,0,1 68,34 L 10,34 A 10,6 0,0,0 0,38 L 0,6 A 6,6 0,0,1 6,0 Z"
+    );
+  }
+</style>

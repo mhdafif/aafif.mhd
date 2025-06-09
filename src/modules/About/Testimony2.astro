@@ -96,24 +96,15 @@ const testimonies = [
         rgba(0, 0, 0, 1) 95%,
         rgba(0, 0, 0, 0)
       );
-      // mask-image: linear-gradient(
-      //   to right,
-      //   hsl(0 0% 0% / 0),
-      //   hsl(0 0% 0% / 1) 5%,
-      //   hsl(0 0% 0% / 1) 95%,
-      //   hsl(0 0% 0% / 0)
-      // );
     }
 
     &.carousel--paged {
       columns: 1;
       block-size: 12.5lh;
-      // block-size: inherit;
+      text-align: center;
       @media (width >= 1024px) {
         block-size: 13lh;
       }
-      // resize: both;
-      text-align: center;
 
       & > .carousel__slide {
         block-size: 100%;
