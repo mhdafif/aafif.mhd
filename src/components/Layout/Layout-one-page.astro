@@ -39,7 +39,7 @@ const { title = "Mhd Afif" } = Astro.props;
     <main class="h-dvh flex flex-col relative">
       <Square />
       <div
-        class="container h-full mx-auto relative place-content-center place-items-center"
+        class="container h-auto laptop:h-full mx-auto relative place-content-center place-items-center"
       >
         <slot />
         <!-- <Footer /> -->
@@ -47,9 +47,9 @@ const { title = "Mhd Afif" } = Astro.props;
         <!-- <ScrollToTop /> -->
       </div>
 
-      <div class="block laptop:hidden fixed bottom-0 left-0 z-50 w-full">
+      <!-- <div class="block laptop:hidden fixed bottom-0 left-0 z-50 w-full">
         <MenuMobile />
-      </div>
+      </div> -->
     </main>
   </body>
 </html>

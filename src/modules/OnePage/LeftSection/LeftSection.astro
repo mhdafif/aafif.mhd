@@ -1,14 +1,18 @@
 ---
 import About from "./About.astro";
 import Language from "./Language.astro";
-import Navbar from "./Navbar.astro";
 import Stack from "./Stack.astro";
 ---
 
 <section class="flex flex-col gap-3">
-  <About />
-  <Stack />
-  <!-- <Navbar /> -->
+  <div class="laptop:h-[478px] laptop:grid grid-rows-5 gap-3">
+    <div class="row-span-2">
+      <About />
+    </div>
+    <div class="row-span-3">
+      <Stack />
+    </div>
+  </div>
   <Language />
 </section>
 

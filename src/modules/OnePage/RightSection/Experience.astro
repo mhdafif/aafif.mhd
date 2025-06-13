@@ -3,7 +3,7 @@ import Modal from "@/components/Modal.astro";
 import Title from "@/components/Title.astro";
 import Tooltip from "@/components/Tooltip.astro";
 import { Icon } from "astro-icon/components";
-import JestIcon from "@/assets/icon/jest.svg";
+import ExperienceModalContent from "./ModalContent/ExperienceModalContent.astro";
 
 const experiences = [
   {
@@ -58,7 +58,7 @@ const experiences = [
 ---
 
 <div
-  class="stack-container card-blacki p-4 rounded-lg border border-solid border-off-white/10 relative"
+  class="card-blacki p-4 rounded-lg border border-solid border-off-white/10 relative"
 >
   <div
     class="shortcut-key absolute right-0 top-0 text-blacki rounded-tr-sm rounded-bl-sm w-7 aspect-square outline-4 outline-solid outline-charcoal flex justify-center items-center group z-[1]"
@@ -66,65 +66,40 @@ const experiences = [
     <div
       class="bg-star w-full h-full text-center font-semibold text-lg rounded-tr-sm rounded-bl-sm group-hover:opacity-70 transition-all duration-500 ease-out relative cursor-default"
     >
-      2
+      3
     </div>
-    <Tooltip content="Shortcut : 2" />
+    <Tooltip content="Shortcut : 3" />
   </div>
 
-  <Title size="small" text="Stack" />
+  <Title size="small" text="Experience" />
 
-  <div class="mt-8">
-    <div class="grid grid-cols-3 gap-2">
-      <!-- {
-        experiences.map((item, index) => (
-          <div
-            tabindex={index}
-            class="exp-item relative z-[1] rounded-5 w-full aspect-square group hover:shadow-charcoal-glow transition-all"
-          >
-            <div class="w-full h-full bg-charcoal rounded-5 flex items-center justify-center border border-solid border-charcoal hover:bg-blacki transition-all duration-300 ease-out">
-              <Icon name={item.icon} class="text-5xl grayscale-100" />
-            </div>
+  <div class="mt-8 space-y-3">
+    {
+      experiences.map((item) => (
+        <div class="exp-item bg-charcoal rounded-5 p-0.5 relative group">
+          <div class="w-full h-full relative z-[1] rounded-5 bg-charcoal py-2 px-3">
+            <h3 class="font-bold text-lg text-star">@ {item.company}</h3>
+            <h4 class="text-off-white font-semibold">{item.position}</h4>
+            <h6 class="text-off-white/50 font-medium">
+              {item.start} - {item.end}
+            </h6>
           </div>
-        ))
-      } -->
-      <div
-        id="more-exp"
-        class="w-full h-full bg-star rounded-5 flex items-center justify-center border border-solid border-charcoal hover:bg-star/80 transition-all duration-300 ease-out cursor-pointer hover:animate-pulse relative"
-      >
-        <Icon name="ic:baseline-open-in-new" class="text-5xl text-blacki" />
-      </div>
+        </div>
+      ))
+    }
+    <div
+      id="more-exp"
+      class="w-full h-full bg-star rounded-5 flex items-center justify-center border border-solid border-charcoal hover:bg-star/80 transition-all duration-300 ease-out cursor-pointer hover:animate-pulse relative"
+    >
+      <Icon name="ic:baseline-open-in-new" class="text-5xl text-blacki" />
     </div>
   </div>
 </div>
 
 <!-- Modal Experience -->
 <Modal title="Experiences" modalId="modal-exp">
-  <div class="mt-6 flex flex-wrap gap-6 justify-center">
-    Experiences
-    <!-- {
-      skills.map((item, index) => (
-        <div
-          tabindex={index}
-          class="group stack-item-modal bg-charcoal rounded-10 p-4"
-        >
-          <div class="w-full relative bg-blacki rounded-5 mb-4 stack-item group-hover:scale-105 transition-all duration-300 ease-out">
-            <div class="bg-blacki p-6  w-full h-full rounded-5">
-              {item.name === "Jest" ? (
-                <JestIcon class="w-12 h-12 laptop:w-16 laptop:h-16 relative grayscale-100 text-[#99425B] group-hover:grayscale-0 group-focus:grayscale-0 transition-all duration-300 ease-out" />
-              ) : (
-                <Icon
-                  name={item.icon}
-                  class="w-12 h-12 laptop:w-16 laptop:h-16 relative grayscale-100 group-hover:grayscale-0 group-focus:grayscale-0 transition-all duration-300 ease-out"
-                />
-              )}
-            </div>
-          </div>
-          <p class="text-off-white text-center text-sm laptop:text-lg font-medium group-hover:text-star group-focus:text-star transition-all duration-300 ease-out">
-            {item.name}
-          </p>
-        </div>
-      ))
-    } -->
+  <div class="mt-6">
+    <ExperienceModalContent />
   </div>
 </Modal>
 
@@ -135,12 +110,9 @@ const experiences = [
   const modalContainer = modalExp.querySelector(".modal-container");
 
   function handleOpenModal(isOpen: boolean) {
-   
     const anyModalOpen = document.querySelector(".modal.modal-open");
 
-    // Prevent opening if another modal is already open
     if (isOpen && anyModalOpen && anyModalOpen !== modalExp) {
-      // console.warn("Another modal is already open.");
       return;
     }
 
@@ -150,8 +122,6 @@ const experiences = [
     } else {
       modalContainer.scrollTo({ top: 0, behavior: "smooth" });
       modalExp.classList.remove("modal-open");
-
-      // Check if there are no more modals open, then reset scroll
       if (!document.querySelector(".modal.modal-open")) {
         document.body.style.overflow = "";
       }
@@ -159,7 +129,7 @@ const experiences = [
   }
 
   addEventListener("keydown", (event) => {
-    if (event.key === "2") {
+    if (event.key === "3") {
       handleOpenModal(true);
     }
     if (event.key === "Escape") {
@@ -180,81 +150,48 @@ const experiences = [
     }
   });
 </script>
-<style is:global lang="scss">
-  .shortcut:hover {
-    .tooltip {
-      opacity: 1;
-      pointer-events: initial;
-      &.top {
-        bottom: 1.75rem;
-      }
 
-      &.bottom {
-        top: 1.75rem;
-      }
-    }
-  }
-
-  @property --angle {
-    syntax: "<angle>";
-    inherits: false;
-    initial-value: 0deg;
-  }
-
-  .stack-item {
-  }
-
-  .stack-item::before,
-  .stack-item::after {
+<style lang="scss">
+  .exp-item::before {
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 50%;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
     top: 50%;
-    translate: -50% -50%;
-    background-image: conic-gradient(
-      from var(--angle),
-      transparent 80%,
-      var(--color-star)
-    );
-    z-index: -1;
-    padding: 3px;
-    box-sizing: initial;
-    border-radius: 10px;
-    animation: 3s rotate linear infinite;
-    animation-play-state: paused;
-    opacity: 0;
+    transform: translateY(-50%);
+    left: -4px;
+    background: var(--color-charcoal);
+    border: 1.5px solid rgba(250, 249, 246, 0.5);
+    transition: all 0.3s ease-out;
+    z-index: 2;
   }
-  .stack-item:hover,
-  .stack-item-modal:hover .stack-item {
-    &::before,
-    &::after {
-      animation-play-state: running;
-      opacity: 1;
-    }
 
+  .exp-item:hover {
     &::before {
-      opacity: 0.5;
+      border-color: var(--color-star);
+      // background-color: var(--color-blacki);
     }
-  }
-  .stack-item::before {
-    filter: blur(1.5em);
-    // opacity: 0.5;
-  }
-
-  @keyframes rotate {
-    0% {
-      --angle: 0deg;
-    }
-    100% {
-      --angle: 360deg;
+    &::after {
+      background-color: var(--color-star);
     }
   }
 
-  #modal-stack {
+  .exp-item::after {
+    content: "";
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    top: 50%;
+    left: 0;
+    background-color: rgba(250, 249, 246, 0.5);
+    transition: all 0.3s ease-out;
+    border-bottom-left-radius: 5px;
+  }
+
+  #modal-exp {
     .modal-container {
-      max-width: 45rem !important;
+      // max-width: 45rem !important;
     }
   }
 </style>

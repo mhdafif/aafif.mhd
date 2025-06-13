@@ -35,13 +35,12 @@ const items = ["About", "Education", "Feedback"];
     }
     <button
       id="more-about"
-      class="shortcut absolute right-0 bottom-[-1.5px] cursor-pointer group flex justify-center outline-none"
+      class="absolute right-0 bottom-[-1.5px] cursor-pointer group flex justify-center outline-none"
     >
       <Icon
         name="ic:baseline-open-in-new"
         class="relative w-8 h-8 text-star group-hover:animate-pulse transition-all duration-100 ease-out"
       />
-      <!-- <Tooltip content="Click to see more" /> -->
     </button>
   </div>
 </div>
@@ -53,35 +52,6 @@ const items = ["About", "Education", "Feedback"];
   <Testimony />
 </Modal>
 
-<!-- <div id="modal-about" class="modal">
-  <div class="modal-container scroll-smooth">
-    <div class="laptop:space-y-5">
-      <div class="modal-title">
-        <Title text="About" />
-        <Icon
-          id="close-btn"
-          name="ic:round-close"
-          class="absolute w-8 h-8 text-charcoal hover:text-star/80 transition-all duration-500 ease-out cursor-pointer top-6 right-0"
-        />
-      </div>
-      <div class="modal-content space-y-5 mb-5">
-        <Introduction />
-        <Education />
-        <Testimony />
-      </div>
-    </div>
-  </div>
-</div> -->
-<!-- <div class="relative">
-  <div
-    class="card-blacki tes-clip w-[312px] h-[160px] border border-solid border-off-white/10"
-  >
-  </div>
-  <div class="absolute top-4 w-1/2 h-[32px] p-1 pl-0">
-    <div class="w-full rounded-sm text-lg">About</div>
-  </div>
-</div> -->
-
 <script>
   const modalAbout = document.getElementById("modal-about");
   const moreAbout = document.getElementById("more-about");
@@ -89,21 +59,9 @@ const items = ["About", "Education", "Feedback"];
   const modalContainer = modalAbout.querySelector(".modal-container");
 
   function handleOpenModal(isOpen: boolean) {
-    // const anyModalOpen = document.querySelector(".modal-open");
-    // if (isOpen) {
-    //   if (!anyModalOpen) {
-    //     modalAbout.classList.add("modal-open");
-    //   }
-    // } else {
-    //   modalContainer.scrollTo({ top: 0, behavior: "smooth" });
-    //   modalAbout.classList.remove("modal-open");
-    // }
-    // document.body.style.overflow = isOpen ? "hidden" : "";
     const anyModalOpen = document.querySelector(".modal.modal-open");
 
-    // Prevent opening if another modal is already open
     if (isOpen && anyModalOpen && anyModalOpen !== modalAbout) {
-      // console.warn("Another modal is already open.");
       return;
     }
 
@@ -113,8 +71,6 @@ const items = ["About", "Education", "Feedback"];
     } else {
       modalContainer.scrollTo({ top: 0, behavior: "smooth" });
       modalAbout.classList.remove("modal-open");
-
-      // Check if there are no more modals open, then reset scroll
       if (!document.querySelector(".modal.modal-open")) {
         document.body.style.overflow = "";
       }
@@ -143,16 +99,16 @@ const items = ["About", "Education", "Feedback"];
     }
   });
 </script>
-<style is:global lang="scss">
+<style lang="scss">
   .about-container {
     .about-item {
+      span {
+        z-index: 1;
+      }
       &:nth-child(odd) {
         span {
           border-right: 4px solid rgba(250, 249, 246, 0.1);
           padding-right: 0.5rem;
-          // &:hover {
-          //   border-color: var(--color-star);
-          // }
         }
       }
       &:nth-child(even) {
@@ -160,9 +116,6 @@ const items = ["About", "Education", "Feedback"];
         span {
           border-left: 4px solid rgba(250, 249, 246, 0.1);
           padding-left: 0.5rem;
-          // &:hover {
-          //   border-color: var(--color-star);
-          // }
         }
       }
       .line {
@@ -176,11 +129,6 @@ const items = ["About", "Education", "Feedback"];
           border-color: rgba(250, 249, 246, 0.1);
           transition: all 0.3s ease-out;
         }
-        // &:hover {
-        //   &::after {
-        //     border-color: var(--color-star);
-        //   }
-        // }
       }
       &:nth-child(1) {
         .line {
@@ -214,11 +162,6 @@ const items = ["About", "Education", "Feedback"];
             width: calc(100% - 84px - 36px);
           }
         }
-        // &:hover ~ button {
-        //   > svg {
-        //     color: var(--color-star);
-        //   }
-        // }
       }
       &:hover {
         span {
@@ -230,81 +173,4 @@ const items = ["About", "Education", "Feedback"];
       }
     }
   }
-
-  // .shortcut:hover {
-  //   .tooltip {
-  //     opacity: 1;
-  //     pointer-events: initial;
-  //     &.top {
-  //       bottom: 1.75rem;
-  //     }
-
-  //     &.bottom {
-  //       top: 1.75rem;
-  //     }
-  //   }
-  // }
-  .tes-clip {
-    clip-path: path(
-      " M 8,0 L 304,0 A 8,8 0,0,1 312,8 L 312,60 A 4,4 0,0,1 308,64 L 160,64 A 4,4 0,0,0 156,68 L 156,92 A 4,4 0,0,0 160,96 L 308,96 A 4,4 0,0,1 312,100 L 312,152 A 8,8 0,0,1 304,160 L 8,160 A 8,8 0,0,1 0,152 L 0,148 A 4,4 0,0,1 4,144 L 152,144 A 4,4 0,0,0 156,140 L 156,116 A 4,4 0,0,0 152,112 L 4,112 A 4,4 0,0,1 0,108 L 0,52 A 4,4 0,0,1 4,48 L 152,48 A 4,4 0,0,0 156,44 L 156,20 A 4,4 0,0,0 152,16 L 4,16 A 4,4 0,0,1 0,12 L 0,8 A 8,8 0,0,1 8,0 Z"
-    );
-  }
-
-  // .modal {
-  //   z-index: -5;
-  //   pointer-events: none;
-  //   width: 100vw;
-  //   height: 100vh;
-  //   position: fixed;
-  //   top: 0;
-  //   left: 0;
-  //   transition: 0.3s all ease-out;
-  //   opacity: 0;
-  //   display: flex;
-  //   justify-content: center;
-
-  //   &::after {
-  //     content: "";
-  //     background-color: var(--color-blacki);
-  //     opacity: 0.7;
-  //     width: 100%;
-  //     height: 100%;
-  //   }
-
-  //   .modal-container {
-  //     position: absolute;
-  //     z-index: 1;
-  //     background-color: var(--color-blacki);
-  //     border-top-left-radius: 8px;
-  //     border-top-right-radius: 8px;
-  //     width: 100%;
-  //     max-width: 72rem;
-  //     height: 80vh;
-  //     border: 1px solid rgba(250, 249, 246, 0.2);
-  //     border-bottom: 0;
-  //     top: 105%;
-  //     transition: 0.3s all ease-out;
-  //     padding: 0 2rem;
-  //     overflow: auto;
-
-  //     .modal-title {
-  //       position: sticky;
-  //       top: 0;
-  //       background: var(--color-blacki);
-  //       z-index: 1;
-  //       padding-bottom: 3rem;
-  //       padding-top: 1rem;
-  //       margin-bottom: 0.5rem;
-  //     }
-  //   }
-  // }
-  // .modal-open {
-  //   z-index: 99;
-  //   opacity: 1;
-  //   pointer-events: auto;
-
-  //   .modal-container {
-  //     top: 20%;
-  //   }
-  // }
 </style>

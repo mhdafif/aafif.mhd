@@ -21,6 +21,24 @@ const experiences = [
       "Enhance SEO and performance for various key products",
       "Collaborate with cross-functional teams to ensure high-quality, consistent frontend delivery",
     ],
+    stacks: [
+      "React",
+      "Vue",
+      "Next.js",
+      "Remix",
+      "Nuxt",
+      "Javascript",
+      "TypeScript",
+      "HTML5 + CSS3",
+      "Vite",
+      "Vitest",
+      "Jest",
+      "Testing Library",
+      "Git",
+      "Tailwind CSS",
+      "Docker",
+      "Storybook",
+    ],
   },
   {
     company: "Prospace",
@@ -36,6 +54,18 @@ const experiences = [
       "Create an internal UI framework to standardize frontend development",
       "Contribute to performance optimization and UI consistency across products",
     ],
+    stacks: [
+      "React",
+      "Next.js",
+      "Javascript",
+      "TypeScript",
+      "HTML5 + CSS3",
+      "Jest",
+      "Testing Library",
+      "Git",
+      "Docker",
+      "Storybook",
+    ],
   },
   {
     company: "Xsis Mitra Utama",
@@ -45,31 +75,31 @@ const experiences = [
     details: [
       "Revamped Employee Self Service application from Web Forms to microservice architecture using React and TypeScript",
       "Collaborated with backend teams to transition legacy systems into modern frontend architecture",
-      // "Handled bug fixes and ongoing maintenance to ensure application stability",
-      // "Maintained and improved UI/UX components for internal HR applications",
     ],
+    stacks: ["React", "Javascript", "TypeScript", "HTML5 + CSS3", "Git"],
   },
 ];
 ---
 
-<div
-  class="px-4 laptop:px-8 laptop:py-6 space-y-8 gradient-to-top-charcoal rounded-b-xl relative"
->
-  <div class="font-bold text-2xl capitalize">
-    <span>My</span>
-    <span class="text-star">Experiences</span>
-  </div>
+<div class="card laptop:!px-8 laptop:!py-6 space-y-8">
   <div class="experience-container">
     {
       experiences.map((item) => (
         <div class="experience-item pt-4 pb-5 first:pt-0">
           <div class="flex flex-wrap relative px-4 laptop:px-8 laptop:pl-9">
             <div class="experience-place-time w-full">
-              <h3 class="mb-0 font-bold text-xl text-star">{item.company}</h3>
+              <h2 class="mb-0 font-bold text-2xl text-star">{item.company}</h2>
               <h4 class="text-off-white font-semibold">{item.position}</h4>
               <h6 class="text-off-white/50 font-medium">
                 {item.start} - {item.end}
               </h6>
+              <div class="experience-stacks flex items-center overflow-x-auto gap-2 my-1 hide-scroll snap-x-items-list">
+                {item.stacks.map((stack) => (
+                  <span class="snap-start bg-blacki rounded-sm px-2 py-1 text-sm text-off-white font-medium text-nowrap cursor-default transition-colors duration-300 ease-out hover:bg-star hover:text-blacki">
+                    {stack}
+                  </span>
+                ))}
+              </div>
               <div class="bg-blacki shadow-blacki-glow px-2 py-3 mt-3 rounded-lg">
                 <input
                   type="checkbox"
@@ -129,6 +159,23 @@ const experiences = [
   </div>
 </div>
 
+<!-- <script>
+  function checkHorizontalOverflow(el: HTMLElement) {
+    if (el.scrollWidth > el.clientWidth) {
+      el.classList.add("mask-fade-right");
+    } else {
+      el.classList.remove("mask-fade-right");
+    }
+  }
+
+  const stacksEl: any = document.querySelector(".experience-stacks");
+  if (stacksEl) {
+    checkHorizontalOverflow(stacksEl);
+
+    // Optional: recheck on window resize or content update
+    window.addEventListener("resize", () => checkHorizontalOverflow(stacksEl));
+  } -->
+
 <style lang="scss">
   .experience-container {
     .experience-item {
@@ -179,6 +226,17 @@ const experiences = [
             }
           }
         }
+
+        .experience-stacks {
+          display: flex;
+          justify-content: end;
+          align-items: center;
+          flex-direction: row-reverse;
+
+          span {
+            scroll-snap-align: end;
+          }
+        }
       }
       &:last-child {
         border: none;
@@ -199,7 +257,7 @@ const experiences = [
           content: "";
           position: absolute;
           // left: 0;
-          top: 12px;
+          top: 14px;
           height: 2px;
           width: 24px;
           background: rgb(250, 249, 246, 0.5);
@@ -212,8 +270,8 @@ const experiences = [
           position: absolute;
           // left: -9px;
           top: 6px;
-          height: 15px;
-          width: 15px;
+          height: 16px;
+          width: 16px;
           border-radius: 100%;
           background: var(--color-star);
           outline: 6px solid var(--color-charcoal);
@@ -243,12 +301,5 @@ const experiences = [
         );
       }
     }
-  }
-  .gradient-to-top-charcoal {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 45%,
-      var(--color-charcoal) 100%
-    );
   }
 </style>

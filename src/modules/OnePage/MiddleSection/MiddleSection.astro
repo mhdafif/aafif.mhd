@@ -1,12 +1,35 @@
 ---
-import Location from "./Location.astro";
 import Email from "./Email.astro";
 import Profile2 from "./Profile2.astro";
+import myCV from "@/assets/muhammad afif - CV.pdf";
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="flex flex-col gap-3">
   <Profile2 />
-  <div class="grid grid-cols-3 relative">
+  <div class="flex flex-col laptop:flex-row items-center gap-3">
+    <div class="w-full laptop:grow">
+      <Email />
+    </div>
+    <a
+      class="h-[58px] w-full laptop:w-20 flex items-center justify-between gap-1.5 dark:bg-star dark:text-blacki rounded-5 px-3.5 font-semibold cursor-pointer transition-all group hover:shadow-star-glow"
+      download
+      href={myCV}
+    >
+      <span class="text-lg">CV</span>
+      <div class="relative w-5 h-5 overflow-hidden">
+        <Icon
+          name="ic:round-download"
+          class="w-5 h-5 absolute transition-all duration-400 -top-6 group-hover:top-0 right-0"
+        />
+        <Icon
+          name="ic:round-download"
+          class="w-5 h-5 absolute transition-all duration-400 top-0 group-hover:top-6 right-0"
+        />
+      </div>
+    </a>
+  </div>
+  <!-- <div class="grid grid-cols-3 relative">
     <div class="email-box col-span-2">
       <Email />
     </div>
@@ -17,7 +40,7 @@ import Profile2 from "./Profile2.astro";
       <Location />
     </div>
     <div class="location-line line"></div>
-  </div>
+  </div> -->
 </section>
 
 <style lang="scss">

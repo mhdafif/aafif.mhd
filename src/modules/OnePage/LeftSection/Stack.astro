@@ -66,7 +66,7 @@ const skills = [
 ---
 
 <div
-  class="stack-container card-blacki p-4 rounded-lg border border-solid border-off-white/10 relative"
+  class="card-blacki p-4 rounded-lg border border-solid border-off-white/10 relative"
 >
   <div
     class="shortcut-key absolute right-0 top-0 text-blacki rounded-tr-sm rounded-bl-sm w-7 aspect-square outline-4 outline-solid outline-charcoal flex justify-center items-center group z-[1]"
@@ -183,28 +183,7 @@ const skills = [
   });
 </script>
 <style is:global lang="scss">
-  .shortcut:hover {
-    .tooltip {
-      opacity: 1;
-      pointer-events: initial;
-      &.top {
-        bottom: 1.75rem;
-      }
 
-      &.bottom {
-        top: 1.75rem;
-      }
-    }
-  }
-
-  @property --angle {
-    syntax: "<angle>";
-    inherits: false;
-    initial-value: 0deg;
-  }
-
-  .stack-item {
-  }
 
   .stack-item::before,
   .stack-item::after {
@@ -224,7 +203,7 @@ const skills = [
     padding: 3px;
     box-sizing: initial;
     border-radius: 10px;
-    animation: 3s rotate linear infinite;
+    animation: 3s rotate-angle linear infinite;
     animation-play-state: paused;
     opacity: 0;
   }
@@ -243,15 +222,6 @@ const skills = [
   .stack-item::before {
     filter: blur(1.5em);
     // opacity: 0.5;
-  }
-
-  @keyframes rotate {
-    0% {
-      --angle: 0deg;
-    }
-    100% {
-      --angle: 360deg;
-    }
   }
 
   #modal-stack {
