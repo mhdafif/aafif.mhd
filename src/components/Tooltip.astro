@@ -1,0 +1,77 @@
+---
+const { position = "top", content } = Astro.props;
+---
+
+<div class={`tooltip z-50 ${position}`}>
+  <div class="content">
+    <span class="text-sm font-medium">{content}</span>
+  </div>
+</div>
+
+<style lang="scss">
+  .tooltip {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+
+    &.top {
+      bottom: 1.5rem;
+      transition:
+        opacity 0.4s,
+        bottom 0.4s cubic-bezier(0.6, -0.5, 0.3, 1.5);
+      padding-bottom: 1rem;
+
+      .content {
+        &::after {
+          bottom: -6px;
+        }
+      }
+    }
+    &.bottom {
+      top: 1.5rem;
+      transition:
+        opacity 0.4s,
+        top 0.4s cubic-bezier(0.6, -0.5, 0.3, 1.5);
+      padding-top: 1rem;
+
+      .content {
+        &::after {
+          top: -6px;
+        }
+      }
+    }
+
+    .content {
+      position: relative;
+      width: 100%;
+      background: var(--color-star);
+      color: var(--color-blacki);
+      padding: 6px;
+      border-radius: 10px;
+
+      span {
+        z-index: 1;
+        text-wrap: nowrap;
+        position: relative;
+      }
+
+      &::after {
+        content: "";
+        width: 16px;
+        height: 16px;
+        background-color: var(--color-star);
+        position: absolute;
+        left: 0;
+        right: 0;
+        // bottom: -6px;
+        margin-inline: auto;
+        border-radius: 0.25rem;
+        rotate: 45deg;
+      }
+
+      @media screen and (min-width: 540px) {
+        max-width: 200px;
+      }
+    }
+  }
+</style>

@@ -118,3 +118,11 @@ body {
     border-color: orange;
   }
 }
+
+.gradient-to-top-charcoal {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 45%,
+    var(--color-charcoal) 100%
+  );
+}

@@ -123,3 +123,15 @@ body {
     transform: scale(1.125);
   }
 } */
+
+.shortcut-key:hover .tooltip {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.shortcut-key:hover .tooltip.top {
+  bottom: 1.75rem;
+}
+.shortcut-key:hover .tooltip.bottom {
+  top: 1.75rem;
+}

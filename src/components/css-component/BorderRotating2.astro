@@ -6,7 +6,11 @@
   <h2 class="text-3xl font-semibold text-off-white z-[1]">Card</h2>
 </div> -->
 <div class="card-rotate">
-  <h2 class="text-3xl font-semibold text-off-white z-[1]">Card</h2>
+  <h2
+    class="w-full h-full rounded-10 bg-gray-600 text-3xl font-semibold text-off-white z-[1]"
+  >
+    Card
+  </h2>
 </div>
 
 <style lang="scss">
@@ -17,7 +21,7 @@
   }
   .card-rotate {
     margin: 0 auto;
-    padding: 2em;
+    // padding: 2em;
     width: 100px;
     height: 150px;
     background: #07182e;
@@ -50,11 +54,11 @@
     //   transparent 50% 90%,
     //   #ff30ff 90% 100%
     // );
-    // background-image: conic-gradient(
-    //   from var(--angle),
-    //   transparent 80%,
-    //   var(--color-star)
-    // );
+    background-image: conic-gradient(
+      from var(--angle),
+      transparent 80%,
+      var(--color-star)
+    );
     z-index: -1;
     padding: 3px;
     box-sizing: initial;

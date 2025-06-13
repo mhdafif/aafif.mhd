@@ -1,0 +1,71 @@
+---
+const { size = "large", text } = Astro.props;
+let textSize = {
+  text: "",
+  textShadow: "",
+};
+switch (size) {
+  case "large":
+    textSize = {
+      text: "text-5xl",
+      textShadow: "5rem",
+    };
+    break;
+  case "medium":
+    textSize = {
+      text: "text-3xl",
+      textShadow: "4rem",
+    };
+    break;
+  case "small":
+    textSize = {
+      text: "text-3xl",
+      textShadow: "3rem",
+    };
+    break;
+
+  default:
+    break;
+}
+---
+
+<h1 class={`font-bold text-star relative inline-block ${textSize.text}`}>
+  {text}
+</h1>
+<span style={`font-size: ${textSize.textShadow};`}>{text}</span>
+
+<style lang="scss">
+  h1 {
+    z-index: 1;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      height: 4px;
+      bottom: -0.5rem;
+      left: 0;
+      border-radius: 2px;
+    }
+    &::before {
+      width: 100%;
+      background-color: rgba(250, 249, 246, 0.1);
+    }
+    &::after {
+      width: 40%;
+      background-color: rgba(250, 249, 246, 0.8);
+    }
+  }
+
+  span {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 100%;
+    height: 100%;
+    // font-size: 5rem;
+    font-weight: bold;
+    color: var(--color-charcoal);
+  }
+</style>

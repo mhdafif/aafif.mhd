@@ -1,0 +1,262 @@
+---
+import Modal from "@/components/Modal.astro";
+import Title from "@/components/Title.astro";
+import Tooltip from "@/components/Tooltip.astro";
+import { Icon } from "astro-icon/components";
+import JestIcon from "@/assets/icon/jest.svg";
+
+const skills = [
+  {
+    name: "React",
+    icon: "devicon:react",
+  },
+  {
+    name: "Vue",
+    icon: "devicon:vuejs",
+  },
+  {
+    name: "Next",
+    icon: "devicon:nextjs",
+  },
+  {
+    name: "Remix",
+    icon: "devicon:remix",
+  },
+  {
+    name: "Astro",
+    icon: "devicon:astro",
+  },
+  {
+    name: "Nuxt",
+    icon: "devicon:nuxtjs",
+  },
+  {
+    name: "JavaScript",
+    icon: "devicon:javascript",
+  },
+  {
+    name: "TypeScript",
+    icon: "devicon:typescript",
+  },
+  {
+    name: "HTML5",
+    icon: "devicon:html5",
+  },
+  {
+    name: "CSS3",
+    icon: "devicon:css3",
+  },
+  {
+    name: "Vite",
+    icon: "devicon:vitejs",
+  },
+  {
+    name: "Vitest",
+    icon: "devicon:vitest",
+  },
+  {
+    name: "Jest",
+    icon: "custom",
+  },
+  {
+    name: "Git",
+    icon: "devicon:git",
+  },
+];
+---
+
+<div
+  class="stack-container card-blacki p-4 rounded-lg border border-solid border-off-white/10 relative"
+>
+  <div
+    class="shortcut-key absolute right-0 top-0 text-blacki rounded-tr-sm rounded-bl-sm w-7 aspect-square outline-4 outline-solid outline-charcoal flex justify-center items-center group z-[1]"
+  >
+    <div
+      class="bg-star w-full h-full text-center font-semibold text-lg rounded-tr-sm rounded-bl-sm group-hover:opacity-70 transition-all duration-500 ease-out relative cursor-default"
+    >
+      2
+    </div>
+    <Tooltip content="Shortcut : 2" />
+  </div>
+
+  <Title size="small" text="Stack" />
+
+  <div class="mt-8">
+    <div class="grid grid-cols-3 gap-2">
+      {
+        skills.slice(0, 5).map((item, index) => (
+          <div
+            tabindex={index}
+            class="stack-item relative z-[1] rounded-5 w-full aspect-square group hover:shadow-charcoal-glow transition-all"
+          >
+            <div class="w-full h-full bg-charcoal rounded-5 flex items-center justify-center border border-solid border-charcoal hover:bg-blacki transition-all duration-300 ease-out">
+              <Icon name={item.icon} class="text-5xl grayscale-100" />
+            </div>
+          </div>
+        ))
+      }
+      <div
+        id="more-stack"
+        class="w-full h-full bg-star rounded-5 flex items-center justify-center border border-solid border-charcoal hover:bg-star/80 transition-all duration-300 ease-out cursor-pointer hover:animate-pulse relative"
+      >
+        <Icon name="ic:baseline-open-in-new" class="text-5xl text-blacki" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Stack -->
+<Modal title="Stack" modalId="modal-stack">
+  <div class="mt-6 flex flex-wrap gap-6 justify-center">
+    {
+      skills.map((item, index) => (
+        <div
+          tabindex={index}
+          class="group stack-item-modal bg-charcoal rounded-10 p-4"
+        >
+          <div class="w-full relative bg-blacki rounded-5 mb-4 stack-item group-hover:scale-105 transition-all duration-300 ease-out">
+            <div class="bg-blacki p-6  w-full h-full rounded-5">
+              {item.name === "Jest" ? (
+                <JestIcon class="w-12 h-12 laptop:w-16 laptop:h-16 relative grayscale-100 text-[#99425B] group-hover:grayscale-0 group-focus:grayscale-0 transition-all duration-300 ease-out" />
+              ) : (
+                <Icon
+                  name={item.icon}
+                  class="w-12 h-12 laptop:w-16 laptop:h-16 relative grayscale-100 group-hover:grayscale-0 group-focus:grayscale-0 transition-all duration-300 ease-out"
+                />
+              )}
+            </div>
+          </div>
+          <p class="text-off-white text-center text-sm laptop:text-lg font-medium group-hover:text-star group-focus:text-star transition-all duration-300 ease-out">
+            {item.name}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</Modal>
+
+<script>
+  const modalStack = document.getElementById("modal-stack");
+  const moreStack = document.getElementById("more-stack");
+  const closeBtn = document.getElementById("modal-stack-close");
+  const modalContainer = modalStack.querySelector(".modal-container");
+
+  function handleOpenModal(isOpen: boolean) {
+    const anyModalOpen = document.querySelector(".modal.modal-open");
+
+    if (isOpen && anyModalOpen && anyModalOpen !== modalStack) {
+      return;
+    }
+
+    if (isOpen) {
+      modalStack.classList.add("modal-open");
+      document.body.style.overflow = "hidden";
+    } else {
+      modalContainer.scrollTo({ top: 0, behavior: "smooth" });
+      modalStack.classList.remove("modal-open");
+      if (!document.querySelector(".modal.modal-open")) {
+        document.body.style.overflow = "";
+      }
+    }
+  }
+
+  addEventListener("keydown", (event) => {
+    if (event.key === "2") {
+      handleOpenModal(true);
+    }
+    if (event.key === "Escape") {
+      handleOpenModal(false);
+    }
+  });
+  moreStack.addEventListener("click", () => {
+    handleOpenModal(true);
+  });
+  closeBtn.addEventListener("click", () => {
+    handleOpenModal(false);
+  });
+  modalStack.addEventListener("click", (event: any) => {
+    if (modalStack.classList.contains("modal-open")) {
+      if (!modalContainer.contains(event.target)) {
+        handleOpenModal(false);
+      }
+    }
+  });
+</script>
+<style is:global lang="scss">
+  .shortcut:hover {
+    .tooltip {
+      opacity: 1;
+      pointer-events: initial;
+      &.top {
+        bottom: 1.75rem;
+      }
+
+      &.bottom {
+        top: 1.75rem;
+      }
+    }
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  .stack-item {
+  }
+
+  .stack-item::before,
+  .stack-item::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    background-image: conic-gradient(
+      from var(--angle),
+      transparent 80%,
+      var(--color-star)
+    );
+    z-index: -1;
+    padding: 3px;
+    box-sizing: initial;
+    border-radius: 10px;
+    animation: 3s rotate linear infinite;
+    animation-play-state: paused;
+    opacity: 0;
+  }
+  .stack-item:hover,
+  .stack-item-modal:hover .stack-item {
+    &::before,
+    &::after {
+      animation-play-state: running;
+      opacity: 1;
+    }
+
+    &::before {
+      opacity: 0.5;
+    }
+  }
+  .stack-item::before {
+    filter: blur(1.5em);
+    // opacity: 0.5;
+  }
+
+  @keyframes rotate {
+    0% {
+      --angle: 0deg;
+    }
+    100% {
+      --angle: 360deg;
+    }
+  }
+
+  #modal-stack {
+    .modal-container {
+      max-width: 45rem !important;
+    }
+  }
+</style>

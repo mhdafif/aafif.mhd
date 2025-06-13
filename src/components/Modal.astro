@@ -1,0 +1,85 @@
+---
+import { Icon } from "astro-icon/components";
+import Title from "./Title.astro";
+const { title, modalId } = Astro.props;
+---
+
+<div id={modalId} class="modal">
+  <div class="modal-container scroll-smooth">
+    <div class="laptop:space-y-5">
+      <div class="modal-title">
+        <Title text={title} />
+        <Icon
+          id={`${modalId}-close`}
+          name="ic:round-close"
+          class="absolute w-8 h-8 text-charcoal hover:text-star/80 transition-all duration-500 ease-out cursor-pointer top-6 right-0"
+        />
+      </div>
+      <div class="modal-content space-y-5 mb-5">
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .modal {
+    z-index: -5;
+    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 0.3s all ease-out;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+
+    &::after {
+      content: "";
+      background-color: var(--color-blacki);
+      opacity: 0.7;
+      width: 100%;
+      height: 100%;
+    }
+
+    .modal-container {
+      position: absolute;
+      z-index: 1;
+      background-color: var(--color-blacki);
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      width: 100%;
+      max-width: 70rem;
+      height: 80vh;
+      border: 1px solid rgba(250, 249, 246, 0.2);
+      border-bottom: 0;
+      top: 105%;
+      transition: 0.4s all ease-in-out;
+      padding: 0 2rem;
+      overflow: auto;
+      opacity: 0;
+
+      .modal-title {
+        position: sticky;
+        top: 0;
+        background: var(--color-blacki);
+        z-index: 1;
+        padding-bottom: 3rem;
+        padding-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+  .modal-open {
+    z-index: 99;
+    opacity: 1;
+    pointer-events: auto;
+
+    .modal-container {
+      top: 20%;
+      opacity: 1;
+    }
+  }
+</style>

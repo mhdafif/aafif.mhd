@@ -18,6 +18,9 @@ const profileLinks = [
 ---
 
 <div class="card laptop:!py-8 space-y-5">
+<!-- <div
+  class="laptop:px-8 laptop:py-8 space-y-5 gradient-to-top-charcoal rounded-b-xl relative"
+> -->
   <div>
     <Image src={afif} alt="my-picture" class="w-52 mx-auto z-10 img-profile" />
   </div>
@@ -45,46 +48,52 @@ const profileLinks = [
       ))
     }
   </div>
+
+  <script type="module">
+    // for random text scramble effect
+    const chars =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}|:<>?-=[];',.";
+
+    function scrambleText(el, finalText) {
+      let iterations = 0;
+      const maxIterations = finalText.length;
+
+      const interval = setInterval(() => {
+        el.textContent = finalText
+          .split("")
+          .map((char, i) => {
+            if (i < iterations) return finalText[i];
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("");
+
+        if (iterations >= maxIterations) clearInterval(interval);
+        iterations += 1 / 2;
+      }, 50);
+    }
+
+    document.querySelectorAll(".scramble-text").forEach((el) => {
+      const finalText = el.dataset.text;
+      el.addEventListener("mouseenter", () => scrambleText(el, finalText));
+    });
+  </script>
+
+  <style>
+    .img-profile {
+      mask: linear-gradient(
+        0deg,
+        transparent,
+        white 20%,
+        white 95%,
+        transparent
+      );
+      -webkit-mask: linear-gradient(
+        0deg,
+        transparent,
+        white 20%,
+        white 95%,
+        transparent
+      );
+    }
+  </style>
 </div>
-
-<script type="module">
-  // for random text scramble effect
-  const chars =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}|:<>?-=[];',.";
-
-  function scrambleText(el, finalText) {
-    let iterations = 0;
-    const maxIterations = finalText.length;
-
-    const interval = setInterval(() => {
-      el.textContent = finalText
-        .split("")
-        .map((char, i) => {
-          if (i < iterations) return finalText[i];
-          return chars[Math.floor(Math.random() * chars.length)];
-        })
-        .join("");
-
-      if (iterations >= maxIterations) clearInterval(interval);
-      iterations += 1 / 2;
-    }, 50);
-  }
-
-  document.querySelectorAll(".scramble-text").forEach((el) => {
-    const finalText = el.dataset.text;
-    el.addEventListener("mouseenter", () => scrambleText(el, finalText));
-  });
-</script>
-
-<style>
-  .img-profile {
-    mask: linear-gradient(0deg, transparent, white 20%, white 95%, transparent);
-    -webkit-mask: linear-gradient(
-      0deg,
-      transparent,
-      white 20%,
-      white 95%,
-      transparent
-    );
-  }
-</style>
