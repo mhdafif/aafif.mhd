@@ -13,7 +13,7 @@ const navLinks = [
 
 <nav
   id="menu"
-  class="card flex items-center justify-between transition-all duration-500 ease-in-out -mt-[92px] relative"
+  class="card relative -mt-[92px] flex items-center justify-between transition-all duration-500 ease-in-out"
   aria-label="nav-desktop-mini"
 >
   {
@@ -21,21 +21,21 @@ const navLinks = [
       <a
         href={link.href}
         aria-disabled={currentPath === link.href}
-        class={`${currentPath === link.href ? "pointer-events-none" : "group"} transition-all p-1.5 relative`}
+        class={`${currentPath === link.href ? "pointer-events-none" : "group"} relative p-1.5 transition-all`}
       >
         <Icon
           aria-selected={currentPath === link.href}
           name={link.icon}
-          class="w-7 h-7 z-[2] relative dark:text-off-white aria-selected:text-blacki group-hover:text-blacki"
+          class="dark:text-off-white aria-selected:text-blacki group-hover:text-blacki relative z-[2] h-7 w-7"
         />
         <div
           aria-selected={currentPath === link.href}
-          class="w-full h-full aspect-square bg-blacki absolute top-0 left-0 z-[1] rounded-5 rotate-45 group-hover:bg-star/90 transition-all aria-selected:bg-star"
+          class="bg-blacki rounded-5 group-hover:bg-star/90 aria-selected:bg-star absolute top-0 left-0 z-[1] aspect-square h-full w-full rotate-45 transition-all"
         />
       </a>
     ))
   }
-  <div class="absolute w-full h-0.5 bg-blacki left-0"></div>
+  <div class="bg-blacki absolute left-0 h-0.5 w-full"></div>
 </nav>
 
 <script>

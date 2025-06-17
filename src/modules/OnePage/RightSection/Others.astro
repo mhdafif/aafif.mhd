@@ -1,0 +1,124 @@
+---
+import { Icon } from "astro-icon/components";
+import myCV from "@/assets/muhammad afif - CV.pdf";
+import OthersModalProject from "./ModalContent/OthersModalProject.astro";
+import OthersModalPortofolio from "./ModalContent/OthersModalPortofolio.astro";
+import OthersModalBlog from "./ModalContent/OthersModalBlog.astro";
+
+const others = ["project", "portofolio", "blog"];
+---
+
+<div
+  class="card-blacki border-off-white/10 relative h-full rounded-lg border border-solid p-4"
+>
+  <div class="grid h-full flex-auto grid-cols-2 grid-rows-2 gap-3">
+    <OthersModalProject />
+    <OthersModalPortofolio />
+    <OthersModalBlog />
+    <a
+      class="dark:bg-star dark:text-blacki rounded-5 group hover:shadow-star-glow flex h-full w-full cursor-pointer items-center justify-center gap-1.5 px-3.5 font-semibold transition-all"
+      download
+      href={myCV}
+    >
+      <span class="text-xl">CV</span>
+      <div class="relative h-7 w-7 overflow-hidden">
+        <Icon
+          name="ic:round-download"
+          class="absolute -top-6 right-0 h-7 w-7 transition-all duration-400 group-hover:top-0"
+        />
+        <Icon
+          name="ic:round-download"
+          class="absolute top-0 right-0 h-7 w-7 transition-all duration-400 group-hover:top-6"
+        />
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- Modal -->
+<!-- <Modal title="Project" modalId="modal-project">
+  <div class="mt-6">Projek</div>
+</Modal>
+<Modal title="Portofolio" modalId="modal-portofolio">
+  <div class="mt-6">Portofolio</div>
+</Modal>
+<Modal title="Blog" modalId="modal-blog">
+  <div class="mt-6">blog</div>
+</Modal> -->
+<!-- 
+<script>
+  const modalProject = document.getElementById("modal-project");
+  const moreProject = document.getElementById("more-project");
+  const closeProjectBtn = document.getElementById("modal-project-close");
+
+  const modalPortofolio = document.getElementById("modal-project");
+  const morePortofolio = document.getElementById("more-portofolio");
+  const closePortofolioBtn = document.getElementById("modal-portofolio-close");
+
+
+  const modalBlog = document.getElementById("modal-blog");
+  const moreBlog = document.getElementById("more-blog");
+  const closeBlogBtn = document.getElementById("modal-blog-close");
+  
+  const modalContainer = modalProject.querySelector(".modal-container");
+
+  function handleOpenModal(isOpen: boolean) {
+    const anyModalOpen = document.querySelector(".modal.modal-open");
+
+    if (isOpen && anyModalOpen && anyModalOpen !== modalProject) {
+      return;
+    }
+
+    if (isOpen) {
+      modalProject.classList.add("modal-open");
+      document.body.style.overflow = "hidden";
+    } else {
+      modalContainer.scrollTo({ top: 0, behavior: "smooth" });
+      modalProject.classList.remove("modal-open");
+      if (!document.querySelector(".modal.modal-open")) {
+        document.body.style.overflow = "";
+      }
+    }
+  }
+
+  addEventListener("keydown", (event) => {
+    if (event.key === "4") {
+      handleOpenModal(true);
+    }
+    if (event.key === "Escape") {
+      handleOpenModal(false);
+    }
+  });
+  // moreProject.addEventListener("click", () => {
+  //   handleOpenModal(true);
+  // });
+  closeProjectBtn.addEventListener("click", () => {
+    handleOpenModal(false);
+  });
+  modalProject.addEventListener("click", (event: any) => {
+    if (modalProject.classList.contains("modal-open")) {
+      if (!modalContainer.contains(event.target)) {
+        handleOpenModal(false);
+      }
+    }
+  });
+</script> -->
+
+<style is:global lang="scss">
+  .other-item {
+    .shortcut-key {
+      transform: translateY(-100%);
+    }
+    .more-other {
+      transform: translate(10px, 40px);
+    }
+  }
+  .other-item:hover {
+    .shortcut-key {
+      transform: translateY(0);
+    }
+    .more-other {
+      transform: translate(10px, 12px);
+    }
+  }
+</style>

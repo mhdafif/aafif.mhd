@@ -15,13 +15,13 @@ const profileLinks = [
 ];
 ---
 
-<div class="card-blacki px-4 py-4 border border-solid border-off-white/10">
-  <ul class="social-wrapper flex gap-5 justify-between items-center">
+<div class="card-blacki border-off-white/10 border border-solid px-4 py-4">
+  <ul class="social-wrapper flex items-center justify-between gap-5">
     {
       profileLinks.map((link) => (
         <li class="social-item">
           <a href={link.href} target="_blank">
-            <Icon name={link.icon} class="w-7 h-7" />
+            <Icon name={link.icon} class="h-7 w-7" />
           </a>
         </li>
       ))

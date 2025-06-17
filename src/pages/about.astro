@@ -9,16 +9,16 @@ import Testimony from "@/modules/About/Testimony.astro";
 ---
 
 <Layout title="About">
-  <div class="w-full grid laptop:grid-cols-3 laptop:gap-5">
-    <div class="h-fit col-span-1 space-y-5 laptop:sticky top-5 overflow-hidden">
-      <div class="hidden laptop:block">
+  <div class="laptop:grid-cols-3 laptop:gap-5 grid w-full">
+    <div class="laptop:sticky top-5 col-span-1 h-fit space-y-5 overflow-hidden">
+      <div class="laptop:block hidden">
         <MenuMini />
       </div>
 
       <Profile />
     </div>
 
-    <div class="col-span-1 laptop:col-span-2 space-y-5">
+    <div class="laptop:col-span-2 col-span-1 space-y-5">
       <Introduction />
       <Skills />
       <Education />

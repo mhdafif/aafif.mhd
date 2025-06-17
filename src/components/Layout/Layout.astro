@@ -37,10 +37,10 @@ const { title = "Mhd Afif" } = Astro.props;
     </script>
   </head>
   <body
-    class="dark:bg-blacki dark:text-[#f1f5f9] bg-off-white text-black transition-all"
+    class="dark:bg-blacki bg-off-white text-black transition-all dark:text-[#f1f5f9]"
   >
     <main
-      class="container min-h-dvh max-w-7xl mx-auto flex flex-col relative px-6 pt-6 pb-24 laptop:p-6"
+      class="laptop:p-6 relative container mx-auto flex min-h-dvh max-w-7xl flex-col px-6 pt-6 pb-24"
     >
       <div class="w-full">
         <div class="space-y-7">
@@ -58,7 +58,7 @@ const { title = "Mhd Afif" } = Astro.props;
     >
       <Theme />
     </div> -->
-    <div class="block laptop:hidden fixed bottom-0 left-0 z-50 w-full">
+    <div class="laptop:hidden fixed bottom-0 left-0 z-50 block w-full">
       <MenuMobile />
     </div>
   </body>

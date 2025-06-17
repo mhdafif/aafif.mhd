@@ -18,32 +18,32 @@ const profileLinks = [
 ---
 
 <div class="card laptop:!py-8 space-y-5">
-<!-- <div
+  <!-- <div
   class="laptop:px-8 laptop:py-8 space-y-5 gradient-to-top-charcoal rounded-b-xl relative"
 > -->
   <div>
-    <Image src={afif} alt="my-picture" class="w-52 mx-auto z-10 img-profile" />
+    <Image src={afif} alt="my-picture" class="img-profile z-10 mx-auto w-52" />
   </div>
   <h2
-    class="scramble-text font-bold text-3xl text-center"
+    class="scramble-text text-center text-3xl font-bold"
     data-text="Muhammad Afif"
   >
     Muhammad Afif
   </h2>
-  <div class="font-bold text-xl text-center text-off-white/50">
+  <div class="text-off-white/50 text-center text-xl font-bold">
     <p>I am a frontend engineer</p>
     <p>soon to be fullstack?!</p>
   </div>
 
-  <div class="flex gap-5 justify-around items-center">
+  <div class="flex items-center justify-around gap-5">
     {
       profileLinks.map((link) => (
         <a
           href={link.href}
-          class="bg-blacki border-2 border-blacki rounded-10 text-off-white/40 hover:text-star hover:border-star p-1.5 transition-all"
+          class="bg-blacki border-blacki rounded-10 text-off-white/40 hover:text-star hover:border-star border-2 p-1.5 transition-all"
           target="_blank"
         >
-          <Icon name={link.icon} class="w-7 h-7" />
+          <Icon name={link.icon} class="h-7 w-7" />
         </a>
       ))
     }

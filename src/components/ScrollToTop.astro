@@ -4,10 +4,10 @@ import { Icon } from "astro-icon/components";
 
 <button
   id="scrollToTop"
-  class="fixed right-2 laptop:right-6 bottom-[4.5rem] laptop:bottom-4 opacity-0 transition-all duration-500 z-50 w-12 h-12 bg-deep-gray shadow-[0_6px_12px_rgba(0,0,0,0.1)] rounded-full flex items-center justify-center group cursor-pointer"
+  class="laptop:right-6 laptop:bottom-4 bg-deep-gray group fixed right-2 bottom-[4.5rem] z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full opacity-0 shadow-[0_6px_12px_rgba(0,0,0,0.1)] transition-all duration-500"
   aria-label="Scroll to top"
 >
-  <svg class="absolute w-12 h-12 transform -rotate-90" viewBox="0 0 100 100">
+  <svg class="absolute h-12 w-12 -rotate-90 transform" viewBox="0 0 100 100">
     <circle
       cx="50"
       cy="50"
@@ -21,7 +21,7 @@ import { Icon } from "astro-icon/components";
   </svg>
   <Icon
     name="ic:baseline-keyboard-double-arrow-up"
-    class="z-10 text-star text-2xl"
+    class="text-star z-10 text-2xl"
   />
 </button>
 

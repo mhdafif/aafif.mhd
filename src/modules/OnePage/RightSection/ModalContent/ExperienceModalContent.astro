@@ -86,21 +86,21 @@ const experiences = [
     {
       experiences.map((item) => (
         <div class="experience-item pt-4 pb-5 first:pt-0">
-          <div class="flex flex-wrap relative px-4 laptop:px-8 laptop:pl-9">
+          <div class="laptop:px-8 laptop:pl-9 relative flex flex-wrap px-4">
             <div class="experience-place-time w-full">
-              <h2 class="mb-0 font-bold text-2xl text-star">{item.company}</h2>
+              <h2 class="text-star mb-0 text-2xl font-bold">{item.company}</h2>
               <h4 class="text-off-white font-semibold">{item.position}</h4>
               <h6 class="text-off-white/50 font-medium">
                 {item.start} - {item.end}
               </h6>
-              <div class="experience-stacks flex items-center overflow-x-auto gap-2 my-1 hide-scroll snap-x-items-list">
+              <div class="experience-stacks hide-scroll snap-x-items-list my-1 flex items-center gap-2 overflow-x-auto">
                 {item.stacks.map((stack) => (
-                  <span class="snap-start bg-blacki rounded-sm px-2 py-1 text-sm text-off-white font-medium text-nowrap cursor-default transition-colors duration-300 ease-out hover:bg-star hover:text-blacki">
+                  <span class="bg-blacki text-off-white hover:bg-star hover:text-blacki cursor-default snap-start rounded-sm px-2 py-1 text-sm font-medium text-nowrap transition-colors duration-300 ease-out">
                     {stack}
                   </span>
                 ))}
               </div>
-              <div class="bg-blacki shadow-blacki-glow px-2 py-3 mt-3 rounded-lg">
+              <div class="bg-blacki shadow-blacki-glow mt-3 rounded-lg px-2 py-3">
                 <input
                   type="checkbox"
                   class="peer hidden"
@@ -117,7 +117,7 @@ const experiences = [
                 </ul>
 
                 {/* show the rest */}
-                <ul class="experience-details peer-checked:block hidden">
+                <ul class="experience-details hidden peer-checked:block">
                   {item.details.slice(3).map((detail) => (
                     <li class="experience-details-item text-off-white font-medium">
                       {detail}
@@ -131,7 +131,7 @@ const experiences = [
                   class={
                     item.details.length <= 3
                       ? "hidden"
-                      : "mt-2 experience-details-arrow block peer-checked:hidden cursor-pointer text-star hover:underline w-full place-items-center"
+                      : "experience-details-arrow text-star mt-2 block w-full cursor-pointer place-items-center peer-checked:hidden hover:underline"
                   }
                 >
                   <Icon
@@ -143,11 +143,11 @@ const experiences = [
                 {/* 🔼 Show when checked */}
                 <label
                   for={`experience-${item.company}`}
-                  class="mt-2 hidden peer-checked:block cursor-pointer text-star hover:underline w-full place-items-center"
+                  class="text-star mt-2 hidden w-full cursor-pointer place-items-center peer-checked:block hover:underline"
                 >
                   <Icon
                     name="ic:round-keyboard-double-arrow-up"
-                    class="text-3xl rounded-b-md"
+                    class="rounded-b-md text-3xl"
                   />
                 </label>
               </div>
@@ -223,6 +223,7 @@ const experiences = [
             padding-right: 1.5rem;
             &::before {
               right: 0;
+              rotate: 180deg;
             }
           }
         }
@@ -282,12 +283,10 @@ const experiences = [
         &-item {
           position: relative;
           &::before {
-            content: "";
+            content: "▹";
             position: absolute;
-            top: 12px;
-            height: 2px;
-            width: 12px;
-            background: rgb(250, 249, 246, 0.5);
+            top: 0;
+            color: var(--color-star);
           }
         }
       }

@@ -1,10 +1,18 @@
 ---
 import Location from "../MiddleSection/Location.astro";
 import Experience from "./Experience.astro";
+import Others from "./Others.astro";
 ---
 
 <section class="flex flex-col gap-3">
-  <Experience />
+  <div class="laptop:h-[478px] laptop:grid grid-rows-5 gap-3">
+    <div class="row-span-3">
+      <Experience />
+    </div>
+    <div class="row-span-2">
+      <Others />
+    </div>
+  </div>
   <Location />
 </section>
 

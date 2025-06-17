@@ -9,24 +9,24 @@ const items = ["About", "Education", "Feedback"];
 ---
 
 <div
-  class="about-container card-blacki p-4 rounded-lg border border-solid border-off-white/10 relative"
+  class="about-container card-blacki border-off-white/10 relative rounded-lg border border-solid p-4"
 >
   <div
-    class="shortcut-key absolute right-0 top-0 text-blacki rounded-tr-sm rounded-bl-sm w-7 aspect-square outline-4 outline-solid outline-charcoal flex justify-center items-center group z-[1]"
+    class="shortcut-key text-blacki outline-charcoal group absolute top-0 right-0 z-[1] flex aspect-square w-7 items-center justify-center rounded-tr-sm rounded-bl-sm outline-4 outline-solid"
   >
     <div
-      class="bg-star w-full h-full text-center font-semibold text-lg rounded-tr-sm rounded-bl-sm group-hover:opacity-70 transition-all duration-500 ease-out relative cursor-default"
+      class="bg-star relative h-full w-full cursor-default rounded-tr-sm rounded-bl-sm text-center text-lg font-semibold transition-all duration-500 ease-out group-hover:opacity-70"
     >
       1
     </div>
     <Tooltip content="Shortcut : 1" />
   </div>
 
-  <div class="about-items flex flex-col gap-8 relative">
+  <div class="about-items relative flex flex-col gap-8">
     {
       items.map((item) => (
         <div class="about-item relative">
-          <span class=" font-semibold text-lg relative hover:text-star transition-all duration-300 ease-out cursor-default bg-blacki">
+          <span class="hover:text-star bg-blacki relative cursor-default text-lg font-semibold transition-all duration-300 ease-out">
             {item}
           </span>
           <div class="line" />
@@ -35,11 +35,11 @@ const items = ["About", "Education", "Feedback"];
     }
     <button
       id="more-about"
-      class="absolute right-0 bottom-[-1.5px] cursor-pointer group flex justify-center outline-none"
+      class="group absolute right-0 bottom-[-1.5px] flex cursor-pointer justify-center outline-none"
     >
       <Icon
         name="ic:baseline-open-in-new"
-        class="relative w-8 h-8 text-star group-hover:animate-pulse transition-all duration-100 ease-out"
+        class="text-star relative h-8 w-8 transition-all duration-100 ease-out group-hover:animate-pulse"
       />
     </button>
   </div>

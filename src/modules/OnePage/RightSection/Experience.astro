@@ -26,6 +26,7 @@ const experiences = [
       "Enhance SEO and performance for various key products",
       "Collaborate with cross-functional teams to ensure high-quality, consistent frontend delivery",
     ],
+    stacks: ["React", "Vue", "Remix", "Next.js"],
   },
   {
     company: "Prospace",
@@ -41,6 +42,18 @@ const experiences = [
       "Create an internal UI framework to standardize frontend development",
       "Contribute to performance optimization and UI consistency across products",
     ],
+    stacks: [
+      "React",
+      "Next.js",
+      "Javascript",
+      "TypeScript",
+      "HTML5 + CSS3",
+      "Jest",
+      "Testing Library",
+      "Git",
+      "Docker",
+      "Storybook",
+    ],
   },
   {
     company: "Xsis Mitra Utama",
@@ -50,54 +63,64 @@ const experiences = [
     details: [
       "Revamped Employee Self Service application from Web Forms to microservice architecture using React and TypeScript",
       "Collaborated with backend teams to transition legacy systems into modern frontend architecture",
-      // "Handled bug fixes and ongoing maintenance to ensure application stability",
-      // "Maintained and improved UI/UX components for internal HR applications",
     ],
+    stacks: ["React", "Javascript", "TypeScript", "HTML5 + CSS3", "Git"],
   },
 ];
 ---
 
 <div
-  class="card-blacki p-4 rounded-lg border border-solid border-off-white/10 relative"
+  class="card-blacki border-off-white/10 relative h-full rounded-lg border border-solid p-4"
 >
   <div
-    class="shortcut-key absolute right-0 top-0 text-blacki rounded-tr-sm rounded-bl-sm w-7 aspect-square outline-4 outline-solid outline-charcoal flex justify-center items-center group z-[1]"
+    class="shortcut-key text-blacki outline-charcoal group absolute top-0 right-0 z-[1] flex aspect-square w-7 items-center justify-center rounded-tr-sm rounded-bl-sm outline-4 outline-solid"
   >
     <div
-      class="bg-star w-full h-full text-center font-semibold text-lg rounded-tr-sm rounded-bl-sm group-hover:opacity-70 transition-all duration-500 ease-out relative cursor-default"
+      class="bg-star relative h-full w-full cursor-default rounded-tr-sm rounded-bl-sm text-center text-lg font-semibold transition-all duration-500 ease-out group-hover:opacity-70"
     >
       3
     </div>
     <Tooltip content="Shortcut : 3" />
   </div>
 
-  <Title size="small" text="Experience" />
+  <div class="flex h-full flex-col">
+    <div>
+      <Title size="small" text="Experience" />
+    </div>
 
-  <div class="mt-8 space-y-3">
-    {
-      experiences.map((item) => (
-        <div class="exp-item bg-charcoal rounded-5 p-0.5 relative group">
-          <div class="w-full h-full relative z-[1] rounded-5 bg-charcoal py-2 px-3">
-            <h3 class="font-bold text-lg text-star">@ {item.company}</h3>
-            <h4 class="text-off-white font-semibold">{item.position}</h4>
-            <h6 class="text-off-white/50 font-medium">
-              {item.start} - {item.end}
-            </h6>
+    <div class="mt-8 flex flex-auto flex-col space-y-3">
+      {
+        experiences.slice(0, 1).map((item) => (
+          <div class="exp-item bg-charcoal rounded-5 group relative flex-auto p-0.5">
+            <div class="rounded-5 bg-charcoal relative z-[1] flex h-full w-full flex-col justify-between px-3 py-2">
+              <h3 class="text-star text-lg font-bold">@ {item.company}</h3>
+              <h4 class="text-off-white font-semibold">{item.position}</h4>
+              <h6 class="text-off-white/50 font-medium">
+                {item.start} - {item.end}
+              </h6>
+              <div class="hide-scroll snap-x-items-list my-1 flex items-center gap-2 overflow-hidden">
+                {item.stacks.slice(0, 4).map((stack) => (
+                  <span class="bg-blacki text-off-white hover:bg-star hover:text-blacki cursor-default snap-start rounded-sm px-1.5 py-0.5 text-xs text-nowrap transition-colors duration-300 ease-out">
+                    {stack}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      ))
-    }
-    <div
-      id="more-exp"
-      class="w-full h-full bg-star rounded-5 flex items-center justify-center border border-solid border-charcoal hover:bg-star/80 transition-all duration-300 ease-out cursor-pointer hover:animate-pulse relative"
-    >
-      <Icon name="ic:baseline-open-in-new" class="text-5xl text-blacki" />
+        ))
+      }
+      <div
+        id="more-exp"
+        class="bg-star rounded-5 border-charcoal hover:bg-star/80 relative flex w-full cursor-pointer items-center justify-center border border-solid py-1 transition-all duration-300 ease-out hover:animate-pulse"
+      >
+        <Icon name="ic:baseline-open-in-new" class="text-blacki text-4xl" />
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Modal Experience -->
-<Modal title="Experiences" modalId="modal-exp">
+<Modal title="Experience" modalId="modal-exp">
   <div class="mt-6">
     <ExperienceModalContent />
   </div>
@@ -187,11 +210,5 @@ const experiences = [
     background-color: rgba(250, 249, 246, 0.5);
     transition: all 0.3s ease-out;
     border-bottom-left-radius: 5px;
-  }
-
-  #modal-exp {
-    .modal-container {
-      // max-width: 45rem !important;
-    }
   }
 </style>

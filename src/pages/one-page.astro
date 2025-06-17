@@ -7,16 +7,16 @@ import RightSection from "@/modules/OnePage/RightSection/RightSection.astro";
 
 <Layout title="Home">
   <div
-    class="z-[2] relative w-full max-w-[72rem] aspect-video laptop:bg-charcoal rounded-20 shadow-blacki-glow border-2 border-solid border-blacki py-5 px-4 laptop:p-10"
+    class="laptop:bg-charcoal rounded-10 shadow-blacki-glow border-blacki laptop:p-8 relative z-[2] aspect-video w-full laptop:max-w-[72rem] border-2 border-solid px-4 py-5"
   >
-    <div class="flex flex-col laptop:grid laptop:grid-cols-10 gap-3">
-      <div class="order-1 laptop:order-0 col-span-3">
+    <div class="laptop:grid laptop:grid-cols-10 flex flex-col gap-3">
+      <div class="laptop:order-0 order-1 col-span-3">
         <LeftSection />
       </div>
-      <div class="order-0 laptop:order-1 col-span-4">
+      <div class="laptop:order-1 order-0 col-span-4">
         <MiddleSection />
       </div>
-      <div class="order-3 laptop:order-3 col-span-3">
+      <div class="laptop:order-3 order-3 col-span-3">
         <RightSection />
       </div>
     </div>

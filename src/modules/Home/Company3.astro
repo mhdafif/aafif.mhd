@@ -33,22 +33,22 @@ const freelances = [
 ---
 
 <div class="card laptop:!px-8 laptop:!py-6 space-y-8">
-  <p class="font-bold text-2xl">
+  <p class="text-2xl font-bold">
     <span class="text-star">Company</span> I Worked With
   </p>
 
-  <div class="grid grid-cols-2 laptop:grid-cols-3 gap-5">
+  <div class="laptop:grid-cols-3 grid grid-cols-2 gap-5">
     {
       companies.map((item) => (
         <div
-          class={`relative group ${item.name.toLowerCase() === "ultravoucher" ? "col-span-2 laptop:col-span-1" : ""}`}
+          class={`group relative ${item.name.toLowerCase() === "ultravoucher" ? "laptop:col-span-1 col-span-2" : ""}`}
         >
           <Image
             src={item.logo}
             alt={item.name}
-            class="h-36 w-auto mx-auto grayscale group-hover:grayscale-0 transition-all duration-300"
+            class="mx-auto h-36 w-auto grayscale transition-all duration-300 group-hover:grayscale-0"
           />
-          <div class="bg-star text-deep-gray px-2 py-1 font-semibold absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-xl shadow-dark transition-all duration-300 scale-0 group-hover:scale-100 text-nowrap">
+          <div class="bg-star text-deep-gray shadow-dark absolute -bottom-4 left-1/2 -translate-x-1/2 scale-0 rounded-xl px-2 py-1 font-semibold text-nowrap transition-all duration-300 group-hover:scale-100">
             {item.name}
           </div>
         </div>
@@ -56,12 +56,12 @@ const freelances = [
     }
   </div>
 
-  <p class="text-center font-bold text-2xl">Others</p>
+  <p class="text-center text-2xl font-bold">Others</p>
 
-  <div class="grid laptop:grid-cols-2 gap-5">
+  <div class="laptop:grid-cols-2 grid gap-5">
     {
       freelances.map((item) => (
-        <Image src={item.logo} alt={item.name} class="h-20 w-auto mx-auto" />
+        <Image src={item.logo} alt={item.name} class="mx-auto h-20 w-auto" />
       ))
     }
   </div>

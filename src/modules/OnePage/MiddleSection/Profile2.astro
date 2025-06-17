@@ -26,22 +26,24 @@ const getYearsOfExperience = () => {
 const yearsOfExperience = getYearsOfExperience();
 ---
 
-<div class="relative w-full">
-  <article class="card__article relative overflow-hidden rounded-10 group">
+<div class="relative h-full w-full">
+  <article
+    class="card__article rounded-5 group relative h-full overflow-hidden"
+  >
     <Image
       src={afif2}
       alt="my-picture"
-      class="group-hover:scale-110 transition-transform duration-500 ease-out rounded-10"
+      class="rounded-5 h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
     />
 
     <div class="card__shadow"></div>
 
-    <div class="card__user text-star absolute left-6 bottom-8">
+    <div class="card__user text-star absolute bottom-8 left-6">
       <h2 class="text-3xl font-bold">Muhammad Afif</h2>
       <span class="font-semibold">Frontend Engineer</span>
     </div>
 
-    <div class="card__clip transition-all">
+    <!-- <div class="card__clip transition-all">
       <Icon name="ic:round-menu-open" class="text-blacki" />
     </div>
 
@@ -58,13 +60,13 @@ const yearsOfExperience = getYearsOfExperience();
         </p>
       </div>
 
-      <div class="absolute right-6 bottom-6 flex gap-4">
+      <div class="absolute right-6 bottom-6 flex gap-3">
         {
           profileLinks.map((link) => (
             <a
               href={link.href}
               target="_blank"
-              class="shadow-star-glow bg-star rounded-10 text-blacki transition-transform duration-500 ease-out p-1.5 text-2xl hover:-translate-y-1"
+              class="shadow-star-glow bg-star rounded-5 text-blacki transition-transform duration-500 ease-out p-1.5 text-2xl hover:-translate-y-1"
               aria-label={link.label}
             >
               <Icon name={link.icon} class="" />
@@ -72,8 +74,7 @@ const yearsOfExperience = getYearsOfExperience();
           ))
         }
       </div>
-    </div>
-    <!-- <div class="card-rotate"></div> -->
+    </div> -->
   </article>
 </div>
 
@@ -112,7 +113,7 @@ const yearsOfExperience = getYearsOfExperience();
     color: var(--color-charcoal);
     padding: 0.5rem 0.75rem;
     outline: 10px solid var(--color-charcoal);
-    border-radius: 0 10px 0;
+    border-radius: 0 5px 0;
   }
 
   .card__clip {

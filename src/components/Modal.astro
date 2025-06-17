@@ -6,16 +6,16 @@ const { title, modalId } = Astro.props;
 
 <div id={modalId} class="modal">
   <div class="modal-container scroll-smooth">
-    <div class="laptop:space-y-5">
+    <div class="laptop:space-y-7">
       <div class="modal-title">
         <Title text={title} />
         <Icon
           id={`${modalId}-close`}
           name="ic:round-close"
-          class="absolute w-8 h-8 text-charcoal hover:text-star/80 transition-all duration-500 ease-out cursor-pointer top-6 right-0"
+          class="text-charcoal hover:text-star/80 absolute top-6 right-0 h-8 w-8 cursor-pointer transition-all duration-500 ease-out"
         />
       </div>
-      <div class="modal-content space-y-5 mb-5">
+      <div class="modal-content mb-5 space-y-5">
         <slot />
       </div>
     </div>
@@ -52,10 +52,13 @@ const { title, modalId } = Astro.props;
       border-top-right-radius: 8px;
       width: 100%;
       max-width: 70rem;
-      height: 80vh;
+      height: auto;
+      max-height: 80vh;
       border: 1px solid rgba(250, 249, 246, 0.2);
       border-bottom: 0;
-      top: 105%;
+      // top: 105%;
+      bottom: 0;
+      transform: translateY(105%);
       transition: 0.4s all ease-in-out;
       padding: 0 2rem;
       overflow: auto;
@@ -65,8 +68,8 @@ const { title, modalId } = Astro.props;
         position: sticky;
         top: 0;
         background: var(--color-blacki);
-        z-index: 1;
-        padding-bottom: 3rem;
+        z-index: 10;
+        padding-bottom: 3.5rem;
         padding-top: 1rem;
         margin-bottom: 0.5rem;
       }
@@ -78,7 +81,8 @@ const { title, modalId } = Astro.props;
     pointer-events: auto;
 
     .modal-container {
-      top: 20%;
+      // top: 20%;
+      transform: translateY(0);
       opacity: 1;
     }
   }

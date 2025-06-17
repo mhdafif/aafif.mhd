@@ -44,15 +44,15 @@ const contacts = [
 ---
 
 <Layout title="Contact">
-  <div class="w-full laptop:w-2/3 mx-auto space-y-14 laptop:space-y-10">
-    <div class="w-fit mx-auto">
+  <div class="laptop:w-2/3 laptop:space-y-10 mx-auto w-full space-y-14">
+    <div class="mx-auto w-fit">
       <h1 class="typewriter-once text-center text-3xl font-bold">
         Get in touch
       </h1>
     </div>
 
     <div
-      class="contacts grid laptop:grid-cols-2 gap-10 laptop:gap-y-0 laptop:gap-x-20 relative"
+      class="contacts laptop:grid-cols-2 laptop:gap-y-0 laptop:gap-x-20 relative grid gap-10"
     >
       {
         contacts.map((contact, index) => {
@@ -60,26 +60,26 @@ const contacts = [
           return [
             <div
               aria-hidden={isEven}
-              class="aria-hidden:hidden hidden laptop:block"
+              class="laptop:block hidden aria-hidden:hidden"
             />,
 
             <div
               tabindex={index}
               data-id={index % 2 === 0}
-              class="contacts-item card group relative text-center !pt-12 !pb-12"
+              class="contacts-item card group relative !pt-12 !pb-12 text-center"
             >
-              <div class="absolute left-1/2 -translate-x-1/2 text-4xl rounded-full bg-charcoal p-3 border-5 border-solid border-blacki top-[-35px]">
+              <div class="bg-charcoal border-blacki absolute top-[-35px] left-1/2 -translate-x-1/2 rounded-full border-5 border-solid p-3 text-4xl">
                 <Icon
                   name={contact.icon}
                   class="group-hover:text-star group-focus:text-star transition-colors duration-300"
                 />
               </div>
-              <h2 class="text-xl font-bold mb-4">{contact.name}</h2>
+              <h2 class="mb-4 text-xl font-bold">{contact.name}</h2>
               <a
                 href={contact.href}
                 target="_blank"
                 aria-hidden={!contact.href}
-                class=" text-off-white/70 group-hover:text-star group-focus:text-star transition-colors duration-300"
+                class="text-off-white/70 group-hover:text-star group-focus:text-star transition-colors duration-300"
               >
                 {contact.value}
               </a>
@@ -92,7 +92,7 @@ const contacts = [
                         target="_blank"
                         class="text-off-white/70 hover:text-star transition-colors duration-300"
                       >
-                        <Icon name={item.icon} class="w-6 h-6" />
+                        <Icon name={item.icon} class="h-6 w-6" />
                       </a>
                     </li>
                   ))}
@@ -102,7 +102,7 @@ const contacts = [
 
             <div
               aria-hidden={!isEven}
-              class="aria-hidden:hidden hidden laptop:block"
+              class="laptop:block hidden aria-hidden:hidden"
             />,
           ];
         })

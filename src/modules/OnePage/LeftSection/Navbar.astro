@@ -12,7 +12,7 @@ const navLinks = [
 ---
 
 <nav
-  class="card-blacki py-4 w-full space-y-6 border border-solid border-off-white/10"
+  class="card-blacki border-off-white/10 w-full space-y-6 border border-solid py-4"
 >
   <div class="w-fit place-self-center px-6">
     <h1 class="typewriter-once-end text-3xl font-bold capitalize">Hello!</h1>
@@ -22,16 +22,16 @@ const navLinks = [
       navLinks.map((link, index) => (
         <li
           aria-disabled={currentPath === link.href}
-          class="nav-item px-6 py-2 transition-all duration-300 ease-in-out relative overflow-hidden dark:bg-blacki group cursor-pointer aria-disabled:pointer-events-none aria-disabled:bg-star aria-disabled:!text-blacki"
+          class="nav-item dark:bg-blacki group aria-disabled:bg-star aria-disabled:!text-blacki relative cursor-pointer overflow-hidden px-6 py-2 transition-all duration-300 ease-in-out aria-disabled:pointer-events-none"
         >
           <a
             href={link.href}
             aria-disabled={currentPath === link.href}
-            class={`text-lg font-semibold relative overflow-hidden flex justify-between items-center`}
+            class={`relative flex items-center justify-between overflow-hidden text-lg font-semibold`}
           >
             <span>{link.label}</span>
             {currentPath !== link.href && (
-              <span class="rounded-xs border border-solid text-off-white/60 border-off-white/60 text-sm font-medium w-5 aspect-square text-center">
+              <span class="text-off-white/60 border-off-white/60 aspect-square w-5 rounded-xs border border-solid text-center text-sm font-medium">
                 {index + 1}
               </span>
             )}
@@ -43,19 +43,19 @@ const navLinks = [
 
   <div class="px-6 pb-2">
     <a
-      class="w-full flex items-center justify-between gap-1.5 dark:bg-star dark:text-blacki rounded-5 px-3.5 py-1.5 font-semibold cursor-pointer transition-all group hover:shadow-star-glow"
+      class="dark:bg-star dark:text-blacki rounded-5 group hover:shadow-star-glow flex w-full cursor-pointer items-center justify-between gap-1.5 px-3.5 py-1.5 font-semibold transition-all"
       download
       href={myCV}
     >
       <span class="text-lg">Download CV</span>
-      <div class="relative w-5 h-5 overflow-hidden">
+      <div class="relative h-5 w-5 overflow-hidden">
         <Icon
           name="ic:round-download"
-          class="w-5 h-5 absolute transition-all duration-400 -top-6 group-hover:top-0 right-0"
+          class="absolute -top-6 right-0 h-5 w-5 transition-all duration-400 group-hover:top-0"
         />
         <Icon
           name="ic:round-download"
-          class="w-5 h-5 absolute transition-all duration-400 top-0 group-hover:top-6 right-0"
+          class="absolute top-0 right-0 h-5 w-5 transition-all duration-400 group-hover:top-6"
         />
       </div>
     </a>

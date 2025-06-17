@@ -16,8 +16,6 @@
   "useTabs": false,
   "vueIndentScriptAndStyle": false,
   "printWidth": 80,
-
-  "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
     "^[./]",
     "^@/assets/(.*)$",
@@ -36,5 +34,18 @@
     "^@/variables/(.*)$"
   ],
   "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+  "importOrderSortSpecifiers": true,
+  "plugins": [
+    "prettier-plugin-astro",
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ]
 }

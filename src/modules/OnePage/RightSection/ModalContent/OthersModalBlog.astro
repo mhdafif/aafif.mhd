@@ -1,0 +1,88 @@
+---
+import Modal from "@/components/Modal.astro";
+import { Icon } from "astro-icon/components";
+import ConstructionIcon from "@/assets/icon/construction.svg";
+---
+
+<div
+  id="more-blog"
+  class="other-item rounded-5 bg-charcoal hover:bg-blacki hover:shadow-charcoal-glow hover:border-off-white/10 group relative flex h-full w-full cursor-pointer items-center justify-center overflow-hidden border border-solid border-transparent text-xl font-semibold transition-all duration-300 ease-out"
+>
+  <span class="capitalize">Blog</span>
+  <div
+    class="shortcut-key bg-star text-blacki absolute top-0 left-1.5 z-[1] rounded-b-sm px-1 text-sm font-medium transition-all duration-300 ease-out"
+  >
+    6
+  </div>
+  <div
+    class="more-other bg-star absolute right-0 bottom-0 z-[1] flex w-fit -rotate-45 items-center justify-center rounded-sm px-4 py-0.5 transition-all duration-300 ease-out"
+  >
+    <Icon name="ic:baseline-open-in-new" class="text-blacki text-xl" />
+  </div>
+</div>
+
+<Modal title="Blog" modalId="modal-blog">
+  <div class="my-16 flex flex-col gap-5">
+    <ConstructionIcon class="text-star mx-auto inline-block h-28 w-28" />
+    <h1 class="text-center text-3xl font-bold capitalize">
+      under construction!
+    </h1>
+  </div>
+</Modal>
+
+<script>
+  const modalBlog = document.getElementById("modal-blog");
+  const moreBlog = document.getElementById("more-blog");
+  const closeBlogBtn = document.getElementById("modal-blog-close");
+  const modalContainer = modalBlog.querySelector(".modal-container");
+
+  function handleOpenModal(isOpen: boolean) {
+    const anyModalOpen = document.querySelector(".modal.modal-open");
+
+    if (isOpen && anyModalOpen && anyModalOpen !== modalBlog) {
+      return;
+    }
+
+    if (isOpen) {
+      modalBlog.classList.add("modal-open");
+      document.body.style.overflow = "hidden";
+    } else {
+      modalContainer.scrollTo({ top: 0, behavior: "smooth" });
+      modalBlog.classList.remove("modal-open");
+      if (!document.querySelector(".modal.modal-open")) {
+        document.body.style.overflow = "";
+      }
+    }
+  }
+
+  addEventListener("keydown", (event) => {
+    if (event.key === "6") {
+      handleOpenModal(true);
+    }
+    if (event.key === "Escape") {
+      handleOpenModal(false);
+    }
+  });
+  moreBlog.addEventListener("click", () => {
+    handleOpenModal(true);
+  });
+  closeBlogBtn.addEventListener("click", () => {
+    handleOpenModal(false);
+  });
+  modalBlog.addEventListener("click", (event: any) => {
+    if (modalBlog.classList.contains("modal-open")) {
+      if (!modalContainer.contains(event.target)) {
+        handleOpenModal(false);
+      }
+    }
+  });
+</script>
+
+<style is:global lang="scss">
+  #modal-blog {
+    .modal-container {
+      max-width: 40rem !important;
+      // height: auto;
+    }
+  }
+</style>

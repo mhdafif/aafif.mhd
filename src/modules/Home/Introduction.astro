@@ -13,10 +13,10 @@ const yearsOfExperience = getYearsOfExperience();
 ---
 
 <div class="card laptop:!px-8 laptop:!py-6 space-y-8">
-<!-- <div
+  <!-- <div
   class="laptop:px-8 laptop:py-6 space-y-8 gradient-to-top-charcoal rounded-b-xl relative"
 > -->
-  <p class="text-off-white/50 font-semibold text-xl mb-4">Hello world!</p>
+  <p class="text-off-white/50 mb-4 text-xl font-semibold">Hello world!</p>
 
   <!-- <div class="bouncing-hello font-semibold text-xl mb-4">
     <span>H</span>
@@ -27,7 +27,7 @@ const yearsOfExperience = getYearsOfExperience();
     <span>!</span>
   </div> -->
 
-  <p class="text-off-white/90 text-2xl font-medium mb-6">
+  <p class="text-off-white/90 mb-6 text-2xl font-medium">
     I'm a passionate and detail-oriented <span class="text-star text-2xl"
       >Frontend Developer
     </span> with over <span class="text-star text-2xl">
@@ -36,25 +36,25 @@ const yearsOfExperience = getYearsOfExperience();
     web applications.
   </p>
 
-  <div class="flex items-center gap-2 mb-5">
-    <div class="bg-green-500 w-2.5 h-2.5 rounded-full"></div>
+  <div class="mb-5 flex items-center gap-2">
+    <div class="h-2.5 w-2.5 rounded-full bg-green-500"></div>
     <span class="text-off-white/50 font-medium">Available for freelance</span>
   </div>
 
   <a
-    class="flex items-center gap-1.5 dark:bg-star dark:text-blacki rounded-5 px-3.5 py-1.5 font-semibold cursor-pointer transition-all w-fit group hover:shadow-star-glow"
+    class="dark:bg-star dark:text-blacki rounded-5 group hover:shadow-star-glow flex w-fit cursor-pointer items-center gap-1.5 px-3.5 py-1.5 font-semibold transition-all"
     download
     href={myCV}
   >
     <span class="text-lg">Download CV</span>
-    <div class="relative w-5 h-5 overflow-hidden">
+    <div class="relative h-5 w-5 overflow-hidden">
       <Icon
         name="ic:round-download"
-        class="w-5 h-5 absolute transition-all duration-400 -top-6 group-hover:top-0 right-0"
+        class="absolute -top-6 right-0 h-5 w-5 transition-all duration-400 group-hover:top-0"
       />
       <Icon
         name="ic:round-download"
-        class="w-5 h-5 absolute transition-all duration-400 top-0 group-hover:top-6 right-0"
+        class="absolute top-0 right-0 h-5 w-5 transition-all duration-400 group-hover:top-6"
       />
     </div>
   </a>

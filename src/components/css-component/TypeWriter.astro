@@ -1,9 +1,16 @@
 ---
-const messages = ["Hello World!", "Astro + Tailwind", "Typewriter Effect", "Enjoy Coding!"];
+const messages = [
+  "Hello World!",
+  "Astro + Tailwind",
+  "Typewriter Effect",
+  "Enjoy Coding!",
+];
 ---
 
-<div class="text-2xl font-mono text-white">
-  <span class="typewriter" data-messages={JSON.stringify(messages)}></span><span class="blinking-cursor">|</span>
+<div class="font-mono text-2xl text-white">
+  <span class="typewriter" data-messages={JSON.stringify(messages)}></span><span
+    class="blinking-cursor">|</span
+  >
 </div>
 
 <style>
@@ -19,9 +26,9 @@ const messages = ["Hello World!", "Astro + Tailwind", "Typewriter Effect", "Enjo
 </style>
 
 <script type="module">
-  const typewriterEl = document.querySelector('.typewriter');
+  const typewriterEl = document.querySelector(".typewriter");
   const messages = JSON.parse(typewriterEl.dataset.messages);
-  
+
   let messageIndex = 0;
   let charIndex = 0;
   let isDeleting = false;

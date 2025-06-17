@@ -12,7 +12,7 @@ if (import.meta.env.MODE === "development") {
 }
 ---
 
-<nav class="laptop:block pl-4 shift" aria-label="nav-desktop">
+<nav class="laptop:block shift pl-4" aria-label="nav-desktop">
   <ul class="flex items-center gap-2">
     {
       navLinks.map((link) => (
@@ -20,7 +20,7 @@ if (import.meta.env.MODE === "development") {
           <a
             href={link.href}
             aria-dbled={currentPath === link.href}
-            class={`nav-item px-3 text-lg font-semibold py-2 relative overflow-hidden dark:text-off-white aria-disabled:pointer-events-none ${currentPath === link.href ? "active shadow-star-glow" : ""}`}
+            class={`nav-item dark:text-off-white relative overflow-hidden px-3 py-2 text-lg font-semibold aria-disabled:pointer-events-none ${currentPath === link.href ? "active shadow-star-glow" : ""}`}
           >
             {link.label}
           </a>
