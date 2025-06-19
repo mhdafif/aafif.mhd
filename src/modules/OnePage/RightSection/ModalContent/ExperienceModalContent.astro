@@ -81,26 +81,26 @@ const experiences = [
 ];
 ---
 
-<div class="card px-4 py-1.5 laptop:px-8 laptop:py-6 space-y-8">
+<div class="card laptop:px-8 laptop:py-6 space-y-8 px-4 py-1.5">
   <div class="experience-container">
     {
       experiences.map((item) => (
-        <div class="experience-item pt-3 laptop:pt-4 pb-4 laptop:pb-5 first:pt-0">
-          <div class=" px-3 laptop:px-8 laptop:pl-9 relative flex flex-wrap">
+        <div class="experience-item laptop:pt-4 laptop:pb-5 pt-3 pb-4 first:pt-0">
+          <div class="laptop:px-8 laptop:pl-9 relative flex flex-wrap px-3">
             <div class="experience-place-time w-full">
               <h2 class="text-star mb-0 text-2xl font-bold">{item.company}</h2>
               <h4 class="text-off-white font-semibold">{item.position}</h4>
               <h6 class="text-off-white/50 font-medium">
                 {item.start} - {item.end}
               </h6>
-              <div class="experience-stacks hide-scroll snap-x-items-list my-1 flex items-center gap-1 laptop:gap-2 overflow-x-auto">
+              <div class="experience-stacks hide-scroll snap-x-items-list laptop:gap-2 my-1 flex items-center gap-1 overflow-x-auto">
                 {item.stacks.map((stack) => (
-                  <span class="bg-blacki text-off-white hover:bg-star hover:text-blacki cursor-default snap-start rounded-5 px-2 py-1 text-xs laptop:text-sm font-medium text-nowrap transition-colors duration-300 ease-out">
+                  <span class="bg-blacki text-off-white hover:bg-star hover:text-blacki rounded-5 laptop:text-sm cursor-default snap-start px-2 py-1 text-xs font-medium text-nowrap transition-colors duration-300 ease-out">
                     {stack}
                   </span>
                 ))}
               </div>
-              <div class="bg-blacki shadow-blacki-glow mt-3 rounded-5 px-2 py-3">
+              <div class="bg-blacki shadow-blacki-glow rounded-5 mt-3 px-2 py-3">
                 <input
                   type="checkbox"
                   class="peer hidden"

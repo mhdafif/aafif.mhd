@@ -69,7 +69,7 @@ const skills = [
   class="card-blacki border-off-white/10 relative h-full border border-solid p-4"
 >
   <div
-    class="shortcut-key hidden laptop:flex items-center justify-center text-blacki outline-charcoal group absolute top-0 right-0 z-[1] aspect-square w-7 rounded-tr-lg rounded-bl-lg outline-4 outline-solid"
+    class="shortcut-key laptop:flex text-blacki outline-charcoal group absolute top-0 right-0 z-[1] hidden aspect-square w-7 items-center justify-center rounded-tr-lg rounded-bl-lg outline-4 outline-solid"
   >
     <div
       class="bg-star relative h-full w-full cursor-default rounded-tr-lg rounded-bl-lg text-center text-lg font-semibold transition-all duration-500 ease-out group-hover:opacity-70"
@@ -111,15 +111,15 @@ const skills = [
 
 <!-- Modal Stack -->
 <Modal title="Stack" modalId="modal-stack">
-  <div class="mt-6 flex flex-wrap justify-center gap-3 laptop:gap-6">
+  <div class="laptop:gap-6 mt-6 flex flex-wrap justify-center gap-3">
     {
       skills.map((item, index) => (
         <div
           tabindex={index}
-          class="group stack-item-modal bg-charcoal rounded-lg p-3 laptop:p-4"
+          class="group stack-item-modal bg-charcoal laptop:p-4 rounded-lg p-3"
         >
-          <div class="bg-blacki rounded-5 stack-item relative mb-4 w-full transition-all duration-300 ease-out group-focus:scale-105 group-hover:scale-105">
-            <div class="bg-blacki rounded-5 h-full w-full p-4 laptop:p-6 flex justify-center">
+          <div class="bg-blacki rounded-5 stack-item relative mb-4 w-full transition-all duration-300 ease-out group-hover:scale-105 group-focus:scale-105">
+            <div class="bg-blacki rounded-5 laptop:p-6 flex h-full w-full justify-center p-4">
               {item.name === "Jest" ? (
                 <JestIcon class="laptop:w-16 laptop:h-16 relative h-12 w-12 text-[#99425B] grayscale-100 transition-all duration-300 ease-out group-hover:grayscale-0 group-focus:grayscale-0" />
               ) : (

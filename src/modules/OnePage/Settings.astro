@@ -2,31 +2,31 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="hidden laptop:block absolute right-8 -bottom-2 z-[1]">
+<div class="laptop:block absolute right-8 -bottom-2 z-[1] hidden">
   <div class="flex gap-2 pr-10">
     <div class="group">
       <Icon
         name="ic:round-wb-sunny"
-        class="text-lg mx-auto mb-1 text-off-white/40"
+        class="text-off-white/40 mx-auto mb-1 text-lg"
       />
       <div
-        class="bg-star w-6 h-1 rounded-b-xs group-hover:animate-pulse group-hover:shadow-star-glow transition-all duration-300 ease-out"
+        class="bg-star group-hover:shadow-star-glow h-1 w-6 rounded-b-xs transition-all duration-300 ease-out group-hover:animate-pulse"
       >
       </div>
     </div>
     <div class="group">
       <Icon
         name="ic:round-power-settings-new"
-        class="text-lg mx-auto mb-1 text-off-white/40"
+        class="text-off-white/40 mx-auto mb-1 text-lg"
       />
       <div
-        class="bg-star w-6 h-1 rounded-b-xs group-hover:animate-pulse group-hover:shadow-star-glow transition-all duration-300 ease-out"
+        class="bg-star group-hover:shadow-star-glow h-1 w-6 rounded-b-xs transition-all duration-300 ease-out group-hover:animate-pulse"
       >
       </div>
     </div>
   </div>
   <div
-    class="absolute right-0 bottom-4 w-7 h-2 bg-off-white shadow-off-white-glow rounded-xs"
+    class="bg-off-white shadow-off-white-glow absolute right-0 bottom-4 h-2 w-7 rounded-xs"
   >
   </div>
 </div>

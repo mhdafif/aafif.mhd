@@ -3,7 +3,7 @@
 ---
 
 <footer
-  class="absolute left-1/2 -translate-x-1/2 laptop:-bottom-20 laptop:bg-charcoal py-5 laptop:py-4 laptop:px-16 laptop:shadow-blacki-glow rounded-lg text-center"
+  class="laptop:-bottom-20 laptop:bg-charcoal laptop:py-4 laptop:px-16 laptop:shadow-blacki-glow absolute left-1/2 -translate-x-1/2 rounded-lg py-5 text-center"
 >
   <p class="text-off-white/50 text-sm">
     &copy; 2025 <span class="text-star font-medium">Muhammad Afif</span>
@@ -15,7 +15,7 @@
 <style lang="scss">
   footer {
     @media (width >= 1024px) {
-    &::after {
+      &::after {
         content: "";
         position: absolute;
         bottom: -28px;

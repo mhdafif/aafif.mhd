@@ -5,7 +5,7 @@ import Others from "./Others.astro";
 ---
 
 <section class="flex flex-col gap-3">
-  <div class="laptop:h-[478px] flex flex-col laptop:grid grid-rows-5 gap-3">
+  <div class="laptop:h-[478px] laptop:grid flex grid-rows-5 flex-col gap-3">
     <div class="row-span-3">
       <Experience />
     </div>
@@ -13,7 +13,7 @@ import Others from "./Others.astro";
       <Others />
     </div>
   </div>
-  <div class="hidden laptop:block">
+  <div class="laptop:block hidden">
     <Location />
   </div>
 </section>
