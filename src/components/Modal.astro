@@ -15,19 +15,19 @@ const { title, modalId } = Astro.props;
           class="text-charcoal hover:text-star/80 absolute top-6 right-0 h-8 w-8 cursor-pointer transition-all duration-500 ease-out"
         />
       </div>
-      <div class="modal-content mb-5 space-y-5">
+      <div class="modal-content mb-5 space-y-3 laptop:space-y-5">
         <slot />
       </div>
     </div>
   </div>
 </div>
 
-<style lang="scss">
+<style is:global lang="scss">
   .modal {
     z-index: -5;
     pointer-events: none;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     position: fixed;
     top: 0;
     left: 0;
@@ -46,30 +46,34 @@ const { title, modalId } = Astro.props;
 
     .modal-container {
       position: absolute;
-      z-index: 1;
+      z-index: 10;
       background-color: var(--color-blacki);
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
       width: 100%;
       max-width: 70rem;
       height: auto;
-      max-height: 80vh;
+      max-height: 80dvh;
       border: 1px solid rgba(250, 249, 246, 0.2);
       border-bottom: 0;
-      // top: 105%;
       bottom: 0;
-      transform: translateY(105%);
+      transform: translateY(100%);
+      transform-origin: top;
       transition: 0.4s all ease-in-out;
       padding: 0 2rem;
       overflow: auto;
       opacity: 0;
+      @media (width < 1024px) {
+        padding: 0 1.25rem;
+        max-height: 85dvh;
+      }
 
       .modal-title {
         position: sticky;
         top: 0;
         background: var(--color-blacki);
         z-index: 10;
-        padding-bottom: 3.5rem;
+        padding-bottom: 3rem;
         padding-top: 1rem;
         margin-bottom: 0.5rem;
       }
@@ -81,7 +85,6 @@ const { title, modalId } = Astro.props;
     pointer-events: auto;
 
     .modal-container {
-      // top: 20%;
       transform: translateY(0);
       opacity: 1;
     }

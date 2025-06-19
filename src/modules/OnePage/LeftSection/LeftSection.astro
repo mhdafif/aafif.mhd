@@ -5,7 +5,7 @@ import Stack from "./Stack.astro";
 ---
 
 <section class="flex flex-col gap-3">
-  <div class="laptop:h-[478px] laptop:grid grid-rows-5 gap-3">
+  <div class="laptop:h-[478px] flex flex-col laptop:grid grid-rows-5 gap-3">
     <div class="row-span-2">
       <About />
     </div>
@@ -13,7 +13,9 @@ import Stack from "./Stack.astro";
       <Stack />
     </div>
   </div>
-  <Language />
+  <div class="hidden laptop:block">
+    <Language />
+  </div>
 </section>
 
 <style lang="scss"></style>

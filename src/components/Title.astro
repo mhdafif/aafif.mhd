@@ -7,20 +7,14 @@ let textSize = {
 switch (size) {
   case "large":
     textSize = {
-      text: "text-5xl",
-      textShadow: "5rem",
-    };
-    break;
-  case "medium":
-    textSize = {
-      text: "text-3xl",
-      textShadow: "4rem",
+      text: "text-3xl laptop:text-5xl",
+      textShadow: "text-6xl laptop:text-7xl",
     };
     break;
   case "small":
     textSize = {
       text: "text-3xl",
-      textShadow: "3rem",
+      textShadow: "text-5xl",
     };
     break;
 
@@ -34,7 +28,8 @@ switch (size) {
 >
   {text}
 </h1>
-<span style={`font-size: ${textSize.textShadow};`}>{text}</span>
+<!-- style={`font-size: ${textSize.textShadow};`} -->
+<span class={textSize.textShadow}>{text}</span>
 
 <style lang="scss">
   h1 {
@@ -62,8 +57,8 @@ switch (size) {
 
   span {
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: 28px;
+    left: 14px;
     width: 100%;
     height: 100%;
     // font-size: 5rem;

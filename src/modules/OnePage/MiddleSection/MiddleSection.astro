@@ -1,7 +1,6 @@
 ---
 import Email from "./Email.astro";
 import Profile2 from "./Profile2.astro";
-import myCV from "@/assets/muhammad afif - CV.pdf";
 import { Icon } from "astro-icon/components";
 const profileLinks = [
   {
@@ -28,24 +27,12 @@ const profileLinks = [
       <Email />
     </div>
     <div class="flex gap-3">
-      <!-- {
-        profileLinks.map((link) => (
-          <a
-            href={link.href}
-            target="_blank"
-            class="bg-star rounded-5 text-blacki transition-all duration-300 ease-out p-1.5 text-2xl hover:-translate-y-1 hover:shadow-star-glow"
-            aria-label={link.label}
-          >
-            <Icon name={link.icon} class="" />
-          </a>
-        ))
-      } -->
       {
         profileLinks.map((link) => (
           <a
             href={link.href}
             target="_blank"
-            class="border-charcoal rounded-5 group border border-solid bg-transparent transition-all duration-300 ease-out hover:-translate-y-1"
+            class="group bg-transparent transition-all duration-300 ease-out hover:-translate-y-1"
             aria-label={link.label}
           >
             <Icon
@@ -57,78 +44,4 @@ const profileLinks = [
       }
     </div>
   </div>
-
-  <!-- <div class="flex flex-col laptop:flex-row items-center gap-3">
-    <div class="w-full laptop:grow">
-      <Email />
-    </div>
-    <a
-      class="h-[58px] w-full laptop:w-20 flex items-center justify-between gap-1.5 dark:bg-star dark:text-blacki rounded-5 px-3.5 font-semibold cursor-pointer transition-all group hover:shadow-star-glow"
-      download
-      href={myCV}
-    >
-      <span class="text-lg">CV</span>
-      <div class="relative w-5 h-5 overflow-hidden">
-        <Icon
-          name="ic:round-download"
-          class="w-5 h-5 absolute transition-all duration-400 -top-6 group-hover:top-0 right-0"
-        />
-        <Icon
-          name="ic:round-download"
-          class="w-5 h-5 absolute transition-all duration-400 top-0 group-hover:top-6 right-0"
-        />
-      </div>
-    </a>
-  </div> -->
-  <!-- <div class="grid grid-cols-3 relative">
-    <div class="email-box col-span-2">
-      <Email />
-    </div>
-    <div class="email-line line"></div>
-  </div>
-  <div class="grid grid-cols-3 relative">
-    <div class="location-box col-span-2 order-2 relative">
-      <Location />
-    </div>
-    <div class="location-line line"></div>
-  </div> -->
 </section>
-
-<style lang="scss">
-  .email-box:hover ~ .email-line,
-  .location-box:hover ~ .location-line {
-    &::after {
-      border-color: var(--color-star);
-    }
-  }
-  .line {
-    position: relative;
-    &::after {
-      content: "";
-      width: 50%;
-      height: 70%;
-      position: absolute;
-      border-width: 2px;
-      border-style: dashed;
-      border-color: var(--color-blacki);
-      transition: all 0.3s ease-in-out;
-    }
-  }
-  .email-line {
-    &::after {
-      top: 50%;
-      border-left: 0;
-      border-bottom: 0;
-      border-top-right-radius: 4px;
-    }
-  }
-  .location-line {
-    &::after {
-      bottom: 50%;
-      right: 0;
-      border-right: 0;
-      border-top: 0;
-      border-bottom-left-radius: 4px;
-    }
-  }
-</style>

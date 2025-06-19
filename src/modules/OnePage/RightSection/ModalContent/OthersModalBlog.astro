@@ -10,14 +10,17 @@ import ConstructionIcon from "@/assets/icon/construction.svg";
 >
   <span class="capitalize">Blog</span>
   <div
-    class="shortcut-key bg-star text-blacki absolute top-0 left-1.5 z-[1] rounded-b-sm px-1 text-sm font-medium transition-all duration-300 ease-out"
+    class="shortcut-key hidden laptop:block bg-star text-blacki absolute top-0 left-1.5 z-[1] rounded-b-xs px-1 text-sm font-medium transition-all duration-300 ease-out"
   >
     6
   </div>
   <div
-    class="more-other bg-star absolute right-0 bottom-0 z-[1] flex w-fit -rotate-45 items-center justify-center rounded-sm px-4 py-0.5 transition-all duration-300 ease-out"
+    class="more-other bg-star absolute right-0 bottom-0 z-[1] flex w-fit -rotate-45 items-center justify-center rounded-5 px-4 py-0.5 transition-all duration-300 ease-out"
   >
-    <Icon name="ic:baseline-open-in-new" class="text-blacki text-xl" />
+    <Icon
+      name="ic:baseline-open-in-new"
+      class="text-blacki text-xl rotate-45"
+    />
   </div>
 </div>
 
@@ -34,6 +37,7 @@ import ConstructionIcon from "@/assets/icon/construction.svg";
   const modalBlog = document.getElementById("modal-blog");
   const moreBlog = document.getElementById("more-blog");
   const closeBlogBtn = document.getElementById("modal-blog-close");
+  const scrollToTop = document.getElementById("scrollToTop");
   const modalContainer = modalBlog.querySelector(".modal-container");
 
   function handleOpenModal(isOpen: boolean) {
@@ -45,10 +49,12 @@ import ConstructionIcon from "@/assets/icon/construction.svg";
 
     if (isOpen) {
       modalBlog.classList.add("modal-open");
+      scrollToTop.classList.add("hidden");
       document.body.style.overflow = "hidden";
     } else {
       modalContainer.scrollTo({ top: 0, behavior: "smooth" });
       modalBlog.classList.remove("modal-open");
+      scrollToTop.classList.remove("hidden");
       if (!document.querySelector(".modal.modal-open")) {
         document.body.style.overflow = "";
       }

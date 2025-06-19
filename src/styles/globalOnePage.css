@@ -32,6 +32,8 @@
     0 0 8px var(--color-charcoal), 0 0 8px var(--color-charcoal) inset;
   --shadow-blacki-glow:
     0 0 8px var(--color-blacki), 0 0 8px var(--color-blacki) inset;
+  --shadow-off-white-glow:
+    0 0 8px var(--color-off-white), 0 0 8px var(--color-off-white) inset;
 }
 
 * {
@@ -40,17 +42,22 @@
 html,
 body {
   margin: 0;
-  width: 100%;
-  height: 100%;
-  @apply /* font-optical-sizing: auto; font-weight: <weight>; font-style: normal; */ scroll-smooth;
+  padding: 0;
+  /* width: 100%;
+  height: 100%; */
+  @apply scroll-smooth;
 }
+::selection {
+  background: var(--color-blacki);
+  color: var(--color-star);
+}
+/* ::marker {
+  color: var(--color-green-700);
+} */
 
 .snap-x-items-list {
   @apply snap-x snap-mandatory overflow-x-auto scroll-smooth;
-  /* overflow-x: auto; */
   -webkit-overflow-scrolling: touch;
-  /* scroll-snap-type;: "x mandatory";
-  scroll-behavior: : "smooth"; */
 }
 .hide-scroll {
   -ms-overflow-style: none;
@@ -70,7 +77,8 @@ body {
 }
 
 .card {
-  @apply bg-charcoal rounded-2xl px-6 py-4 shadow-[0_6px_12px_rgba(0,0,0,0.1)];
+  /* @apply bg-charcoal rounded-lg px-6 py-4 shadow-[0_6px_12px_rgba(0,0,0,0.1)]; */
+  @apply bg-charcoal rounded-lg shadow-[0_6px_12px_rgba(0,0,0,0.1)];
 }
 
 .card-blacki {
@@ -121,6 +129,11 @@ body {
   }
 } */
 
+@media (width < 1024px) {
+  .shortcut-key {
+    @apply hidden;
+  }
+}
 .shortcut-key:hover .tooltip {
   opacity: 1;
   pointer-events: initial;

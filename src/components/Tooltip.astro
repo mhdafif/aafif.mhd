@@ -2,7 +2,7 @@
 const { position = "top", content } = Astro.props;
 ---
 
-<div class={`tooltip z-50 ${position}`}>
+<div class={`hidden laptop:block tooltip z-50 ${position}`}>
   <div class="content">
     <span class="text-sm font-medium">{content}</span>
   </div>

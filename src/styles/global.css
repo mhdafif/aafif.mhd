@@ -42,7 +42,7 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  @apply /* font-optical-sizing: auto; font-weight: <weight>; font-style: normal; */ scroll-smooth;
+  @apply scroll-smooth;
 }
 
 .snap-x-items-list {
@@ -70,7 +70,8 @@ body {
 }
 
 .card {
-  @apply bg-charcoal rounded-2xl px-6 py-4 shadow-[0_6px_12px_rgba(0,0,0,0.1)];
+  /* @apply bg-charcoal rounded-2xl px-6 py-4 shadow-[0_6px_12px_rgba(0,0,0,0.1)]; */
+  @apply bg-charcoal rounded-lg shadow-[0_6px_12px_rgba(0,0,0,0.1)];
 }
 
 .card-blacki {

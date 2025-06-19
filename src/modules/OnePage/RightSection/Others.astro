@@ -35,82 +35,20 @@ const others = ["project", "portofolio", "blog"];
   </div>
 </div>
 
-<!-- Modal -->
-<!-- <Modal title="Project" modalId="modal-project">
-  <div class="mt-6">Projek</div>
-</Modal>
-<Modal title="Portofolio" modalId="modal-portofolio">
-  <div class="mt-6">Portofolio</div>
-</Modal>
-<Modal title="Blog" modalId="modal-blog">
-  <div class="mt-6">blog</div>
-</Modal> -->
-<!-- 
-<script>
-  const modalProject = document.getElementById("modal-project");
-  const moreProject = document.getElementById("more-project");
-  const closeProjectBtn = document.getElementById("modal-project-close");
-
-  const modalPortofolio = document.getElementById("modal-project");
-  const morePortofolio = document.getElementById("more-portofolio");
-  const closePortofolioBtn = document.getElementById("modal-portofolio-close");
-
-
-  const modalBlog = document.getElementById("modal-blog");
-  const moreBlog = document.getElementById("more-blog");
-  const closeBlogBtn = document.getElementById("modal-blog-close");
-  
-  const modalContainer = modalProject.querySelector(".modal-container");
-
-  function handleOpenModal(isOpen: boolean) {
-    const anyModalOpen = document.querySelector(".modal.modal-open");
-
-    if (isOpen && anyModalOpen && anyModalOpen !== modalProject) {
-      return;
-    }
-
-    if (isOpen) {
-      modalProject.classList.add("modal-open");
-      document.body.style.overflow = "hidden";
-    } else {
-      modalContainer.scrollTo({ top: 0, behavior: "smooth" });
-      modalProject.classList.remove("modal-open");
-      if (!document.querySelector(".modal.modal-open")) {
-        document.body.style.overflow = "";
-      }
-    }
-  }
-
-  addEventListener("keydown", (event) => {
-    if (event.key === "4") {
-      handleOpenModal(true);
-    }
-    if (event.key === "Escape") {
-      handleOpenModal(false);
-    }
-  });
-  // moreProject.addEventListener("click", () => {
-  //   handleOpenModal(true);
-  // });
-  closeProjectBtn.addEventListener("click", () => {
-    handleOpenModal(false);
-  });
-  modalProject.addEventListener("click", (event: any) => {
-    if (modalProject.classList.contains("modal-open")) {
-      if (!modalContainer.contains(event.target)) {
-        handleOpenModal(false);
-      }
-    }
-  });
-</script> -->
-
 <style is:global lang="scss">
   .other-item {
+    @media (width < 1024px) {
+      padding: 1.5rem 0;
+    }
+
     .shortcut-key {
       transform: translateY(-100%);
     }
     .more-other {
       transform: translate(10px, 40px);
+      @media (width < 1024px) {
+        transform: translate(10px, 12px);
+      }
     }
   }
   .other-item:hover {

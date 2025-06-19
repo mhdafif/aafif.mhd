@@ -1,0 +1,34 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="hidden laptop:block absolute right-8 -bottom-2 z-[1]">
+  <div class="flex gap-2 pr-10">
+    <div class="group">
+      <Icon
+        name="ic:round-wb-sunny"
+        class="text-lg mx-auto mb-1 text-off-white/40"
+      />
+      <div
+        class="bg-star w-6 h-1 rounded-b-xs group-hover:animate-pulse group-hover:shadow-star-glow transition-all duration-300 ease-out"
+      >
+      </div>
+    </div>
+    <div class="group">
+      <Icon
+        name="ic:round-power-settings-new"
+        class="text-lg mx-auto mb-1 text-off-white/40"
+      />
+      <div
+        class="bg-star w-6 h-1 rounded-b-xs group-hover:animate-pulse group-hover:shadow-star-glow transition-all duration-300 ease-out"
+      >
+      </div>
+    </div>
+  </div>
+  <div
+    class="absolute right-0 bottom-4 w-7 h-2 bg-off-white shadow-off-white-glow rounded-xs"
+  >
+  </div>
+</div>
+
+<style></style>

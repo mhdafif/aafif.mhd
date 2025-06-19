@@ -73,10 +73,10 @@ const experiences = [
   class="card-blacki border-off-white/10 relative h-full rounded-lg border border-solid p-4"
 >
   <div
-    class="shortcut-key text-blacki outline-charcoal group absolute top-0 right-0 z-[1] flex aspect-square w-7 items-center justify-center rounded-tr-sm rounded-bl-sm outline-4 outline-solid"
+    class="shortcut-key hidden laptop:flex items-center justify-center text-blacki outline-charcoal group absolute top-0 right-0 z-[1] aspect-square w-7 rounded-tr-lg rounded-bl-lg outline-4 outline-solid"
   >
     <div
-      class="bg-star relative h-full w-full cursor-default rounded-tr-sm rounded-bl-sm text-center text-lg font-semibold transition-all duration-500 ease-out group-hover:opacity-70"
+      class="bg-star relative h-full w-full cursor-default rounded-tr-lg rounded-bl-lg text-center text-lg font-semibold transition-all duration-500 ease-out group-hover:opacity-70"
     >
       3
     </div>
@@ -100,7 +100,7 @@ const experiences = [
               </h6>
               <div class="hide-scroll snap-x-items-list my-1 flex items-center gap-2 overflow-hidden">
                 {item.stacks.slice(0, 4).map((stack) => (
-                  <span class="bg-blacki text-off-white hover:bg-star hover:text-blacki cursor-default snap-start rounded-sm px-1.5 py-0.5 text-xs text-nowrap transition-colors duration-300 ease-out">
+                  <span class="bg-blacki text-off-white hover:bg-star hover:text-blacki cursor-default snap-start rounded-5 px-1.5 py-0.5 text-xs text-nowrap transition-colors duration-300 ease-out">
                     {stack}
                   </span>
                 ))}
@@ -131,6 +131,7 @@ const experiences = [
   const moreExp = document.getElementById("more-exp");
   const closeBtn = document.getElementById("modal-exp-close");
   const modalContainer = modalExp.querySelector(".modal-container");
+  const scrollToTop = document.getElementById("scrollToTop");
 
   function handleOpenModal(isOpen: boolean) {
     const anyModalOpen = document.querySelector(".modal.modal-open");
@@ -141,10 +142,12 @@ const experiences = [
 
     if (isOpen) {
       modalExp.classList.add("modal-open");
+      scrollToTop.classList.add("hidden");
       document.body.style.overflow = "hidden";
     } else {
       modalContainer.scrollTo({ top: 0, behavior: "smooth" });
       modalExp.classList.remove("modal-open");
+      scrollToTop.classList.remove("hidden");
       if (!document.querySelector(".modal.modal-open")) {
         document.body.style.overflow = "";
       }

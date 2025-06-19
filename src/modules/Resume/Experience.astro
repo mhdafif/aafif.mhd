@@ -56,7 +56,7 @@ const experiences = [
   class="laptop:px-8 laptop:py-6 space-y-8 gradient-to-top-charcoal rounded-b-xl relative"
 >
 -->
-<div class="card laptop:!px-8 laptop:!py-6 space-y-8">
+<div class="card px-6 py-4 laptop:px-8 laptop:py-6 space-y-8">
   <div class="text-2xl font-bold capitalize">
     <span>My</span>
     <span class="text-star">Experiences</span>
@@ -119,7 +119,7 @@ const experiences = [
                 >
                   <Icon
                     name="ic:round-keyboard-double-arrow-up"
-                    class="rounded-b-md text-3xl"
+                    class="text-3xl"
                   />
                 </label>
               </div>
@@ -129,128 +129,121 @@ const experiences = [
       ))
     }
   </div>
-  <!-- <div
-    class="w-full h-[45%] absolute bottom-0 left-0 rounded-b-3xl shadow-botom"
-  >
-  </div> -->
+</div>
 
-  <style lang="scss">
-    .experience-container {
-      .experience-item {
-        position: relative;
-        &:nth-of-type(odd) {
-          border-left: 3px solid;
-          border-bottom: 3px dashed;
-          border-color: rgba(250, 249, 246, 0.5);
-
-          .experience-place-time {
-            &::before {
-              left: 0;
-            }
-            &::after {
-              left: -9px;
-            }
-          }
-
-          .experience-details {
-            &-item {
-              padding-left: 1.5rem;
-              &::before {
-                left: 0;
-              }
-            }
-          }
-        }
-        &:nth-of-type(even) {
-          border-right: 3px solid;
-          border-bottom: 3px dashed;
-          border-color: rgba(250, 249, 246, 0.5);
-          text-align: end;
-
-          .experience-place-time {
-            &::before {
-              right: 0;
-            }
-            &::after {
-              right: -9px;
-            }
-          }
-
-          .experience-details {
-            &-item {
-              padding-right: 1.5rem;
-              &::before {
-                right: 0;
-              }
-            }
-          }
-        }
-        &:last-child {
-          border: none;
-          padding-left: 3px;
-          &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 24px;
-            width: 3px;
-            background-color: rgba(250, 249, 246, 0.5);
-          }
-        }
+<style lang="scss">
+  .experience-container {
+    .experience-item {
+      position: relative;
+      &:nth-of-type(odd) {
+        border-left: 3px solid;
+        border-bottom: 3px dashed;
+        border-color: rgba(250, 249, 246, 0.5);
 
         .experience-place-time {
           &::before {
-            content: "";
-            position: absolute;
-            // left: 0;
-            top: 12px;
-            height: 2px;
-            width: 24px;
-            background: rgb(250, 249, 246, 0.5);
-            @media (width < 1024px) {
-              display: none;
-            }
+            left: 0;
           }
           &::after {
-            content: "";
-            position: absolute;
-            // left: -9px;
-            top: 6px;
-            height: 15px;
-            width: 15px;
-            border-radius: 100%;
-            background: var(--color-star);
-            outline: 6px solid var(--color-charcoal);
+            left: -9px;
           }
         }
 
         .experience-details {
           &-item {
-            position: relative;
+            padding-left: 1.5rem;
             &::before {
-              content: "";
-              position: absolute;
-              top: 12px;
-              height: 2px;
-              width: 12px;
-              background: rgb(250, 249, 246, 0.5);
+              left: 0;
             }
           }
         }
+      }
+      &:nth-of-type(even) {
+        border-right: 3px solid;
+        border-bottom: 3px dashed;
+        border-color: rgba(250, 249, 246, 0.5);
+        text-align: end;
 
-        .experience-details-arrow {
-          mask-image: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 1) 70%,
-            rgba(0, 0, 0, 1) 100%
-          );
+        .experience-place-time {
+          &::before {
+            right: 0;
+          }
+          &::after {
+            right: -9px;
+          }
+        }
+
+        .experience-details {
+          &-item {
+            padding-right: 1.5rem;
+            &::before {
+              right: 0;
+            }
+          }
         }
       }
+      &:last-child {
+        border: none;
+        padding-left: 3px;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 24px;
+          width: 3px;
+          background-color: rgba(250, 249, 246, 0.5);
+        }
+      }
+
+      .experience-place-time {
+        &::before {
+          content: "";
+          position: absolute;
+          // left: 0;
+          top: 12px;
+          height: 2px;
+          width: 24px;
+          background: rgb(250, 249, 246, 0.5);
+          @media (width < 1024px) {
+            display: none;
+          }
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          // left: -9px;
+          top: 6px;
+          height: 15px;
+          width: 15px;
+          border-radius: 100%;
+          background: var(--color-star);
+          outline: 6px solid var(--color-charcoal);
+        }
+      }
+
+      .experience-details {
+        &-item {
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            height: 2px;
+            width: 12px;
+            background: rgb(250, 249, 246, 0.5);
+          }
+        }
+      }
+
+      .experience-details-arrow {
+        mask-image: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 1) 70%,
+          rgba(0, 0, 0, 1) 100%
+        );
+      }
     }
-    // .shadow-botom {
-    //   box-shadow: -8px 8px 8px var(--color-charcoal); /* outside glow left + bottom */
-    // }
-  </style>
-</div>
+  }
+</style>

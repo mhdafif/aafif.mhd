@@ -1,8 +1,7 @@
 ---
 import "@/styles/globalOnePage.css";
-import MenuMobile from "../Menu/MenuMobile.astro";
 import Square from "./Square.astro";
-import Footer from "@/modules/OnePage/Footer.astro";
+import ScrollToTop from "../ScrollToTop.astro";
 const { title = "Mhd Afif" } = Astro.props;
 ---
 
@@ -36,20 +35,16 @@ const { title = "Mhd Afif" } = Astro.props;
   <body
     class="dark:bg-blacki bg-off-white dark:text-off-white text-black transition-all"
   >
-    <main class="relative flex h-dvh flex-col">
+    <main class="relative flex flex-col h-dvh">
       <Square />
       <div
         class="laptop:h-full relative container mx-auto h-auto place-content-center place-items-center"
       >
         <slot />
-        <!-- <Footer /> -->
-
-        <!-- <ScrollToTop /> -->
       </div>
 
-      <!-- <div class="block laptop:hidden fixed bottom-0 left-0 z-50 w-full">
-        <MenuMobile />
-      </div> -->
+      <!-- <Footer /> -->
+      <ScrollToTop isOnePage />
     </main>
   </body>
 </html>

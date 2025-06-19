@@ -1,10 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
+const { isOnePage } = Astro.props;
 ---
 
 <button
   id="scrollToTop"
-  class="laptop:right-6 laptop:bottom-4 bg-deep-gray group fixed right-2 bottom-[4.5rem] z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full opacity-0 shadow-[0_6px_12px_rgba(0,0,0,0.1)] transition-all duration-500"
+  class={"laptop:right-6 laptop:bottom-4 bg-deep-gray group fixed z-[2] flex h-12 w-12 cursor-pointer items-center justify-center rounded-full opacity-0 shadow-[0_6px_12px_rgba(0,0,0,0.1)] transition-all duration-500" +
+    (isOnePage ? " bottom-4 right-4" : " right-2 bottom-[4.5rem]")}
   aria-label="Scroll to top"
 >
   <svg class="absolute h-12 w-12 -rotate-90 transform" viewBox="0 0 100 100">

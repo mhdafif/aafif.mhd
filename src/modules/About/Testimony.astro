@@ -18,7 +18,7 @@ const testimonials = [
 ];
 ---
 
-<div class="card laptop:!py-6 space-y-8 !px-0 !pb-10">
+<div class="card px-0 pb-10 laptop:py-6 space-y-8">
   <div class="laptop:px-8 px-6 text-2xl font-bold capitalize">
     <span>People</span>
     <span class="text-star">feedback</span>
@@ -29,7 +29,7 @@ const testimonials = [
       testimonials.map((item) => (
         <div class="carousel__slide laptop:px-8 px-6" data-label={item.name}>
           <figure class="testimonial" role="tabpanel" aria-label={item.name}>
-            <p class="laptop:text-base text-off-white/70 mb-4 text-sm font-medium">
+            <p class="text-off-white/70 mb-4 text-base font-medium">
               {item.text}
             </p>
 
@@ -44,7 +44,7 @@ const testimonials = [
   </div>
 </div>
 
-<script>
+<!-- <script>
   const container = document.getElementById("testimonials");
   const scrollStep = container.clientWidth;
   const maxScrollLeft = container.scrollWidth - container.clientWidth;
@@ -70,7 +70,7 @@ const testimonials = [
   window.addEventListener("unload", () => {
     clearInterval(intervalId);
   });
-</script>
+</script> -->
 
 <style is:inline lang="scss">
   .carousel {

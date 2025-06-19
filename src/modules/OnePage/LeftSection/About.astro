@@ -12,10 +12,10 @@ const items = ["About", "Education", "Feedback"];
   class="about-container card-blacki border-off-white/10 relative rounded-lg border border-solid p-4"
 >
   <div
-    class="shortcut-key text-blacki outline-charcoal group absolute top-0 right-0 z-[1] flex aspect-square w-7 items-center justify-center rounded-tr-sm rounded-bl-sm outline-4 outline-solid"
+    class="shortcut-key hidden laptop:flex items-center justify-center text-blacki outline-charcoal group absolute top-0 right-0 z-[1] aspect-square w-7 rounded-tr-lg rounded-bl-lg outline-4 outline-solid"
   >
     <div
-      class="bg-star relative h-full w-full cursor-default rounded-tr-sm rounded-bl-sm text-center text-lg font-semibold transition-all duration-500 ease-out group-hover:opacity-70"
+      class="bg-star relative h-full w-full cursor-default rounded-tr-lg rounded-bl-lg text-center text-lg font-semibold transition-all duration-500 ease-out group-hover:opacity-70"
     >
       1
     </div>
@@ -56,6 +56,7 @@ const items = ["About", "Education", "Feedback"];
   const modalAbout = document.getElementById("modal-about");
   const moreAbout = document.getElementById("more-about");
   const closeBtn = document.getElementById("modal-about-close");
+  const scrollToTop = document.getElementById("scrollToTop");
   const modalContainer = modalAbout.querySelector(".modal-container");
 
   function handleOpenModal(isOpen: boolean) {
@@ -67,10 +68,12 @@ const items = ["About", "Education", "Feedback"];
 
     if (isOpen) {
       modalAbout.classList.add("modal-open");
+      scrollToTop.classList.add("hidden");
       document.body.style.overflow = "hidden";
     } else {
       modalContainer.scrollTo({ top: 0, behavior: "smooth" });
       modalAbout.classList.remove("modal-open");
+      scrollToTop.classList.remove("hidden");
       if (!document.querySelector(".modal.modal-open")) {
         document.body.style.overflow = "";
       }
