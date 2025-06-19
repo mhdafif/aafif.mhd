@@ -1,7 +1,9 @@
 ---
 import "@/styles/main.css";
-import Square from "./Square.astro";
-import ScrollToTop from "../ScrollToTop.astro";
+import Navbar from "@/components/v2/Navbar.astro";
+import ScrollToTop from "@/components/ScrollToTop.astro";
+import Footer from "@/components/v2/Footer.astro";
+import MenuMobile from "@/components/v2/Menu/MenuMobile.astro";
 const { title = "Mhd Afif" } = Astro.props;
 ---
 
@@ -33,17 +35,29 @@ const { title = "Mhd Afif" } = Astro.props;
     </script>
   </head>
   <body
-    class="dark:bg-blacki bg-off-white dark:text-off-white text-black transition-all"
+    class="dark:bg-blacki bg-off-white text-black transition-all dark:text-off-white"
   >
-    <main class="relative flex h-dvh flex-col">
-      <Square />
-      <div
-        class="laptop:h-full relative container mx-auto h-auto place-content-center place-items-center"
-      >
-        <slot />
+    <main
+      class="laptop:p-6 relative container mx-auto flex min-h-dvh max-w-7xl flex-col px-6 pt-6 pb-24"
+    >
+      <div class="w-full">
+        <div class="space-y-7">
+          <Navbar />
+          <slot />
+          <Footer />
+        </div>
       </div>
 
-      <ScrollToTop isOnePage />
+      <ScrollToTop isOnePage={false} />
     </main>
+
+    <!-- <div
+      class="block laptop:hidden fixed right-2 top-2 z-50"
+    >
+      <Theme />
+    </div> -->
+    <div class="laptop:hidden fixed bottom-0 left-0 z-50 block w-full">
+      <MenuMobile />
+    </div>
   </body>
 </html>

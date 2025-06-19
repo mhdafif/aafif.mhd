@@ -1,0 +1,84 @@
+---
+import { Icon } from "astro-icon/components";
+
+const skills = [
+  {
+    name: "HTML5",
+    icon: "devicon:html5",
+  },
+  {
+    name: "CSS3",
+    icon: "devicon:css3",
+  },
+  {
+    name: "JavaScript",
+    icon: "devicon:javascript",
+  },
+  {
+    name: "TypeScript",
+    icon: "devicon:typescript",
+  },
+  {
+    name: "React",
+    icon: "devicon:react",
+  },
+  {
+    name: "Vue",
+    icon: "devicon:vuejs",
+  },
+  {
+    name: "Next",
+    icon: "devicon:nextjs",
+  },
+  {
+    name: "Nuxt",
+    icon: "devicon:nuxtjs",
+  },
+  {
+    name: "Remix",
+    icon: "devicon:remix",
+  },
+  {
+    name: "Astro",
+    icon: "devicon:astro",
+  },
+  {
+    name: "Vite",
+    icon: "devicon:vitejs",
+  },
+  {
+    name: "Vitest",
+    icon: "devicon:vitest",
+  },
+  {
+    name: "Git",
+    icon: "devicon:git",
+  },
+];
+---
+
+<div class="card laptop:px-8 laptop:py-6 space-y-8 px-6 py-4">
+  <div class="text-2xl font-bold capitalize">
+    <span>My</span>
+    <span class="text-star">Skills</span>
+  </div>
+  <div class="flex flex-wrap justify-center gap-x-12 gap-y-10">
+    {
+      skills.map((item, index) => (
+        <div tabindex={index} class="group">
+          <div class="laptop:p-4 relative mb-6 p-3 transition-all">
+            <Icon
+              name={item.icon}
+              class="laptop:w-16 laptop:h-16 relative z-[3] h-12 w-12 grayscale-100 transition-all duration-700 group-hover:grayscale-0 group-focus:grayscale-0"
+            />
+            <div class="bg-blacki rounded-5 absolute top-0 left-0 z-[2] aspect-square h-full w-full rotate-45 transition-all duration-700 group-hover:rotate-[135deg] group-focus:rotate-[135deg]" />
+            <div class="rounded-5 border-gunmetal absolute top-0 left-0 z-[3] aspect-square h-full w-full border-4 transition-all duration-700 group-hover:rotate-[-90deg] group-focus:rotate-[-90deg]" />
+          </div>
+          <p class="text-off-white laptop:text-lg group-hover:text-star group-focus:text-star text-center text-sm font-medium transition-all duration-700">
+            {item.name}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>

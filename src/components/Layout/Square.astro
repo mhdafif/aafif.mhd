@@ -1,15 +1,8 @@
----
-
----
-
-<!-- Fixed Fullscreen Grid -->
 <div id="grid" class="fixed top-0 left-0 z-1 h-full w-full">
-  <div id="grid-container" class="laptop:grid-cols-12 grid grid-cols-4">
-    <!-- Will be filled by JS -->
-  </div>
+  <div id="grid-container" class="laptop:grid-cols-12 grid grid-cols-4"></div>
 </div>
 
-<script type="module">
+<script>
   const gridContainer = document.getElementById("grid-container");
 
   function createGrid() {
@@ -32,17 +25,14 @@
     }
   }
 
-  // Initial load
   createGrid();
 
-  // Update on window resize
   window.addEventListener("resize", () => {
     createGrid();
   });
 </script>
 
 <style lang="scss">
-  /* Optional: Add smooth transition */
   #grid-container > div {
     transition: all 0.3s ease;
   }

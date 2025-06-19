@@ -1,14 +1,29 @@
----
-
----
-
 <footer
-  class="laptop:absolute laptop:flex-row bottom-0 left-0 flex w-full flex-col items-center justify-between gap-2 px-6 pb-2 text-center"
+  class="laptop:-bottom-20 laptop:bg-charcoal laptop:py-4 laptop:px-16 laptop:shadow-blacki-glow absolute left-1/2 -translate-x-1/2 rounded-lg py-5 text-center"
 >
   <p class="text-off-white/50 text-sm">
-    &copy; 2025 <span class="dark:text-star font-medium">Mhd Afif</span>. All
-    rights reserved.
+    &copy; 2025 <span class="text-star font-medium">Muhammad Afif</span>
+    <br />
+    All rights reserved.
   </p>
 </footer>
 
-<style></style>
+<style lang="scss">
+  footer {
+    @media (width >= 1024px) {
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -28px;
+        width: 600px;
+        height: 20px;
+        border-radius: 6px;
+        background-color: var(--color-charcoal);
+        transform: translateX(-50%);
+        box-shadow:
+          0 0 8px var(--color-blacki),
+          0 0 8px var(--color-blacki) inset;
+      }
+    }
+  }
+</style>

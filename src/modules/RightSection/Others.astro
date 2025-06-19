@@ -1,0 +1,60 @@
+---
+import { Icon } from "astro-icon/components";
+import myCV from "@/assets/muhammad afif - CV.pdf";
+import OthersModalProject from "./ModalContent/OthersModalProject.astro";
+import OthersModalPortofolio from "./ModalContent/OthersModalPortofolio.astro";
+import OthersModalBlog from "./ModalContent/OthersModalBlog.astro";
+---
+
+<div
+  class="card-blacki border-off-white/10 relative h-full rounded-lg border border-solid p-4"
+>
+  <div class="grid h-full flex-auto grid-cols-2 grid-rows-2 gap-3">
+    <OthersModalProject />
+    <OthersModalPortofolio />
+    <OthersModalBlog />
+    <a
+      class="dark:bg-star dark:text-blacki rounded-5 group hover:shadow-star-glow flex h-full w-full cursor-pointer items-center justify-center gap-1.5 px-3.5 font-semibold transition-all"
+      download
+      href={myCV}
+    >
+      <span class="text-xl">CV</span>
+      <div class="relative h-7 w-7 overflow-hidden">
+        <Icon
+          name="ic:round-download"
+          class="absolute -top-6 right-0 h-7 w-7 transition-all duration-400 group-hover:top-0"
+        />
+        <Icon
+          name="ic:round-download"
+          class="absolute top-0 right-0 h-7 w-7 transition-all duration-400 group-hover:top-6"
+        />
+      </div>
+    </a>
+  </div>
+</div>
+
+<style is:global lang="scss">
+  .other-item {
+    @media (width < 1024px) {
+      padding: 1.5rem 0;
+    }
+
+    .shortcut-key {
+      transform: translateY(-100%);
+    }
+    .more-other {
+      transform: translate(10px, 40px);
+      @media (width < 1024px) {
+        transform: translate(10px, 12px);
+      }
+    }
+  }
+  .other-item:hover {
+    .shortcut-key {
+      transform: translateY(0);
+    }
+    .more-other {
+      transform: translate(10px, 12px);
+    }
+  }
+</style>

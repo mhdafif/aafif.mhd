@@ -9,44 +9,7 @@ import { Icon } from "astro-icon/components";
     </div>
 
     <div class="card__tooltip">
-      <div class="card__content">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        <!-- <header class="card__header">
-          <span>Social</span>
-  
-          <div class="card__social">
-            <a href="https://www.linkedin.com/" target="_blank">
-              <i class="ri-linkedin-box-line"></i>
-            </a>
-  
-            <a href="https://github.com/" target="_blank">
-              <i class="ri-github-fill"></i>
-            </a>
-  
-            <a href="https://dribbble.com/" target="_blank">
-              <i class="ri-dribbble-line"></i>
-            </a>
-          </div>
-        </header>
-  
-        <div class="card__data">
-          <div class="card__image">
-            <div class="card__mask">
-              <img src="assets/img/profile.png" alt="image" class="card__img" />
-            </div>
-  
-            <span class="card__status"></span>
-          </div>
-  
-          <h2 class="card__name">Evalyn Adson</h2>
-          <h3 class="card__profession">Web designer</h3>
-  
-          <a href="#" class="card__button">
-            <i class="ri-chat-3-line"></i>
-            <span>Send Message</span>
-          </a>
-        </div> -->
-      </div>
+      <div class="card__content">Lorem ipsum.</div>
     </div>
   </article>
 </div>
@@ -70,19 +33,6 @@ import { Icon } from "astro-icon/components";
       }
     }
   }
-
-  // .card__profile,
-  // .card__mask {
-  //   width: 100px;
-  //   height: 100px;
-  //   background-color: var(--color-charcoal);
-  //   border-radius: 50%;
-  //   overflow: hidden;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  // }
-
   .card__profile {
     width: 100px;
     height: 100px;
@@ -116,11 +66,8 @@ import { Icon } from "astro-icon/components";
     width: calc(100vw - 3rem);
     background-color: var(--color-star);
     color: var(--color-blacki);
-    // box-shadow: 0 16px 32px rgba(25, 34, 77, 0.1);
-    // padding: 2rem 1.5rem;
     padding: 1rem 0;
     border-radius: 8px;
-    // border-radius: 1.5rem;
 
     &::after {
       content: "";
@@ -136,78 +83,6 @@ import { Icon } from "astro-icon/components";
       rotate: 45deg;
     }
   }
-
-  // .card__header {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   border-bottom: 1px solid red;
-  //   padding-bottom: 1.5rem;
-  //   margin-bottom: 1.5rem;
-
-  //   span {
-  //     color: var(--color-off-white);
-  //     font-weight: 500;
-  //   }
-  // }
-
-  // .card__social {
-  //   display: flex;
-  //   column-gap: 0.75rem;
-
-  //   a {
-  //     font-size: 1.25rem;
-  //     color: var(--color-off-white);
-  //   }
-  // }
-
-  // .card__image {
-  //   width: 100px;
-  //   height: 100px;
-  //   position: relative;
-  //   margin: 0 auto 1rem;
-  // }
-
-  // .card__status {
-  //   width: 12px;
-  //   height: 12px;
-  //   background-color: blue;
-  //   position: absolute;
-  //   top: 0.5rem;
-  //   right: 0.75rem;
-  //   border-radius: 50%;
-  //   border: 2px solid var(--color-blacki);
-  // }
-
-  // .card__data {
-  //   text-align: center;
-  // }
-
-  // .card__name {
-  //   font-size: var(--h2-font-size);
-  //   color: var(--color-off-white);
-  //   font-weight: 600;
-  //   margin-bottom: 0.25rem;
-  // }
-
-  // .card__profession {
-  //   font-size: var(--normal-font-size);
-  //   font-weight: 500;
-  //   margin-bottom: 2rem;
-  // }
-
-  // .card__button {
-  //   display: inline-flex;
-  //   align-items: center;
-  //   column-gap: 0.5rem;
-  //   color: var(--color-star);
-  //   font-weight: 500;
-
-  //   i {
-  //     font-size: 1.25rem;
-  //   }
-  // }
-
   @media screen and (min-width: 540px) {
     .card__content {
       width: fit-content;

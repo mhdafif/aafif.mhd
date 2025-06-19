@@ -1,0 +1,90 @@
+---
+import Layout from "@/components/Layout/Layout-v2.astro";
+---
+
+<Layout>
+  <div>Playground logic</div>
+</Layout>
+
+<script>
+  function substrCount(n: number, s: string[]): number {
+    let count = 0;
+
+    // Store groups of same characters
+    const groups = [];
+    let i = 0;
+
+    while (i < n) {
+      let char = s[i];
+      let length = 1;
+
+      while (i + 1 < n && s[i + 1] === char) {
+        length++;
+        i++;
+      }
+
+      groups.push({ char, length });
+      i++;
+    }
+
+    // 1. Count Type 1: same-char substrings (a, aa, aaa, etc.)
+    for (const group of groups) {
+      count += (group.length * (group.length + 1)) / 2;
+    }
+
+    // 2. Count Type 2: symmetrical palindromes like aba
+    for (let j = 1; j < groups.length - 1; j++) {
+      if (groups[j].length === 1 && groups[j - 1].char === groups[j + 1].char) {
+        count += Math.min(groups[j - 1].length, groups[j + 1].length);
+      }
+    }
+
+    return count;
+  }
+
+  // console.log('asasd', substrCount(5, "asasd".split("")));
+  // console.log('abcbaba', substrCount(7, "abcbaba".split("")));
+  // console.log('aaaa', substrCount(4, "aaaa".split("")));
+
+  // function isValid(s: string) {
+  //   const freq = {};
+
+  //   // Count frequencies of characters
+  //   for (const char of s) {
+  //     freq[char] = (freq[char] || 0) + 1;
+  //   }
+
+  //   const freqCount = {};
+
+  //   // Count how many times each frequency occurs
+  //   for (const count of Object.values(freq)) {
+  //     freqCount[count] = (freqCount[count] || 0) + 1;
+  //   }
+
+  //   const keys = Object.keys(freqCount).map(Number);
+
+  //   // Case 1: All same frequency
+  //   if (keys.length === 1) return "YES";
+
+  //   // Case 2: Two different frequencies
+  //   if (keys.length === 2) {
+  //     const [a, b] = keys;
+  //     const freqA = freqCount[a];
+  //     const freqB = freqCount[b];
+
+  //     // Try removing the one that appears once
+  //     if (
+  //       (freqA === 1 && (a - 1 === b || a === 1)) ||
+  //       (freqB === 1 && (b - 1 === a || b === 1))
+  //     ) {
+  //       return "YES";
+  //     }
+  //   }
+
+  //   return "NO";
+  // }
+
+  // console.log("is valid abc", isValid("abc"));
+  // console.log("is valid abcdefghhgfedecba", isValid("abcdefghhgfedecba"));
+  // console.log("is valid aabbcccc", isValid("aabbcccc"));
+</script>

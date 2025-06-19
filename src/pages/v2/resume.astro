@@ -1,0 +1,22 @@
+---
+import Layout from "@/components/Layout/Layout-v2.astro";
+import MenuMini from "@/components/v2/Menu/MenuMini.astro";
+import Profile from "@/components/v2/Profile.astro";
+import Experience from "@/modules/Resume/Experience.astro";
+---
+
+<Layout title="Resume">
+  <div class="laptop:grid-cols-3 laptop:gap-5 grid w-full">
+    <div class="laptop:sticky top-5 col-span-1 h-fit space-y-5 overflow-hidden">
+      <div class="laptop:block hidden">
+        <MenuMini />
+      </div>
+
+      <Profile />
+    </div>
+
+    <div class="laptop:col-span-2 col-span-1 space-y-5">
+      <Experience />
+    </div>
+  </div>
+</Layout>

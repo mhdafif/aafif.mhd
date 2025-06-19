@@ -1,0 +1,147 @@
+---
+import Modal from "@/components/Modal.astro";
+import { Icon } from "astro-icon/components";
+import webProfile1 from "@/assets/portofolio/web-profile-v1.png";
+import webProfile2 from "@/assets/portofolio/web-profile-v2.png";
+import { Image } from "astro:assets";
+
+const portofolios = [
+  {
+    name: "Profile Web v2",
+    image: webProfile2,
+    description: "<div>second version of my profile website.</div>",
+    link: "#",
+    tech: ["Astro", "Vite", "Tailwind CSS"],
+  },
+  {
+    name: "Profile Web v1",
+    image: webProfile1,
+    description: `My first profile website build <span class="text-star">@2020</span> to showcasing my work and experience as a frontend developer. Designed with simplicity, responsiveness, and fast performance in mind—this site marks my first step in building a personal digital presence.`,
+    link: "https://mhdafif.vercel.app/",
+    tech: ["React", "Material UI", "Styled Components"],
+    github: "https://github.com/mhdafif/mhdafif.now.sh",
+  },
+];
+---
+
+<div
+  id="more-portofolio"
+  class="other-item rounded-5 bg-charcoal hover:bg-blacki hover:shadow-charcoal-glow hover:border-off-white/10 group relative flex h-full w-full cursor-pointer items-center justify-center overflow-hidden border border-solid border-transparent text-xl font-semibold transition-all duration-300 ease-out"
+>
+  <span class="capitalize">Portofolio</span>
+  <div
+    class="shortcut-key laptop:block bg-star text-blacki absolute top-0 left-1.5 z-[1] hidden rounded-b-xs px-1 text-sm font-medium transition-all duration-300 ease-out"
+  >
+    5
+  </div>
+  <div
+    class="more-other bg-star rounded-5 absolute right-0 bottom-0 z-[1] flex w-fit -rotate-45 items-center justify-center px-4 py-0.5 transition-all duration-300 ease-out"
+  >
+    <Icon
+      name="ic:baseline-open-in-new"
+      class="text-blacki rotate-45 text-xl"
+    />
+  </div>
+</div>
+
+<Modal title="Portofolio" modalId="modal-portofolio">
+  <div class="mt-6">
+    <ul>
+      {
+        portofolios.map((item) => (
+          <li class="project-item">
+            <div class="project-content">
+              <div>
+                <h3 class="project-title">
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                    {item.name}
+                  </a>
+                </h3>
+
+                <div class="project-description" set:html={item.description} />
+
+                {item.tech.length && (
+                  <ul class="project-tech-list">
+                    {item.tech.map((tech, i) => (
+                      <li>{tech}</li>
+                    ))}
+                  </ul>
+                )}
+
+                <div class="project-links">
+                  {item.github && (
+                    <a
+                      href={item.github}
+                      aria-label="GitHub Link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon name="cib:github" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div class="project-image">
+              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                <Image src={item.image} alt={item.name} class="img" />
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Modal>
+
+<script>
+  const modalPortofolio = document.getElementById("modal-portofolio");
+  const morePortofolio = document.getElementById("more-portofolio");
+  const closePortofolioBtn = document.getElementById("modal-portofolio-close");
+  const modalContainer = modalPortofolio.querySelector(".modal-container");
+  const scrollToTop = document.getElementById("scrollToTop");
+
+  function handleOpenModal(isOpen: boolean) {
+    const anyModalOpen = document.querySelector(".modal.modal-open");
+
+    if (isOpen && anyModalOpen && anyModalOpen !== modalPortofolio) {
+      return;
+    }
+
+    if (isOpen) {
+      modalPortofolio.classList.add("modal-open");
+      scrollToTop.classList.add("hidden");
+      document.body.style.overflow = "hidden";
+    } else {
+      modalContainer.scrollTo({ top: 0, behavior: "smooth" });
+      modalPortofolio.classList.remove("modal-open");
+      scrollToTop.classList.remove("hidden");
+      if (!document.querySelector(".modal.modal-open")) {
+        document.body.style.overflow = "";
+      }
+    }
+  }
+
+  addEventListener("keydown", (event) => {
+    if (event.key === "5") {
+      handleOpenModal(true);
+    }
+    if (event.key === "Escape") {
+      handleOpenModal(false);
+    }
+  });
+  morePortofolio.addEventListener("click", () => {
+    handleOpenModal(true);
+  });
+  closePortofolioBtn.addEventListener("click", () => {
+    handleOpenModal(false);
+  });
+  modalPortofolio.addEventListener("click", (event: any) => {
+    if (modalPortofolio.classList.contains("modal-open")) {
+      if (!modalContainer.contains(event.target)) {
+        handleOpenModal(false);
+      }
+    }
+  });
+</script>

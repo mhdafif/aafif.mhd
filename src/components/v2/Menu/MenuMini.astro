@@ -1,0 +1,64 @@
+---
+import { Icon } from "astro-icon/components";
+const currentPath = new URL(Astro.request.url).pathname;
+const navLinks = [
+  { href: "/v2", label: "Home", icon: "ic:round-home" },
+  { href: "/v2/about", label: "About", icon: "ic:baseline-person" },
+  { href: "/v2/resume", label: "Resume", icon: "ic:baseline-auto-stories" },
+  { href: "/v2/portofolio", label: "Portofolio", icon: "ic:baseline-interests" },
+  { href: "/v2/contact", label: "Contact", icon: "ic:baseline-perm-phone-msg" },
+];
+---
+
+<nav
+  id="menu"
+  class="card relative -mt-[92px] flex items-center justify-between px-6 py-4 transition-all duration-500 ease-in-out"
+  aria-label="nav-desktop-mini"
+>
+  {
+    navLinks.map((link) => (
+      <a
+        href={link.href}
+        aria-disabled={currentPath === link.href}
+        class={`${currentPath === link.href ? "pointer-events-none" : "group"} relative p-1.5 transition-all`}
+      >
+        <Icon
+          aria-selected={currentPath === link.href}
+          name={link.icon}
+          class="dark:text-off-white aria-selected:text-blacki group-hover:text-blacki relative z-[2] h-7 w-7"
+        />
+        <div
+          aria-selected={currentPath === link.href}
+          class="bg-blacki rounded-5 group-hover:bg-star/90 aria-selected:bg-star absolute top-0 left-0 z-[1] aspect-square h-full w-full rotate-45 transition-all"
+        />
+      </a>
+    ))
+  }
+  <div class="bg-blacki absolute left-0 h-0.5 w-full"></div>
+</nav>
+
+<script>
+  const menuInfo = document.getElementById("menu");
+  const scrollThreshold = 72;
+
+  function updateMenuPosition() {
+    const isLaptop = window.matchMedia("(min-width: 1024px)").matches;
+    if (!isLaptop) return;
+    // apply only when the viewport is larger than 1024px
+    if (window.scrollY >= scrollThreshold) {
+      menuInfo.classList.add("mt-0");
+      menuInfo.classList.remove("-mt-[92px]");
+    } else {
+      menuInfo.classList.remove("mt-0");
+      menuInfo.classList.add("-mt-[92px]");
+    }
+  }
+
+  window.addEventListener("load", updateMenuPosition);
+  window.addEventListener("scroll", updateMenuPosition);
+
+  window.addEventListener("unload", () => {
+    window.removeEventListener("load", updateMenuPosition);
+    window.removeEventListener("scroll", updateMenuPosition);
+  });
+</script>

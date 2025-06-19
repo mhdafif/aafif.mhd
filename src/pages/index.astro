@@ -1,26 +1,39 @@
 ---
 import Layout from "@/components/Layout/Layout.astro";
-import MenuMini from "@/components/Menu/MenuMini.astro";
-import Profile from "@/components/Profile.astro";
-import Company from "@/modules/Home/Company.astro";
-import Introduction from "@/modules/Home/Introduction.astro";
+import Language from "@/modules/LeftSection/Language.astro";
+import LeftSection from "@/modules/LeftSection/LeftSection.astro";
+import Location from "@/modules/RightSection/Location.astro";
+import MiddleSection from "@/modules/MiddleSection/MiddleSection.astro";
+import RightSection from "@/modules/RightSection/RightSection.astro";
+import Footer from "@/components/Footer.astro";
+import Settings from "@/modules/Settings.astro";
+import Freelance from "@/modules/Freelance.astro";
 ---
 
 <Layout title="Home">
-  <div class="laptop:grid-cols-3 laptop:gap-5 grid w-full gap-0">
-    <section
-      class="laptop:sticky top-5 col-span-1 h-fit space-y-5 overflow-hidden"
+  <div
+    class="laptop:bg-charcoal rounded-10 laptop:shadow-blacki-glow border-blacki laptop:p-8 laptop:pb-12 laptop:max-w-[72rem] laptop:border-2 relative z-[2] w-full border-solid px-4 py-5"
+  >
+    <div
+      class="laptop:grid laptop:grid-cols-10 laptop:mb-0 mb-3 flex flex-col gap-3"
     >
-      <div class="laptop:block hidden">
-        <MenuMini />
+      <div class="laptop:order-0 order-1 col-span-3">
+        <LeftSection />
       </div>
+      <div class="laptop:order-1 order-0 col-span-4">
+        <MiddleSection />
+      </div>
+      <div class="laptop:order-3 order-3 col-span-3">
+        <RightSection />
+      </div>
+    </div>
+    <div class="laptop:hidden block space-y-3">
+      <Language />
+      <Location />
+    </div>
 
-      <Profile />
-    </section>
-
-    <section class="laptop:col-span-2 col-span-1 space-y-5">
-      <Introduction />
-      <Company />
-    </section>
+    <Freelance />
+    <Settings />
+    <Footer />
   </div>
 </Layout>

@@ -1,0 +1,31 @@
+---
+const getYearsOfExperience = () => {
+  const startDate = new Date("2018-09-01");
+  const currentDate = new Date();
+  const years = currentDate.getFullYear() - startDate.getFullYear();
+  const months = currentDate.getMonth() - startDate.getMonth();
+
+  return months < 0 ? years - 1 : years;
+};
+const yearsOfExperience = getYearsOfExperience();
+---
+
+<div class="card laptop:px-8 laptop:py-6 space-y-8 px-6 py-4">
+  <p class="text-off-white mb-4 text-2xl font-semibold capitalize">
+    Hi, this is <span class="block laptop:inline text-star text-3xl"
+      >Muhammad Afif</span
+    >
+  </p>
+  <p class="text-off-white/70 text-lg font-medium">
+    A passionate and detail-oriented <span class="text-star text-xl"
+      >Frontend Developer
+    </span> with over <span class="text-star text-xl">
+      {yearsOfExperience} years
+    </span> of experience specializing in building modern, scalable, and performant
+    web applications. I have a strong foundation in JavaScript and TypeScript, and
+    I love transforming UI/UX designs into fully interactive interfaces. My approach
+    emphasizes maintainable code, efficient collaboration, and continuous improvement.
+    I'm always excited to explore the latest frontend technologies and implement
+    best practices in team environments.
+  </p>
+</div>
