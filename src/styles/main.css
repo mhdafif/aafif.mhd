@@ -165,13 +165,31 @@ body {
 }
 
 @media (width >= 1024px) {
-  .scale-box {
+  /* .scale-box {
     position: relative;
     opacity: 0;
-    transition: all 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
   }
 
   .scale-box.show {
     opacity: 1;
+    pointer-events: auto;
+  } */
+
+  #main-screen {
+    position: relative;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
+    /* scale: 0; */
+    /* transform: translateY(-20px); */
+  }
+
+  #main-screen.show {
+    opacity: 1;
+    pointer-events: auto;
+    /* transform: translateY(0); */
+    /* scale: 1; */
   }
 }
