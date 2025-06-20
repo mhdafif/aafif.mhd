@@ -15,18 +15,18 @@ import afif2 from "@/assets/afif-02.jpg";
 //   },
 //   { href: "https://github.com/mhdafif", label: "GitHub", icon: "cib:github" },
 // ];
-const getYearsOfExperience = () => {
-  const startDate = new Date("2018-09-01");
-  const currentDate = new Date();
-  const years = currentDate.getFullYear() - startDate.getFullYear();
-  const months = currentDate.getMonth() - startDate.getMonth();
+// const getYearsOfExperience = () => {
+//   const startDate = new Date("2018-09-01");
+//   const currentDate = new Date();
+//   const years = currentDate.getFullYear() - startDate.getFullYear();
+//   const months = currentDate.getMonth() - startDate.getMonth();
 
-  return months < 0 ? years - 1 : years;
-};
-const yearsOfExperience = getYearsOfExperience();
+//   return months < 0 ? years - 1 : years;
+// };
+// const yearsOfExperience = getYearsOfExperience();
 ---
 
-<div class="scale-box relative h-full w-full">
+<div class="relative h-full w-full">
   <article
     class="card__article group relative h-full overflow-hidden rounded-lg"
   >

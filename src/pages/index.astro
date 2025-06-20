@@ -50,88 +50,54 @@ import Freelance from "@/modules/Freelance.astro";
 </Layout>
 
 <script>
-  // const scaleBoxes = document.querySelectorAll(".scale-box");
   const mainScreen = document.getElementById("main-screen");
   const blackScreen = document.getElementById("black-screen");
+  const powerBtn = document.getElementById("power-btn");
+  const indicatorLamp = document.getElementById("indicator-lamp");
 
-  function scaleBoxesAnimation(isShow: boolean) {
+  function handleShowMainScreen(isShow: boolean) {
     window.sessionStorage.setItem("power", isShow ? "on" : "off");
-    // scaleBoxes.forEach((box, index) => {
-    //   if (isShow) {
-    //     box.classList.add("show");
-    //     // setTimeout(() => {
-    //     // }, index * 200); // delay per item
-    //   } else {
-    //     // make it remove the show but from the last item to the first item
-    //     box.classList.remove("show");
-    //     // setTimeout(
-    //     //   () => {
-    //     //   },
-    //     //   (scaleBoxes.length - index - 1) * 200
-    //     // );
-    //   }
-    // });
     if (isShow) {
-      blackScreen.classList.add("show");
+      blackScreen.classList.add("hide");
       mainScreen.classList.add("show");
     } else {
       mainScreen.classList.remove("show");
-
-      setTimeout(
-        () => {
-          blackScreen.classList.remove("show");
-        },
-        // (scaleBoxes.length + 3) * 200
-        300
-      );
+      setTimeout(() => {
+        blackScreen.classList.remove("hide");
+      }, 500);
     }
   }
 
+  // initial load
   window.addEventListener("load", () => {
     // disabled the power btn
     powerBtn.classList.add("disabled");
     powerBtn.removeEventListener("click", () => {});
-    scaleBoxesAnimation(true);
+    // show main screen
+    handleShowMainScreen(true);
+    // enable power button
     setTimeout(() => {
       powerBtn.classList.remove("disabled");
       powerBtn.addEventListener("click", () => {});
     }, 500);
   });
 
-  const powerBtn = document.getElementById("power-btn");
-  // const powerLamp = document.getElementById("power-lamp");
-  const indicatorLamp = document.getElementById("indicator-lamp");
-
+  // power button click event
   powerBtn.addEventListener("click", () => {
     // disabled the power btn
     powerBtn.classList.add("disabled");
     powerBtn.removeEventListener("click", () => {});
+    // toggle the main screen
     if (indicatorLamp.classList.contains("on")) {
-      scaleBoxesAnimation(false);
-      // powerLamp.classList.remove("on");
+      handleShowMainScreen(false);
       indicatorLamp.classList.remove("on");
     } else {
-      scaleBoxesAnimation(true);
-      // powerLamp.classList.add("on");
+      handleShowMainScreen(true);
       indicatorLamp.classList.add("on");
     }
-    // powerBtn.classList.remove("disabled");
-    // powerBtn.addEventListener("click", () => {});
-    // enabled the power btn again after items is all looped
     setTimeout(() => {
       powerBtn.classList.remove("disabled");
       powerBtn.addEventListener("click", () => {});
     }, 500);
   });
 </script>
-
-<style lang="scss">
-  #black-screen {
-    &.show {
-      > div {
-        // background-color: transparent;
-        opacity: 0;
-      }
-    }
-  }
-</style>
