@@ -79,7 +79,6 @@ const experiences = [
                   id={`experience-${item.company}`}
                 />
 
-                {/* show first 3 of details */}
                 <ul class="experience-details space-y-1">
                   {item.details.slice(0, 3).map((detail) => (
                     <li class="experience-details-item text-off-white font-medium">
@@ -88,7 +87,6 @@ const experiences = [
                   ))}
                 </ul>
 
-                {/* show the rest */}
                 <ul class="experience-details hidden peer-checked:block">
                   {item.details.slice(3).map((detail) => (
                     <li class="experience-details-item text-off-white font-medium">

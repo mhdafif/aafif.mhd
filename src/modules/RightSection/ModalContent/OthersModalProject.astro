@@ -120,8 +120,8 @@ const projects = [
 
   function handleOpenModal(isOpen: boolean) {
     const anyModalOpen = document.querySelector(".modal.modal-open");
-
-    if (isOpen && anyModalOpen && anyModalOpen !== modalProject) {
+    const powerOff = window.sessionStorage.getItem("power") === "off";
+    if (powerOff || (isOpen && anyModalOpen && anyModalOpen !== modalProject)) {
       return;
     }
 

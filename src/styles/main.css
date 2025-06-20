@@ -7,6 +7,7 @@
 @theme {
   --color-uv-green: #4caf50;
   --color-off-white: #faf9f6;
+  --color-off-black: #212121;
   --color-blacki: #141d26;
   --color-charcoal: #1e293b;
   --color-slate: #243447;
@@ -122,11 +123,6 @@ body {
   }
 } */
 
-@media (width < 1024px) {
-  .shortcut-key {
-    @apply hidden;
-  }
-}
 .shortcut-key:hover .tooltip {
   opacity: 1;
   pointer-events: initial;
@@ -160,4 +156,22 @@ body {
     rgba(0, 0, 0, 0) 45%,
     var(--color-charcoal) 100%
   );
+}
+
+@media (width < 1024px) {
+  .shortcut-key {
+    @apply hidden;
+  }
+}
+
+@media (width >= 1024px) {
+  .scale-box {
+    position: relative;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+  }
+
+  .scale-box.show {
+    opacity: 1;
+  }
 }

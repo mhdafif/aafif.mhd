@@ -104,8 +104,11 @@ const portofolios = [
 
   function handleOpenModal(isOpen: boolean) {
     const anyModalOpen = document.querySelector(".modal.modal-open");
-
-    if (isOpen && anyModalOpen && anyModalOpen !== modalPortofolio) {
+    const powerOff = window.sessionStorage.getItem("power") === "off";
+    if (
+      powerOff ||
+      (isOpen && anyModalOpen && anyModalOpen !== modalPortofolio)
+    ) {
       return;
     }
 

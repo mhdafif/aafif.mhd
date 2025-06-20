@@ -3,7 +3,8 @@ import { Icon } from "astro-icon/components";
 ---
 
 <div class="laptop:block absolute right-8 -bottom-2 z-[1] hidden">
-  <div class="flex gap-2 pr-10">
+  <!-- <div class="flex gap-2 pr-10"> -->
+  <div class="flex gap-2">
     <div class="group">
       <Icon
         name="ic:round-wb-sunny"
@@ -14,7 +15,10 @@ import { Icon } from "astro-icon/components";
       >
       </div>
     </div>
-    <div class="group">
+    <div
+      id="power-btn"
+      class="group cursor-pointer transition-all duration-200 ease-in-out"
+    >
       <Icon
         name="ic:round-power-settings-new"
         class="text-off-white/40 mx-auto mb-1 text-lg"
@@ -25,10 +29,23 @@ import { Icon } from "astro-icon/components";
       </div>
     </div>
   </div>
-  <div
-    class="bg-off-white shadow-off-white-glow absolute right-0 bottom-4 h-2 w-7 rounded-xs"
+  <!-- <div
+    id="power-lamp"
+    class="bg-off-white/10 absolute right-0 bottom-4 h-2 w-7 rounded-xs transition-all duration-500 ease-in-out on"
   >
-  </div>
+  </div> -->
 </div>
 
-<style></style>
+<style lang="scss">
+  #power-lamp.on {
+    background-color: var(--color-off-white);
+    box-shadow:
+      0 0 8px var(--color-off-white),
+      0 0 8px var(--color-off-white) inset;
+  }
+
+  #power-btn.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+</style>

@@ -3,11 +3,27 @@ import Tooltip from "@/components/Tooltip.astro";
 ---
 
 <div
-  class="shortcut-key laptop:flex border-star group absolute bottom-2.5 left-1/2 hidden -translate-x-1/2 items-center justify-center rounded-full border-2 border-solid p-0.5"
+  id="indicator-lamp"
+  class="shortcut-key laptop:flex border-star/10 group on pointer-events-none absolute bottom-2.5 left-1/2 hidden -translate-x-1/2 items-center justify-center rounded-full border-2 border-solid p-0.5 transition-all duration-500 ease-in-out"
 >
   <div
-    class="bg-star h5 border-star relative aspect-square w-5 cursor-default rounded-full border border-solid duration-500 ease-out group-hover:animate-pulse"
+    id="indicator-inner-lamp"
+    class="bg-star/10 h5 relative aspect-square w-5 cursor-default rounded-full duration-500 ease-in-out group-hover:animate-pulse"
   >
   </div>
   <Tooltip content="Available for Freelance" />
 </div>
+
+<style lang="scss">
+  #indicator-lamp.on {
+    border-color: var(--color-star);
+    pointer-events: auto;
+    box-shadow:
+      0 0 2px var(--color-star),
+      0 0 2px var(--color-star) inset;
+
+    #indicator-inner-lamp {
+      background-color: var(--color-star);
+    }
+  }
+</style>

@@ -42,8 +42,8 @@ import ConstructionIcon from "@/assets/icon/construction.svg";
 
   function handleOpenModal(isOpen: boolean) {
     const anyModalOpen = document.querySelector(".modal.modal-open");
-
-    if (isOpen && anyModalOpen && anyModalOpen !== modalBlog) {
+    const powerOff = window.sessionStorage.getItem("power") === "off";
+    if (powerOff || (isOpen && anyModalOpen && anyModalOpen !== modalBlog)) {
       return;
     }
 

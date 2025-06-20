@@ -15,7 +15,7 @@ import Freelance from "@/modules/Freelance.astro";
     class="laptop:bg-charcoal rounded-10 laptop:shadow-blacki-glow border-blacki laptop:p-8 laptop:pb-12 laptop:max-w-[72rem] laptop:border-2 relative z-[2] w-full border-solid px-4 py-5"
   >
     <div
-      class="laptop:grid laptop:grid-cols-10 laptop:mb-0 mb-3 flex flex-col gap-3"
+      class="laptop:grid laptop:grid-cols-10 laptop:mb-0 z-[1] mb-3 flex flex-col gap-3"
     >
       <div class="laptop:order-0 order-1 col-span-3">
         <LeftSection />
@@ -35,5 +35,95 @@ import Freelance from "@/modules/Freelance.astro";
     <Freelance />
     <Settings />
     <Footer />
+
+    <div
+      id="black-screen"
+      class="laptop:block on absolute top-0 left-0 z-[-1] hidden h-full w-full p-8 pb-12"
+    >
+      <div
+        class="bg-off-white/10 rounded-5 h-full w-full opacity-100 transition-all duration-500 ease-in-out"
+      >
+      </div>
+    </div>
   </div>
 </Layout>
+
+<script>
+  const scaleBoxes = document.querySelectorAll(".scale-box");
+  const blackScreen = document.getElementById("black-screen");
+
+  function scaleBoxesAnimation(isShow: boolean) {
+    window.sessionStorage.setItem("power", isShow ? "on" : "off");
+    scaleBoxes.forEach((box, index) => {
+      if (isShow) {
+        setTimeout(() => {
+          box.classList.add("show");
+        }, index * 200); // delay per item
+      } else {
+        // make it remove the show but from the last item to the first item
+        setTimeout(
+          () => {
+            box.classList.remove("show");
+          },
+          (scaleBoxes.length - index - 1) * 200
+        );
+      }
+    });
+    if (isShow) {
+      blackScreen.classList.add("on");
+    } else {
+      setTimeout(
+        () => {
+          blackScreen.classList.remove("on");
+        },
+        (scaleBoxes.length + 3) * 200
+      );
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    // disabled the power btn
+    powerBtn.classList.add("disabled");
+    powerBtn.removeEventListener("click", () => {});
+    scaleBoxesAnimation(true);
+    setTimeout(() => {
+      powerBtn.classList.remove("disabled");
+      powerBtn.addEventListener("click", () => {});
+    }, scaleBoxes.length * 200);
+  });
+
+  const powerBtn = document.getElementById("power-btn");
+  // const powerLamp = document.getElementById("power-lamp");
+  const indicatorLamp = document.getElementById("indicator-lamp");
+
+  powerBtn.addEventListener("click", () => {
+    // disabled the power btn
+    powerBtn.classList.add("disabled");
+    powerBtn.removeEventListener("click", () => {});
+    if (indicatorLamp.classList.contains("on")) {
+      scaleBoxesAnimation(false);
+      // powerLamp.classList.remove("on");
+      indicatorLamp.classList.remove("on");
+    } else {
+      scaleBoxesAnimation(true);
+      // powerLamp.classList.add("on");
+      indicatorLamp.classList.add("on");
+    }
+    // enabled the power btn again after items is all looped
+    setTimeout(() => {
+      powerBtn.classList.remove("disabled");
+      powerBtn.addEventListener("click", () => {});
+    }, scaleBoxes.length * 200);
+  });
+</script>
+
+<style lang="scss">
+  #black-screen {
+    &.on {
+      > div {
+        // background-color: transparent;
+        opacity: 0;
+      }
+    }
+  }
+</style>

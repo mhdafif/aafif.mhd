@@ -66,7 +66,7 @@ const skills = [
 ---
 
 <div
-  class="card-blacki border-off-white/10 relative h-full border border-solid p-4"
+  class="scale-box card-blacki border-off-white/10 relative h-full border border-solid p-4"
 >
   <div
     class="shortcut-key laptop:flex text-blacki outline-charcoal group absolute top-0 right-0 z-[1] hidden aspect-square w-7 items-center justify-center rounded-tr-lg rounded-bl-lg outline-4 outline-solid"
@@ -151,8 +151,8 @@ const skills = [
 
   function handleOpenModal(isOpen: boolean) {
     const anyModalOpen = document.querySelector(".modal.modal-open");
-
-    if (isOpen && anyModalOpen && anyModalOpen !== modalStack) {
+    const powerOff = window.sessionStorage.getItem("power") === "off";
+    if (powerOff || (isOpen && anyModalOpen && anyModalOpen !== modalStack)) {
       return;
     }
 
