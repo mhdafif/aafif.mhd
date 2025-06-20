@@ -3,16 +3,32 @@ import "@/styles/main.css";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Square from "./Square.astro";
 import ScrollToTop from "../ScrollToTop.astro";
-const { title = "Mhd Afif" } = Astro.props;
+const { title = "Mhd Afif - Home" } = Astro.props;
+const isDev = import.meta.env.MODE === "development";
 ---
 
 <!doctype html>
 <html lang="en" class="dark">
   <head>
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Muhammad Afif - Frontend Developer Portfolio" />
+    <meta
+      name="description"
+      content="Frontend Developer with 6+ years of experience building scalable, high-performance web applications using React, Vue, Astro and other modern technologies. Explore my projects and professional journey."
+    />
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Muhammad Afif" />
+    <meta
+      name="keywords"
+      content="Frontend Developer, Web Developer, React Developer, Vue Developer, Portfolio, JavaScript, TypeScript, Next.js, Remix, Astro, Vite, Web Development, UI Developer, Indonesia Developer"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <title>{title}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +50,7 @@ const { title = "Mhd Afif" } = Astro.props;
       }
     </script>
 
-    <SpeedInsights />
+    {!isDev && <SpeedInsights />}
   </head>
   <body
     class="dark:bg-blacki bg-off-white dark:text-off-white text-black transition-all"
