@@ -2,15 +2,25 @@
 import Modal from "@/components/Modal.astro";
 import { Icon } from "astro-icon/components";
 import webProfile1 from "@/assets/portofolio/web-profile-v1.png";
-import webProfile2 from "@/assets/portofolio/web-profile-v2.png";
+import webProfilev2 from "@/assets/portofolio/web-profile-v2.png";
+import webProfilev3 from "@/assets/portofolio/web-profile-v3.png";
 import { Image } from "astro:assets";
 
 const portofolios = [
   {
-    name: "Profile Web v2",
-    image: webProfile2,
-    description: "<div>second version of my profile website.</div>",
+    name: "This Website",
+    image: webProfilev3,
+    description:
+      "<div>Website profile v3. This one is finally chosen as my profile website for now.</div>",
     link: "#",
+    tech: ["Astro", "Vite", "Tailwind CSS"],
+  },
+  {
+    name: "Profile Web v2 Others",
+    image: webProfilev2,
+    description:
+      "<div>This was the second version of my profile website, created when I had just lost my job. In the meantime, I was searching for ideas for my profile site. Ultimately, it was used only as a playground.</div>",
+    link: "/v2",
     tech: ["Astro", "Vite", "Tailwind CSS"],
   },
   {
@@ -28,7 +38,7 @@ const portofolios = [
   id="more-portofolio"
   class="other-item rounded-5 bg-charcoal hover:bg-blacki hover:shadow-charcoal-glow hover:border-off-white/10 group relative flex h-full w-full cursor-pointer items-center justify-center overflow-hidden border border-solid border-transparent text-xl font-semibold transition-all duration-300 ease-out"
 >
-  <span class="capitalize">Portofolio</span>
+  <h2 class="capitalize">Portofolio</h2>
   <div
     class="shortcut-key laptop:block bg-star text-blacki absolute top-0 left-1.5 z-[1] hidden rounded-b-xs px-1 text-sm font-medium transition-all duration-300 ease-out"
   >
