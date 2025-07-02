@@ -52,19 +52,17 @@ Inside of your Astro project, you'll see the following folders and files:
 aafif-mhd.vercel.app/
 ├── public/
 │   └── favicon.svg
-└── src/
-    ├── assets
-    ├── components/
-    │   └── layout
-    ├── modules/
-    │   └── section
-    ├── pages/
-    │   └── index
-    ├── styles
-    ├── utils
-    ├── .nvmrc
-    ├── astro.config
-    ├── package.json
-    ├── readme
-    └── tsconfig.json
+├── src/
+│   ├── assets
+│   ├── components/
+│   │   └── layout
+│   ├── modules/
+│   │   └── section
+│   ├── pages/
+│   │   └── index
+│   ├── styles
+│   └── utils
+├── .nvmrc
+├── astro.config
+└── package.json
 ```
