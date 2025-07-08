@@ -4,6 +4,9 @@ import Title from "@/components/Title.astro";
 import Tooltip from "@/components/Tooltip.astro";
 import { Icon } from "astro-icon/components";
 import JestIcon from "@/assets/icon/jest.svg";
+import NestjsIcon from "@/assets/icon/nestjs.svg";
+import n8nIcon from "@/assets/icon/n8n.svg";
+import PrismaIcon from "@/assets/icon/prisma.svg";
 
 const skills = [
   {
@@ -57,6 +60,7 @@ const skills = [
   {
     name: "Jest",
     icon: "custom",
+    iconSrc: JestIcon,
   },
   {
     name: "Git",
@@ -65,6 +69,21 @@ const skills = [
   {
     name: "Docker",
     icon: "devicon:docker",
+  },
+  {
+    name: "Nest JS",
+    icon: "custom",
+    iconSrc: NestjsIcon,
+  },
+  {
+    name: "Prisma",
+    icon: "custom",
+    iconSrc: PrismaIcon,
+  },
+  {
+    name: "n8n",
+    icon: "custom",
+    iconSrc: n8nIcon,
   },
 ];
 ---
@@ -124,8 +143,8 @@ const skills = [
         >
           <div class="bg-blacki rounded-5 stack-item relative mb-4 w-full transition-all duration-300 ease-out group-hover:scale-105 group-focus:scale-105">
             <div class="bg-blacki rounded-5 laptop:p-6 flex h-full w-full justify-center p-4">
-              {item.name === "Jest" ? (
-                <JestIcon class="laptop:w-16 laptop:h-16 relative h-12 w-12 text-[#99425B] grayscale-100 transition-all duration-300 ease-out group-hover:grayscale-0 group-focus:grayscale-0" />
+              {item.icon === "custom" && item.iconSrc ? (
+                <item.iconSrc class="laptop:w-16 laptop:h-16 relative h-12 w-12 text-[#99425B] grayscale-100 transition-all duration-300 ease-out group-hover:grayscale-0 group-focus:grayscale-0" />
               ) : (
                 <Icon
                   name={item.icon}
@@ -246,9 +265,9 @@ const skills = [
     // opacity: 0.5;
   }
 
-  #modal-stack {
-    .modal-container {
-      max-width: 45rem !important;
-    }
-  }
+  // #modal-stack {
+  //   .modal-container {
+  //     max-width: 45rem !important;
+  //   }
+  // }
 </style>

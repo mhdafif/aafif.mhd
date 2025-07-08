@@ -66,20 +66,14 @@ body {
 .shadow-dark {
   @apply shadow-[0_6px_12px_rgba(0,0,0,0.1)];
 }
-
 .flex-center {
   @apply flex items-center justify-center;
 }
-
 .card {
   @apply bg-charcoal rounded-lg shadow-[0_6px_12px_rgba(0,0,0,0.1)];
 }
-
 .card-blacki {
   @apply shadow-blacki-glow bg-blacki rounded-lg;
-}
-.flex-center {
-  @apply flex items-center justify-center;
 }
 
 /* Typewriter once */
