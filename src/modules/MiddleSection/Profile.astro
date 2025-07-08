@@ -1,29 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import afif2 from "@/assets/afif-02.jpg";
-// import { Icon } from "astro-icon/components";
-// const profileLinks = [
-//   {
-//     href: "https://www.instagram.com/nonieck_/",
-//     label: "Instagram",
-//     icon: "cib:instagram",
-//   },
-//   {
-//     href: "https://www.linkedin.com/in/mhdafif/",
-//     label: "LinkedIn",
-//     icon: "cib:linkedin",
-//   },
-//   { href: "https://github.com/mhdafif", label: "GitHub", icon: "cib:github" },
-// ];
-// const getYearsOfExperience = () => {
-//   const startDate = new Date("2018-09-01");
-//   const currentDate = new Date();
-//   const years = currentDate.getFullYear() - startDate.getFullYear();
-//   const months = currentDate.getMonth() - startDate.getMonth();
+import { Icon } from "astro-icon/components";
+const getYearsOfExperience = () => {
+  const startDate = new Date("2018-09-01");
+  const currentDate = new Date();
+  const years = currentDate.getFullYear() - startDate.getFullYear();
+  const months = currentDate.getMonth() - startDate.getMonth();
 
-//   return months < 0 ? years - 1 : years;
-// };
-// const yearsOfExperience = getYearsOfExperience();
+  return months < 0 ? years - 1 : years;
+};
+const yearsOfExperience = getYearsOfExperience();
 ---
 
 <div class="relative h-full w-full">
@@ -43,42 +30,36 @@ import afif2 from "@/assets/afif-02.jpg";
       <span class="font-semibold">Frontend Engineer</span>
     </div>
 
-    <!-- <div class="card__clip transition-all">
+    <div class="card__clip transition-all">
       <Icon name="ic:round-menu-open" class="text-blacki" />
     </div>
 
     <div class="info">
       <div>
-        <h2 class="text-4xl font-bold mb-6">Muhammad Afif</h2>
-        <p class="text-off-white/80 font-medium">
-          I'm a passionate and detail-oriented <span class="text-star text-lg"
-            >Frontend Developer
-          </span> with over <span class="text-star text-lg">
-            {yearsOfExperience} years
-          </span> of experience specializing in building modern, scalable, and performant
-          web applications.
-        </p>
+        <h2 class="mb-6 text-4xl font-bold">Muhammad Afif</h2>
+        <div class="text-off-white/80 space-y-2 font-medium">
+          <p>
+            <span class="text-star">Frontend Developer</span> with <span
+              class="text-star">{yearsOfExperience}+ years</span
+            > of experience building scalable, high-performance web apps using React,
+            Vue, and modern tools.
+          </p>
+          <p>
+            Strong in JavaScript/TypeScript, and currently expanding skills in <span
+              class="text-star">backend, CI/CD, and AI automation</span
+            >.
+          </p>
+          <p>
+            Passionate about clean code, collaboration, and crafting seamless
+            user experiences.
+          </p>
+        </div>
       </div>
-
-      <div class="absolute right-6 bottom-6 flex gap-3">
-        {
-          profileLinks.map((link) => (
-            <a
-              href={link.href}
-              target="_blank"
-              class="shadow-star-glow bg-star rounded-5 text-blacki transition-transform duration-500 ease-out p-1.5 text-2xl hover:-translate-y-1"
-              aria-label={link.label}
-            >
-              <Icon name={link.icon} class="" />
-            </a>
-          ))
-        }
-      </div>
-    </div> -->
+    </div>
   </article>
 </div>
 
-<!-- <script>
+<script>
   const info = document.querySelector(".info");
   const article = document.querySelector(".card__clip");
 
@@ -89,7 +70,7 @@ import afif2 from "@/assets/afif-02.jpg";
   info.addEventListener("mouseleave", () => {
     article.classList.remove("!animate-none");
   });
-</script> -->
+</script>
 
 <style lang="scss">
   .card__shadow {
