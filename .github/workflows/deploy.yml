@@ -1,0 +1,66 @@
+name: Build & Deploy Astro
+
+on:
+  push:
+    branches: ["master"] # adjust your default branch
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-astro-main
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: "22"
+      TARGET_DIR: ${{ secrets.TARGET_DIR }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "pnpm"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
+
+      - name: Install deps (frozen)
+        run: |
+          pnpm install --frozen-lockfile
+
+      - name: Build Astro (no sourcemap to speed up)
+        env:
+          NODE_OPTIONS: "--max-old-space-size=2048"
+        run: |
+          pnpm build -- --sourcemap false
+
+      # ---- Deploy over SSH (rsync) ----
+      - name: Add VPS to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Configure SSH key
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+      - name: Rsync dist → VPS
+        run: |
+          rsync -az --delete -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519" \
+            ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ env.TARGET_DIR }}/
+
+      - name: Reload Caddy
+        if: ${{ success() }}
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -p "${{ secrets.SSH_PORT }}" \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "${{ secrets.CADDY_RELOAD_CMD || 'true' }}"
