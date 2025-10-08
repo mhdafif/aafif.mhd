@@ -20,6 +20,8 @@ jobs:
               ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
               "bash ${{ secrets.SCRIPT_PATH }}"
 
+      - name: Clean up
+        run: rm -f key.pem
 # name: 🚀 Deploy to Master
 # on:
 #   push:
