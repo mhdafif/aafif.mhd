@@ -31,6 +31,8 @@ jobs:
           fi
 
           cd "$APP_DIR"
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/github-aafif.space
 
           echo "📦 Pulling latest changes..."
           git fetch origin "$BRANCH"
