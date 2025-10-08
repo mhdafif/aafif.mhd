@@ -1,55 +1,21 @@
-name: Build & Deploy Astro
+name: 🚀 Deploy to Master
 
 on:
   push:
-    branches: ["master"]
-  workflow_dispatch: {}
+    branches:
+      - master # Runs only when pushing/merging to master branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm # cache based on pnpm-lock.yaml
-
-      - name: Enable pnpm via Corepack
+      - name: SSH into VPS and deploy
         run: |
-          corepack enable
-          corepack prepare pnpm@9 --activate
-          pnpm --version
+          echo "${{ secrets.SSH_KEY }}" > key.pem
+          chmod 600 key.pem
 
-      - name: Install deps (frozen)
-        run: pnpm install --frozen-lockfile
-
-      - name: Build Astro (no sourcemap)
-        env:
-          NODE_OPTIONS: "--max-old-space-size=2048"
-        run: pnpm build -- --sourcemap false
-
-      # ---- Deploy over SSH (same as before) ----
-      - name: Add VPS to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
-
-      - name: Configure SSH key
-        run: |
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-
-      - name: Rsync dist → VPS
-        run: |
-          rsync -az --delete -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519" \
-            dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.TARGET_DIR }}/
-
-      - name: Reload Caddy
-        run: |
-          ssh -i ~/.ssh/id_ed25519 -p "${{ secrets.SSH_PORT }}" \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "${{ secrets.CADDY_RELOAD_CMD || 'true' }}"
+          ssh -o StrictHostKeyChecking=no \
+              -i key.pem \
+              ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+              "bash ${{ secrets.SCRIPT_PATH }}"
