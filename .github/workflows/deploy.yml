@@ -18,4 +18,11 @@ jobs:
           ssh -o StrictHostKeyChecking=no \
               -i key.pem \
               ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-              "bash ${{ secrets.SCRIPT_PATH }}"
+              cd /var/www/aafif.space
+              git pull origin master
+              pnpm install --frozen-lockfile
+              pnpm build -- --sourcemap false
+              sudo systemctl reload caddy || echo "⚠️ Skipped Caddy reload (no sudo permission)"
+
+      - name: Clean up
+        run: rm -f key.pem
