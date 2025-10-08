@@ -1,28 +1,52 @@
 name: 🚀 Deploy to Master
-
 on:
   push:
-    branches:
-      - master # Runs only when pushing/merging to master branch
+    branches: [master]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: SSH into VPS and deploy
         run: |
           echo "${{ secrets.SSH_KEY }}" > key.pem
           chmod 600 key.pem
 
-          ssh -o StrictHostKeyChecking=no \
-              -i key.pem \
-              ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-              cd /var/www/aafif.space
-              git pull origin master
-              pnpm install --frozen-lockfile
-              pnpm build -- --sourcemap false
-              sudo systemctl reload caddy || echo "⚠️ Skipped Caddy reload (no sudo permission)"
+          ssh -o StrictHostKeyChecking=no -i key.pem \
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} 'bash -s' <<'EOF'
+          set -e
+
+          echo "🚀 Starting deployment..."
+
+          APP_DIR="/var/www/aafif.space"
+          BRANCH="master"
+
+          # Ensure app directory exists and is a git repo (auto-clone on first run)
+          if [ ! -d "$APP_DIR/.git" ]; then
+            echo "📁 First-time setup: cloning repo..."
+            mkdir -p "$APP_DIR"
+            # Use HTTPS or SSH URL via a secret:
+            # e.g. https://github.com/yourname/yourrepo.git
+            git clone --depth=1 --branch "$BRANCH" "${REPO_URL}" "$APP_DIR"
+          fi
+
+          cd "$APP_DIR"
+
+          echo "📦 Pulling latest changes..."
+          git fetch origin "$BRANCH"
+          git reset --hard "origin/$BRANCH"
+
+          echo "📥 Installing dependencies..."
+          pnpm install --frozen-lockfile
+
+          echo "🏗️ Building project..."
+          pnpm build -- --sourcemap false
+
+          echo "🔁 Reloading Caddy..."
+          sudo systemctl reload caddy || echo "⚠️ Skipped Caddy reload (no sudo permission)"
+
+          echo "✅ Deployment complete!"
+          EOF
 
       - name: Clean up
         run: rm -f key.pem
