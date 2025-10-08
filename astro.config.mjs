@@ -14,6 +14,9 @@ export default defineConfig({
         "@": "/src",
       },
     },
+    build: {
+      sourcemap: false
+    }
   },
 
   integrations: [icon()],
