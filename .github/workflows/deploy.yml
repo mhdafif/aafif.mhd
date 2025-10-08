@@ -1,54 +1,76 @@
 name: 🚀 Deploy to Master
+
 on:
   push:
-    branches: [master]
+    branches:
+      - master # Runs only when pushing/merging to master branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: SSH into VPS and deploy
         run: |
           echo "${{ secrets.SSH_KEY }}" > key.pem
           chmod 600 key.pem
 
-          ssh -o StrictHostKeyChecking=no -i key.pem \
-            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} 'bash -s' <<'EOF'
-          set -e
+          ssh -o StrictHostKeyChecking=no \
+              -i key.pem \
+              ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+              "bash ${{ secrets.SCRIPT_PATH }}"
 
-          echo "🚀 Starting deployment..."
+# name: 🚀 Deploy to Master
+# on:
+#   push:
+#     branches: [master]
 
-          APP_DIR="/var/www/aafif.space"
-          BRANCH="master"
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: SSH into VPS and deploy
+#         run: |
+#           echo "${{ secrets.SSH_KEY }}" > key.pem
+#           chmod 600 key.pem
 
-          # Ensure app directory exists and is a git repo (auto-clone on first run)
-          if [ ! -d "$APP_DIR/.git" ]; then
-            echo "📁 First-time setup: cloning repo..."
-            mkdir -p "$APP_DIR"
-            # Use HTTPS or SSH URL via a secret:
-            # e.g. https://github.com/yourname/yourrepo.git
-            git clone --depth=1 --branch "$BRANCH" "${REPO_URL}" "$APP_DIR"
-          fi
+#           ssh -o StrictHostKeyChecking=no -i key.pem \
+#             ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} 'bash -s' <<'EOF'
+#           set -e
 
-          cd "$APP_DIR"
-          eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/github-aafif.space
+#           echo "🚀 Starting deployment..."
 
-          echo "📦 Pulling latest changes..."
-          git fetch origin "$BRANCH"
-          git reset --hard "origin/$BRANCH"
+#           APP_DIR="/var/www/aafif.space"
+#           BRANCH="master"
 
-          echo "📥 Installing dependencies..."
-          pnpm install --frozen-lockfile
+#           # Ensure app directory exists and is a git repo (auto-clone on first run)
+#           if [ ! -d "$APP_DIR/.git" ]; then
+#             echo "📁 First-time setup: cloning repo..."
+#             mkdir -p "$APP_DIR"
+#             # Use HTTPS or SSH URL via a secret:
+#             # e.g. https://github.com/yourname/yourrepo.git
+#             git clone --depth=1 --branch "$BRANCH" "${REPO_URL}" "$APP_DIR"
+#           fi
 
-          echo "🏗️ Building project..."
-          pnpm build -- --sourcemap false
+#           cd "$APP_DIR"
+#           eval "$(ssh-agent -s)"
+#           ssh-add ~/.ssh/github-aafif.space
 
-          echo "🔁 Reloading Caddy..."
-          sudo systemctl reload caddy || echo "⚠️ Skipped Caddy reload (no sudo permission)"
+#           echo "📦 Pulling latest changes..."
+#           git fetch origin "$BRANCH"
+#           git reset --hard "origin/$BRANCH"
 
-          echo "✅ Deployment complete!"
-          EOF
+#           echo "📥 Installing dependencies..."
+#           pnpm install --frozen-lockfile
 
-      - name: Clean up
-        run: rm -f key.pem
+#           echo "🏗️ Building project..."
+#           pnpm build -- --sourcemap false
+
+#           echo "🔁 Reloading Caddy..."
+#           sudo systemctl reload caddy || echo "⚠️ Skipped Caddy reload (no sudo permission)"
+
+#           echo "✅ Deployment complete!"
+#           EOF
+
+#       - name: Clean up
+#         run: rm -f key.pem
