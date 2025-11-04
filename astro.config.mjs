@@ -18,6 +18,6 @@ export default defineConfig({
       sourcemap: false
     }
   },
-
+  output: "static",
   integrations: [icon()],
 });
