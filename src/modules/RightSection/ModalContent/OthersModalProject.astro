@@ -1,26 +1,116 @@
 ---
 import Modal from "@/components/Modal.astro";
 import { Icon } from "astro-icon/components";
-import dewatiket from "@/assets/projects/dewatiket.png";
-import heymale from "@/assets/projects/heymale.png";
 import { Image } from "astro:assets";
+import heymaleDesktop1 from "@/assets/projects/heymale/desktop-1.jpg";
+import heymaleDesktop2 from "@/assets/projects/heymale/desktop-2.jpg";
+import heymaleDesktop3 from "@/assets/projects/heymale/desktop-3.jpg";
+import heymaleMobile1 from "@/assets/projects/heymale/mobile-1.jpg";
+import heymaleMobile2 from "@/assets/projects/heymale/mobile-2.jpg";
+import heymaleMobile3 from "@/assets/projects/heymale/mobile-3.jpg";
+import dewaDesktop1 from "@/assets/projects/dewatiket/desktop-1.jpg";
+import dewaDesktop2 from "@/assets/projects/dewatiket/desktop-2.jpg";
+import dewaDesktop3 from "@/assets/projects/dewatiket/desktop-3.jpg";
+import dewaMobile1 from "@/assets/projects/dewatiket/mobile-1.jpg";
+import dewaMobile2 from "@/assets/projects/dewatiket/mobile-2.jpg";
+import dewaMobile3 from "@/assets/projects/dewatiket/mobile-3.jpg";
+import heylocalDesktop1 from "@/assets/projects/heylocal/desktop-1.jpg";
+import heylocalDesktop2 from "@/assets/projects/heylocal/desktop-2.jpg";
+import heylocalDesktop3 from "@/assets/projects/heylocal/desktop-3.jpg";
+import heylocalMobileobile1 from "@/assets/projects/heylocal/mobile-1.jpg";
+import heylocalMobileobile2 from "@/assets/projects/heylocal/mobile-2.jpg";
+import heylocalMobileobile3 from "@/assets/projects/heylocal/mobile-3.jpg";
+import ladyfitDesktop1 from "@/assets/projects/ladyfit/desktop-1.jpg";
+import ladyfitDesktop2 from "@/assets/projects/ladyfit/desktop-2.jpg";
+import ladyfitDesktop3 from "@/assets/projects/ladyfit/desktop-3.jpg";
+import ladyfitMobileobile1 from "@/assets/projects/ladyfit/mobile-1.jpg";
+import ladyfitMobileobile2 from "@/assets/projects/ladyfit/mobile-2.jpg";
+import ladyfitMobileobile3 from "@/assets/projects/ladyfit/mobile-3.jpg";
 
 const projects = [
   {
-    name: "Dewatiket",
-    image: dewatiket,
+    name: "Ladyfit",
+    desktopImages: [ladyfitDesktop1, ladyfitDesktop2, ladyfitDesktop3],
+    mobileImages: [
+      ladyfitMobileobile1,
+      ladyfitMobileobile2,
+      ladyfitMobileobile3,
+    ],
     description:
-      "A digital ticketing platform specialized in selling concert and event tickets online. You can browse schedules, purchase tickets, manage event checkouts, and track order status, all via your phone.",
-    link: "https://dewatiket.com",
-    tech: ["vue", "nuxt 2", "javascript"],
+      "is a women-only fitness studio and Pilates gym in Indonesia offering a supportive and safe environment for women to stay active and healthy. The platform provides various exercise classes, Pilates reformer training, personal trainer services, and premium facilities designed to help members reach their fitness goals with a lifestyle-oriented approach.",
+    link: "https://ladyfit.id",
+    tech: [
+      "Next JS",
+      "React",
+      "Typescript",
+      "Tailwind CSS",
+      "Shadcn",
+      "Zustand",
+      "Tanstack Query",
+    ],
+    onlyMobile: false,
+  },
+  {
+    name: "Heylocal",
+    desktopImages: [heylocalDesktop1, heylocalDesktop2, heylocalDesktop3],
+    mobileImages: [
+      heylocalMobileobile1,
+      heylocalMobileobile2,
+      heylocalMobileobile3,
+    ],
+    description:
+      "is a contemporary Indonesian fashion brand and e-commerce platform specializing in women's Muslim fashion and accessories, known for its trendy designs, nationwide shipping, and expanding retail presence in major Indonesian cities",
+    link: "https://heylocal.com",
+    tech: [
+      "React",
+      "Typescript",
+      "Vite",
+      "Tailwind CSS",
+      "Shadcn",
+      "Zustand",
+      "Tanstack Query",
+      "i18next",
+      "SEO Optimization",
+      "Google Analytics",
+    ],
+    onlyMobile: false,
   },
   {
     name: "Heymale",
-    image: heymale,
+    desktopImages: [heymaleDesktop1, heymaleDesktop2, heymaleDesktop3],
+    mobileImages: [heymaleMobile1, heymaleMobile2, heymaleMobile3],
     description:
-      "A men's fashion and grooming brand based in Indonesia. It offers an online store for curated men's clothing—such as jackets, shirts, pants, and hoodies—as well as grooming essentials like cologne and beard oil. The platform is designed to simplify men's style with modern, minimal, and masculine pieces.",
+      "is an Indonesian fashion brand and online store offering a curated range of men's clothing and accessories, including shirts, jackets, T-shirts, sweaters, trousers, and more. The platform focuses on contemporary and stylish wardrobe essentials for modern men, blending current trends with everyday wearability.",
     link: "https://heymale.com",
-    tech: ["react", "typescript", "vite", "tailwind css", "i18next"],
+    tech: [
+      "React",
+      "Typescript",
+      "Vite",
+      "Tailwind CSS",
+      "Shadcn",
+      "Zustand",
+      "Tanstack Query",
+      "i18next",
+      "SEO Optimization",
+      "Google Analytics",
+    ],
+    onlyMobile: false,
+  },
+  {
+    name: "Dewatiket",
+    desktopImages: [dewaDesktop1, dewaDesktop2, dewaDesktop3],
+    mobileImages: [dewaMobile1, dewaMobile2, dewaMobile3],
+    description:
+      "is a digital ticketing platform in Indonesia that enables users to find and purchase concert tickets safely and easily online. It serves music fans by aggregating event listings and providing a streamlined experience for browsing, selecting, and buying tickets for concerts and live shows across genres and cities.",
+    link: "https://dewatiket.com",
+    tech: [
+      "Vue",
+      "Nuxt 2",
+      "Javascript",
+      "SEO Optimization",
+      "Google Analytics",
+    ],
+    onlyMobile: false,
   },
 ];
 ---
@@ -49,17 +139,16 @@ const projects = [
   <div class="mt-6">
     <ul>
       {
-        projects.map((project) => (
+        projects.map((project, index) => (
           <li class="project-item">
             <div class="project-content">
               <div>
-                {/* <p class="project-overline">Featured Project</p> */}
-
                 <h3 class="project-title">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    class="text-star"
                   >
                     {project.name}
                   </a>
@@ -70,39 +159,47 @@ const projects = [
                 {project.tech.length && (
                   <ul class="project-tech-list">
                     {project.tech.map((tech, i) => (
-                      <li>{tech}</li>
+                      <li class="bg-charcoal text-off-white hover:bg-star hover:!text-blacki rounded-5 cursor-default snap-start px-1.5 py-0.5 text-xs text-nowrap transition-colors duration-300 ease-out">
+                        {tech}
+                      </li>
                     ))}
                   </ul>
                 )}
-
-                {/* <div class="project-links">
-                {cta && (
-                  <a href={cta} aria-label="Course Link" class="cta">
-                    Learn More
-                  </a>
-                )}
-                {github && (
-                  <a href={github} aria-label="GitHub Link">
-                    <Icon name="GitHub" />
-                  </a>
-                )}
-                {external && !cta && (
-                  <a
-                    href={external}
-                    aria-label="External Link"
-                    class="external"
-                  >
-                    <Icon name="External" />
-                  </a>
-                )}
-              </div> */}
               </div>
             </div>
 
-            <div class="project-image">
-              <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <Image src={project.image} alt={project.name} class="img" />
-              </a>
+            <div class="project-image aspect-video h-auto w-full overflow-hidden">
+              <div class="carousel-wrapper">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`carousel-img relative -top-10 grid !h-[120%] w-full scale-150 rotate-330 rotate-x-40 rotate-y-35 grid-cols-3 gap-3 overflow-hidden !bg-transparent ${index % 2 === 0 ? "laptop:left-[52px]" : "laptop:-left-[52px]"}`}
+                >
+                  <div class="carousel-column carousel-down col-span-2 flex flex-col gap-3">
+                    {[...project.desktopImages, ...project.desktopImages].map(
+                      (img, index) => (
+                        <Image
+                          src={img}
+                          alt={`${project.name}_Desktop_${index + 1}`}
+                          class="rounded-5 img w-full"
+                        />
+                      )
+                    )}
+                  </div>
+                  <div
+                    class={`carousel-column carousel-up flex flex-col gap-3 ${index % 2 === 0 ? "-order-1" : ""}`}
+                  >
+                    {project.mobileImages.map((img, index) => (
+                      <Image
+                        src={img}
+                        alt={`${project.name}_Mobile_${index + 1}`}
+                        class="rounded-5 img w-full"
+                      />
+                    ))}
+                  </div>
+                </a>
+              </div>
             </div>
           </li>
         ))
@@ -203,8 +300,11 @@ const projects = [
       }
       .project-tech-list {
         justify-content: flex-end;
+        padding-left: 84px;
+        padding-right: 0;
 
         @media (max-width: 768px) {
+          padding: 0 !important;
           justify-content: flex-start;
         }
 
@@ -329,6 +429,7 @@ const projects = [
       margin: 20px 0 10px;
       padding: 0;
       list-style: none;
+      padding-right: 84px;
 
       li {
         margin: 0 20px 5px 0;
@@ -339,6 +440,7 @@ const projects = [
 
       @media (max-width: 768px) {
         margin: 10px 0;
+        padding: 0 !important;
 
         li {
           margin: 0 10px 5px 0;
@@ -447,6 +549,95 @@ const projects = [
           filter: grayscale(100%) contrast(1) brightness(50%);
         }
       }
+    }
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Add fade effects to top and bottom */
+  .carousel-wrapper::before {
+    content: "";
+    background: linear-gradient(
+      0deg,
+      transparent 0%,
+      var(--color-bg-primary, rgba(0, 0, 0, 0.75)) 100%
+    );
+    height: 20%;
+    position: absolute;
+    top: -2px;
+    left: -180px;
+    right: -180px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .carousel-wrapper::after {
+    content: "";
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      var(--color-bg-primary, rgba(0, 0, 0, 0.75)) 100%
+    );
+    height: 20%;
+    position: absolute;
+    bottom: -2px;
+    left: -180px;
+    right: -180px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .carousel-img {
+    height: 300px; /* Fixed height for proper overflow */
+    position: relative;
+  }
+
+  .carousel-column {
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  .carousel-column.carousel-mobile {
+    animation-duration: 20s;
+  }
+
+  .carousel-up {
+    animation-name: scrollUp;
+  }
+
+  .carousel-down {
+    animation-name: scrollDown;
+  }
+
+  .carousel-img:hover .carousel-column {
+    animation-play-state: paused;
+  }
+
+  .img-container {
+    transform: rotateX(47deg) rotateY(31deg) rotate(324deg);
+  }
+
+  @keyframes scrollUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes scrollDown {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0);
     }
   }
 </style>

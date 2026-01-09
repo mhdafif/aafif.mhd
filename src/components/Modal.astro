@@ -8,14 +8,14 @@ const { title, modalId } = Astro.props;
   <div class="modal-container scroll-smooth">
     <div class="laptop:space-y-7">
       <div class="modal-title">
-        <Title text={title} />
+        <Title text={title} shadowClass="!left-10" />
         <Icon
           id={`${modalId}-close`}
           name="ic:round-close"
-          class="text-off-white/60 hover:text-star/80 absolute top-6 right-0 h-8 w-8 cursor-pointer transition-all duration-500 ease-out"
+          class="text-off-white/60 hover:text-star/80 absolute top-6 right-8 h-8 w-8 cursor-pointer transition-all duration-500 ease-out"
         />
       </div>
-      <div class="modal-content laptop:space-y-5 mb-5 space-y-3">
+      <div class="modal-content laptop:space-y-5 laptop:mb-20 mb-10 space-y-3">
         <slot />
       </div>
     </div>
@@ -60,11 +60,13 @@ const { title, modalId } = Astro.props;
       transform: translateY(100%);
       transform-origin: top;
       transition: 0.4s all ease-in-out;
-      padding: 0 2rem;
-      overflow: auto;
+      // padding: 0 2rem;
+      padding: 0;
+      overflow-y: auto;
       opacity: 0;
+      overflow-x: hidden;
       @media (width < 1024px) {
-        padding: 0 1.25rem;
+        // padding: 0 1.25rem;
         max-height: 85dvh;
       }
 
@@ -73,9 +75,14 @@ const { title, modalId } = Astro.props;
         top: 0;
         background: var(--color-blacki);
         z-index: 10;
-        padding-bottom: 3rem;
-        padding-top: 1rem;
+        // padding-bottom: 3rem;
+        // padding-top: 1rem;
         margin-bottom: 0.5rem;
+        padding: 1rem 2rem 3rem;
+      }
+
+      .modal-content {
+        padding: 0 2rem;
       }
     }
   }

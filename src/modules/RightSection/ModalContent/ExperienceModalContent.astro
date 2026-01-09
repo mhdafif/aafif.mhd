@@ -2,21 +2,53 @@
 import { Icon } from "astro-icon/components";
 const experiences = [
   {
+    company: "Indotekno Solusi Semesta",
+    position: "Freelance Frontend Engineer",
+    start: "Jun 2025",
+    end: "Present",
+    details: [
+      "Maintaining and enhancing web applications across various industries, including ticketing platforms, e-commerce, local brand showcases, and fitness class booking systems—ensuring excellent UX, responsiveness, and performance across desktop, mobile, and WebView environments.",
+      "Developed new products such as Huggable (Remix) and LadyFit (Next.js) from zero, applying modern FE architecture, component reusability, and clean-code practices.",
+      "Introduced structured frontend standards, clearer folder/module structures, and code-cleaning workflows that help reduce technical debt and speed up development.",
+      "Performed R&D on modern FE tooling and AI-powered automation using n8n to streamline internal operations and accelerate delivery.",
+    ],
+    stacks: [
+      "React",
+      "Vue",
+      "Next.js",
+      "Remix",
+      "Nuxt",
+      "Javascript",
+      "TypeScript",
+      "HTML5 + CSS3",
+      "Vite",
+      "Git",
+      "Tailwind CSS",
+      "N8N",
+      "AI Agent",
+    ],
+  },
+  {
     company: "Ultravoucher",
     position: "Frontend Engineer",
     start: "Jan 2022",
     end: "May 2025",
     details: [
-      "Mentored and guided frontend team members to ensure consistent implementation of best practices",
-      "Establish and implement frontend SOPs for the team",
-      "Propose and implement new ideas to improve development workflow and scalability",
-      "Conduct code cleaning and implement a ticket-based review system",
-      "Design and build a custom internal UI framework tailored for company-wide use",
-      "Implement UI/UX designs from Figma into production-ready applications",
-      "Build and maintain responsive applications optimized for desktop, webview, and webapp environments",
-      "Ensure compatibility across all devices, including older mobile devices",
-      "Refactor and revamp legacy applications using modern frontend technologies",
-      "Enhance SEO and performance for various key products",
+      "Led a team of 4 frontend developers at Ultra Voucher, making key decisions on stack and architecture using React, Vue, Next, Remix and many more; enforced best practices through PR reviews, SOPs, and consistent team-wide standards.",
+      "Developed scalable, responsive web applications optimized for desktop, webview, and older mobile devices using React, Next.js, Vue.js, and Remix — improving cross-device compatibility and user experience.",
+      "Built and maintained an internal UI framework, powering multiple company products and reducing UI inconsistencies; published reusable components using Storybook, with styling handled via Tailwind CSS and CSS modules.",
+      "Implemented boilerplates and frontend SOPs, improving onboarding speed and development efficiency by 10-20%; also introduced unit testing using Jest, Vitest, and Testing Library, increasing code coverage to 30%+.",
+      "Modernized legacy systems and scaled team workflows by refactoring large apps using React, Remix, and Vite, applying code-cleaning standards and improving maintainability across SaaS platforms and internal tools.",
+      // "Mentored and guided frontend team members to ensure consistent implementation of best practices",
+      // "Establish and implement frontend SOPs for the team",
+      // "Propose and implement new ideas to improve development workflow and scalability",
+      // "Conduct code cleaning and implement a ticket-based review system",
+      // "Design and build a custom internal UI framework tailored for company-wide use",
+      // "Implement UI/UX designs from Figma into production-ready applications",
+      // "Build and maintain responsive applications optimized for desktop, webview, and webapp environments",
+      // "Ensure compatibility across all devices, including older mobile devices",
+      // "Refactor and revamp legacy applications using modern frontend technologies",
+      // "Enhance SEO and performance for various key products",
     ],
     stacks: [
       "React",
@@ -43,13 +75,17 @@ const experiences = [
     start: "Oct 2020",
     end: "Dec 2021",
     details: [
-      "Maintain and develop B2B products tailored to client needs",
-      "Implement UI features and enhancements based on client requirements",
-      "Design and maintain unit testing strategy for application stability",
-      "Ensure the smooth release and deployment of applications",
-      "Collaborate with backend and QA teams to fix bugs and refine functionality",
-      "Create an internal UI framework to standardize frontend development",
-      "Contribute to performance optimization and UI consistency across products",
+      "Developed and maintained SaaS-based platforms using React, Next.js, and TypeScript, collaborating closely with backend and product teams.",
+      "Built a reusable UI component system and published it to a private NPM registry, improving code reusability across multiple projects.",
+      "Implemented unit testing strategies using Jest and Testing Library, increasing code coverage from 0% to 30% and reducing post-release issues.",
+      "Applied code cleaning practices and frontend best practices to reduce technical debt and improve maintainability across large codebases.",
+      // "Maintain and develop B2B products tailored to client needs",
+      // "Implement UI features and enhancements based on client requirements",
+      // "Design and maintain unit testing strategy for application stability",
+      // "Ensure the smooth release and deployment of applications",
+      // "Collaborate with backend and QA teams to fix bugs and refine functionality",
+      // "Create an internal UI framework to standardize frontend development",
+      // "Contribute to performance optimization and UI consistency across products",
     ],
     stacks: [
       "React",
@@ -70,8 +106,11 @@ const experiences = [
     start: "Sep 2018",
     end: "Sep 2020",
     details: [
-      "Revamped Employee Self Service application from Web Forms to microservice architecture using React and TypeScript",
-      "Collaborated with backend teams to transition legacy systems into modern frontend architecture",
+      "Revamped an internal HR application from ASP.NET Web Forms to a React + TypeScript microservice-based architecture, enhancing UI responsiveness.",
+      "Collaborated with backend teams to modularize legacy features and improve scalability.",
+      "Handled bug fixing, regression testing, and UI maintenance to support system stability during migration",
+      // "Revamped Employee Self Service application from Web Forms to microservice architecture using React and TypeScript",
+      // "Collaborated with backend teams to transition legacy systems into modern frontend architecture",
     ],
     stacks: ["React", "Javascript", "TypeScript", "HTML5 + CSS3", "Git"],
   },
@@ -126,7 +165,7 @@ const experiences = [
                   class={
                     item.details.length <= 3
                       ? "hidden"
-                      : "experience-details-arrow text-star mt-2 block w-full cursor-pointer place-items-center peer-checked:hidden hover:underline"
+                      : "experience-details-arrow text-star mt-2 grid w-full cursor-pointer place-items-center peer-checked:hidden hover:underline"
                   }
                 >
                   <Icon
@@ -138,7 +177,7 @@ const experiences = [
                 {/* 🔼 Show when checked */}
                 <label
                   for={`experience-${item.company}`}
-                  class="text-star mt-2 hidden w-full cursor-pointer place-items-center peer-checked:block hover:underline"
+                  class="text-star mt-2 hidden w-full cursor-pointer place-items-center peer-checked:grid hover:underline"
                 >
                   <Icon
                     name="ic:round-keyboard-double-arrow-up"
@@ -223,11 +262,20 @@ const experiences = [
         &::before {
           content: "";
           position: absolute;
-          left: 0;
           top: 0;
           height: 24px;
           width: 3px;
           background-color: rgba(250, 249, 246, 0.5);
+        }
+        &:nth-of-type(odd) {
+          &::before {
+            left: 0;
+          }
+        }
+        &:nth-of-type(even) {
+          &::before {
+            right: 0;
+          }
         }
       }
 
