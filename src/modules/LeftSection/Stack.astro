@@ -8,82 +8,147 @@ import NestjsIcon from "@/assets/icon/nestjs.svg";
 import n8nIcon from "@/assets/icon/n8n.svg";
 import PrismaIcon from "@/assets/icon/prisma.svg";
 
-const skills = [
+const previewSkills = [
   {
     name: "React",
     icon: "devicon:react",
-  },
-  {
-    name: "Vue",
-    icon: "devicon:vuejs",
   },
   {
     name: "Next",
     icon: "devicon:nextjs",
   },
   {
-    name: "Remix",
-    icon: "devicon:remix",
+    name: "Tailwind CSS",
+    icon: "devicon:tailwindcss",
   },
   {
-    name: "Astro",
-    icon: "devicon:astro",
-  },
-  {
-    name: "Nuxt",
-    icon: "devicon:nuxtjs",
-  },
-  {
-    name: "JavaScript",
-    icon: "devicon:javascript",
+    name: "Express",
+    icon: "devicon:express",
   },
   {
     name: "TypeScript",
     icon: "devicon:typescript",
   },
+];
+
+const skillCategories = [
   {
-    name: "HTML5",
-    icon: "devicon:html5",
+    category: "Frontend Frameworks",
+    skills: [
+      {
+        name: "React",
+        icon: "devicon:react",
+      },
+      {
+        name: "Vue",
+        icon: "devicon:vuejs",
+      },
+      {
+        name: "Next",
+        icon: "devicon:nextjs",
+      },
+      {
+        name: "Remix",
+        icon: "devicon:remix",
+      },
+      {
+        name: "Astro",
+        icon: "devicon:astro",
+      },
+      {
+        name: "Nuxt",
+        icon: "devicon:nuxtjs",
+      },
+    ],
   },
   {
-    name: "CSS3",
-    icon: "devicon:css3",
+    category: "Languages",
+    skills: [
+      {
+        name: "JavaScript",
+        icon: "devicon:javascript",
+      },
+      {
+        name: "TypeScript",
+        icon: "devicon:typescript",
+      },
+      {
+        name: "HTML5",
+        icon: "devicon:html5",
+      },
+      {
+        name: "CSS3",
+        icon: "devicon:css3",
+      },
+    ],
   },
   {
-    name: "Vite",
-    icon: "devicon:vitejs",
+    category: "Styling & UI",
+    skills: [
+      {
+        name: "Tailwind CSS",
+        icon: "devicon:tailwindcss",
+      },
+    ],
   },
   {
-    name: "Vitest",
-    icon: "devicon:vitest",
+    category: "Backend & Database",
+    skills: [
+      {
+        name: "Node JS",
+        icon: "devicon:nodejs",
+      },
+      {
+        name: "Express",
+        icon: "devicon:express",
+      },
+      {
+        name: "Nest JS",
+        icon: "custom",
+        iconSrc: NestjsIcon,
+      },
+      {
+        name: "Prisma",
+        icon: "custom",
+        iconSrc: PrismaIcon,
+      },
+    ],
   },
   {
-    name: "Jest",
-    icon: "custom",
-    iconSrc: JestIcon,
+    category: "Build Tools & Testing",
+    skills: [
+      {
+        name: "Vite",
+        icon: "devicon:vitejs",
+      },
+      {
+        name: "Vitest",
+        icon: "devicon:vitest",
+      },
+      {
+        name: "Jest",
+        icon: "custom",
+        iconSrc: JestIcon,
+      },
+    ],
   },
   {
-    name: "Git",
-    icon: "devicon:git",
-  },
-  {
-    name: "Docker",
-    icon: "devicon:docker",
-  },
-  {
-    name: "Nest JS",
-    icon: "custom",
-    iconSrc: NestjsIcon,
-  },
-  {
-    name: "Prisma",
-    icon: "custom",
-    iconSrc: PrismaIcon,
-  },
-  {
-    name: "n8n",
-    icon: "custom",
-    iconSrc: n8nIcon,
+    category: "DevOps & Tools",
+    skills: [
+      {
+        name: "Git",
+        icon: "devicon:git",
+      },
+      {
+        name: "Docker",
+        icon: "devicon:docker",
+      },
+      {
+        name: "n8n",
+        icon: "custom",
+        iconSrc: n8nIcon,
+      },
+    ],
   },
 ];
 ---
@@ -110,7 +175,7 @@ const skills = [
     <div class="mt-8 flex-auto">
       <div class="grid grid-cols-3 gap-2">
         {
-          skills.slice(0, 5).map((item, index) => (
+          previewSkills.map((item, index) => (
             <div
               tabindex={index}
               class="stack-item rounded-5 group hover:shadow-charcoal-glow focus:shadow-charcoal-glow relative z-[1] aspect-square w-full transition-all duration-300 ease-out"
@@ -134,28 +199,37 @@ const skills = [
 
 <!-- Modal Stack -->
 <Modal title="Stack" modalId="modal-stack">
-  <div class="laptop:gap-6 mt-6 flex flex-wrap justify-center gap-3">
+  <div class="mt-6 space-y-8">
     {
-      skills.map((item, index) => (
-        <div
-          tabindex={index}
-          class="group stack-item-modal bg-charcoal laptop:p-4 rounded-lg p-3"
-        >
-          <div class="bg-blacki rounded-5 stack-item relative mb-4 w-full transition-all duration-300 ease-out group-hover:scale-105 group-focus:scale-105">
-            <div class="bg-blacki rounded-5 laptop:p-6 flex h-full w-full justify-center p-4">
-              {item.icon === "custom" && item.iconSrc ? (
-                <item.iconSrc class="laptop:w-16 laptop:h-16 relative h-12 w-12 text-[#99425B] grayscale-100 transition-all duration-300 ease-out group-hover:grayscale-0 group-focus:grayscale-0" />
-              ) : (
-                <Icon
-                  name={item.icon}
-                  class="laptop:w-16 laptop:h-16 relative h-12 w-12 grayscale-100 transition-all duration-300 ease-out group-hover:grayscale-0 group-focus:grayscale-0"
-                />
-              )}
-            </div>
+      skillCategories.map((category) => (
+        <div class="skill-category">
+          <h3 class="text-star border-off-white/20 mb-4 border-b pb-2 text-lg font-semibold">
+            {category.category}
+          </h3>
+          <div class="laptop:gap-4 flex flex-wrap justify-start gap-3">
+            {category.skills.map((item, index) => (
+              <div
+                tabindex={index}
+                class="group stack-item-modal bg-charcoal laptop:p-4 rounded-lg p-3"
+              >
+                <div class="bg-blacki rounded-5 stack-item relative mb-3 w-full transition-all duration-300 ease-out group-hover:scale-105 group-focus:scale-105">
+                  <div class="bg-blacki rounded-5 laptop:p-5 flex h-full w-full justify-center p-3">
+                    {item.icon === "custom" && item.iconSrc ? (
+                      <item.iconSrc class="laptop:w-12 laptop:h-12 relative h-10 w-10 text-[#99425B] grayscale-100 transition-all duration-300 ease-out group-hover:grayscale-0 group-focus:grayscale-0" />
+                    ) : (
+                      <Icon
+                        name={item.icon}
+                        class="laptop:w-12 laptop:h-12 relative h-10 w-10 grayscale-100 transition-all duration-300 ease-out group-hover:grayscale-0 group-focus:grayscale-0"
+                      />
+                    )}
+                  </div>
+                </div>
+                <p class="text-off-white laptop:text-base group-hover:text-star group-focus:text-star text-center text-sm font-medium transition-all duration-300 ease-out">
+                  {item.name}
+                </p>
+              </div>
+            ))}
           </div>
-          <p class="text-off-white laptop:text-lg group-hover:text-star group-focus:text-star text-center text-sm font-medium transition-all duration-300 ease-out">
-            {item.name}
-          </p>
         </div>
       ))
     }
@@ -221,11 +295,37 @@ const skills = [
 <style is:global lang="scss">
   .stack-item-modal {
     width: auto;
+    min-width: 80px;
     @media (width < 1024px) {
-      // width: calc(100% - 1.5rem);
+      width: calc((100% - 2rem) / 4);
+      min-width: 70px;
+    }
+    @media (width < 640px) {
       width: calc((100% - 1.5rem) / 3);
+      min-width: 60px;
     }
   }
+
+  .skill-category {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg-primary);
+      z-index: 5;
+      margin: 0 -1.5rem 1rem;
+      padding: 0.75rem 1.5rem 0.5rem;
+
+      @media (min-width: 1024px) {
+        margin: 0 -2rem 1rem;
+        padding: 0.75rem 2rem 0.5rem;
+      }
+    }
+  }
+
   .stack-item::before,
   .stack-item::after {
     content: "";
@@ -248,6 +348,7 @@ const skills = [
     animation-play-state: paused;
     opacity: 0;
   }
+
   .stack-item:hover,
   .stack-item-modal:hover .stack-item {
     &::before,
@@ -260,14 +361,14 @@ const skills = [
       opacity: 0.5;
     }
   }
+
   .stack-item::before {
     filter: blur(1.5em);
-    // opacity: 0.5;
   }
 
-  // #modal-stack {
-  //   .modal-container {
-  //     max-width: 45rem !important;
-  //   }
-  // }
+  #modal-stack {
+    .modal-container {
+      max-width: 50rem !important;
+    }
+  }
 </style>

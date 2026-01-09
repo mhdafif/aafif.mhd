@@ -1,5 +1,5 @@
 ---
-const { size = "large", text } = Astro.props;
+const { size = "large", text, shadowClass } = Astro.props;
 let textSize = {
   text: "",
   textShadow: "",
@@ -28,7 +28,7 @@ switch (size) {
 >
   {text}
 </h2>
-<span class={textSize.textShadow}>{text}</span>
+<span class={textSize.textShadow + " " + shadowClass}>{text}</span>
 
 <style lang="scss">
   .title {

@@ -1,39 +1,85 @@
 ---
 import Modal from "@/components/Modal.astro";
 import { Icon } from "astro-icon/components";
-import webProfile1 from "@/assets/portofolio/web-profile-v1.png";
-import webProfilev2 from "@/assets/portofolio/web-profile-v2.png";
-import webProfilev3 from "@/assets/portofolio/web-profile-v3.png";
+import aafifDesktop1 from "@/assets/portofolio/aafif-space/desktop-1.jpg";
+import aafifDesktop2 from "@/assets/portofolio/aafif-space/desktop-2.jpg";
+import aafifDesktop3 from "@/assets/portofolio/aafif-space/desktop-3.jpg";
+import aafifMobile1 from "@/assets/portofolio/aafif-space/mobile-1.jpg";
+import aafifMobile2 from "@/assets/portofolio/aafif-space/mobile-2.jpg";
+import aafifMobile3 from "@/assets/portofolio/aafif-space/mobile-3.jpg";
+import freshtouImg1 from "@/assets/portofolio/freshtou/image-1.jpg";
+import freshtouImg2 from "@/assets/portofolio/freshtou/image-2.jpg";
+import freshtouImg3 from "@/assets/portofolio/freshtou/image-3.jpg";
+import freshtouImg4 from "@/assets/portofolio/freshtou/image-4.jpg";
+import freshtouImg5 from "@/assets/portofolio/freshtou/image-5.jpg";
+
 import { Image } from "astro:assets";
 
 const portofolios = [
   {
-    name: "This Website",
-    image: webProfilev3,
+    name: "Fresh to You",
+    images: [
+      freshtouImg1,
+      freshtouImg2,
+      freshtouImg3,
+      freshtouImg4,
+      freshtouImg5,
+    ],
     description:
-      "<div>Website profile v3. This one is finally chosen as my profile website for now.</div>",
+      "is my personal website built using Astro, Vite, and Tailwind CSS. It serves as a digital portfolio to showcase my skills, projects, and experiences in web development. The site is designed to be fast, responsive, and user-friendly, providing visitors with an engaging experience while exploring my work and background.",
+    link: "#",
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Express.js",
+      "PostgreSQL",
+      "Prisma",
+      "OpenAI",
+      "TailwindCSS",
+      "Shadcn",
+    ],
+    onlyMobile: true,
+  },
+  {
+    name: "aafif.space",
+    desktopImages: [aafifDesktop1, aafifDesktop2, aafifDesktop3],
+    mobileImages: [aafifMobile1, aafifMobile2, aafifMobile3],
+    description:
+      "is my personal website built using Astro, Vite, and Tailwind CSS. It serves as a digital portfolio to showcase my skills, projects, and experiences in web development. The site is designed to be fast, responsive, and user-friendly, providing visitors with an engaging experience while exploring my work and background.",
     link: "#",
     tech: ["Astro", "Vite", "Tailwind CSS"],
+    onlyMobile: false,
     github: "https://github.com/mhdafif/aafif.mhd",
   },
-  {
-    name: "Profile Web v2 Others",
-    image: webProfilev2,
-    description:
-      "<div>This was the second version of my profile website, created when I had just lost my job. In the meantime, I was searching for ideas for my profile site. Ultimately, it was used only as a playground.</div>",
-    link: "/v2",
-    tech: ["Astro", "Vite", "Tailwind CSS"],
-    github: "https://github.com/mhdafif/aafif.mhd",
-  },
-  {
-    name: "Profile Web v1",
-    image: webProfile1,
-    description: `My first profile website build <span class="text-star">@2020</span> to showcasing my work and experience as a frontend developer. Designed with simplicity, responsiveness, and fast performance in mind—this site marks my first step in building a personal digital presence.`,
-    link: "https://mhdafif.vercel.app/",
-    tech: ["React", "Material UI", "Styled Components"],
-    github: "https://github.com/mhdafif/mhdafif.now.sh",
-  },
+  // {
+  //   name: "Profile Web v2 Others",
+  //   image: webProfilev2,
+  //   description:
+  //     "<div>This was the second version of my profile website, created when I had just lost my job. In the meantime, I was searching for ideas for my profile site. Ultimately, it was used only as a playground.</div>",
+  //   link: "/v2",
+  //   tech: ["Astro", "Vite", "Tailwind CSS"],
+  //   github: "https://github.com/mhdafif/aafif.mhd",
+  // },
+  // {
+  //   name: "Profile Web v1",
+  //   image: webProfile1,
+  //   description: `My first profile website build <span class="text-star">@2020</span> to showcasing my work and experience as a frontend developer. Designed with simplicity, responsiveness, and fast performance in mind—this site marks my first step in building a personal digital presence.`,
+  //   link: "https://mhdafif.vercel.app/",
+  //   tech: ["React", "Material UI", "Styled Components"],
+  //   github: "https://github.com/mhdafif/mhdafif.now.sh",
+  // },
 ];
+
+// Create randomized arrays for each column
+function shuffleArray(array: any[]) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
 ---
 
 <div
@@ -60,12 +106,17 @@ const portofolios = [
   <div class="mt-6">
     <ul>
       {
-        portofolios.map((item) => (
+        portofolios.map((item, index) => (
           <li class="project-item">
             <div class="project-content">
               <div>
                 <h3 class="project-title">
-                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-star"
+                  >
                     {item.name}
                   </a>
                 </h3>
@@ -75,7 +126,9 @@ const portofolios = [
                 {item.tech.length && (
                   <ul class="project-tech-list">
                     {item.tech.map((tech, i) => (
-                      <li>{tech}</li>
+                      <li class="bg-charcoal text-off-white hover:bg-star hover:!text-blacki rounded-5 cursor-default snap-start px-1.5 py-0.5 text-xs text-nowrap transition-colors duration-300 ease-out">
+                        {tech}
+                      </li>
                     ))}
                   </ul>
                 )}
@@ -95,11 +148,81 @@ const portofolios = [
               </div>
             </div>
 
-            <div class="project-image">
+            <div class="project-image aspect-video h-auto w-full overflow-hidden">
+              <div class="carousel-wrapper">
+                {item.onlyMobile ? (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`carousel-img relative -top-10 grid !h-[120%] w-full scale-150 rotate-330 rotate-x-40 rotate-y-35 grid-cols-3 gap-3 overflow-hidden !bg-transparent ${index % 2 === 0 ? "laptop:left-10" : "laptop:-left-10"}`}
+                  >
+                    <div class="carousel-column carousel-mobile carousel-down flex flex-col gap-3">
+                      {shuffleArray(item.images).map((img, index) => (
+                        <Image
+                          src={img}
+                          alt={`img_left_${index + 1}`}
+                          class="rounded-5 img w-full"
+                        />
+                      ))}
+                    </div>
+                    <div class="carousel-column carousel-mobile carousel-up flex flex-col gap-3">
+                      {shuffleArray(item.images).map((img, index) => (
+                        <Image
+                          src={img}
+                          alt={`img_middle_${index + 1}`}
+                          class="rounded-5 img w-full"
+                        />
+                      ))}
+                    </div>
+                    <div class="carousel-column carousel-mobile carousel-down flex flex-col gap-3">
+                      {shuffleArray(item.images).map((img, index) => (
+                        <Image
+                          src={img}
+                          alt={`img_right_${index + 1}`}
+                          class="rounded-5 img w-full"
+                        />
+                      ))}
+                    </div>
+                  </a>
+                ) : (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`carousel-img relative -top-10 grid !h-[120%] w-full scale-150 rotate-330 rotate-x-40 rotate-y-35 grid-cols-3 gap-3 overflow-hidden !bg-transparent ${index % 2 === 0 ? "laptop:left-[52px]" : "laptop:-left-[52px]"}`}
+                  >
+                    <div class="carousel-column carousel-down col-span-2 flex flex-col gap-3">
+                      {[...item.desktopImages, ...item.desktopImages].map(
+                        (img, index) => (
+                          <Image
+                            src={img}
+                            alt={`${item.name}_Desktop_${index + 1}`}
+                            class="rounded-5 img w-full"
+                          />
+                        )
+                      )}
+                    </div>
+                    <div
+                      class={`carousel-column carousel-up flex flex-col gap-3 ${index % 2 === 0 ? "-order-1" : ""}`}
+                    >
+                      {item.mobileImages.map((img, index) => (
+                        <Image
+                          src={img}
+                          alt={`${item.name}_Mobile_${index + 1}`}
+                          class="rounded-5 img w-full"
+                        />
+                      ))}
+                    </div>
+                  </a>
+                )}
+              </div>
+            </div>
+            {/* <div class="project-image">
               <a href={item.link} target="_blank" rel="noopener noreferrer">
                 <Image src={item.image} alt={item.name} class="img" />
               </a>
-            </div>
+            </div> */}
           </li>
         ))
       }

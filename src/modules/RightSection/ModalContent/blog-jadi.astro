@@ -1,0 +1,252 @@
+---
+import Modal from "@/components/Modal.astro";
+import { Icon } from "astro-icon/components";
+import blogsData from "@/data/blogs.json";
+
+const blogs = blogsData.sort(
+  (a, b) =>
+    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+);
+const featuredBlogs = blogs.filter((blog) => blog.featured);
+const otherBlogs = blogs.filter((blog) => !blog.featured);
+---
+
+<div
+  id="more-blog"
+  class="other-item rounded-5 bg-charcoal hover:bg-blacki hover:shadow-charcoal-glow hover:border-off-white/10 group relative flex h-full w-full cursor-pointer items-center justify-center overflow-hidden border border-solid border-transparent text-xl font-semibold transition-all duration-300 ease-out"
+>
+  <h2 class="capitalize">Blog</h2>
+  <div
+    class="shortcut-key laptop:block bg-star text-blacki absolute top-0 left-1.5 z-[1] hidden rounded-b-xs px-1 text-sm font-medium transition-all duration-300 ease-out"
+  >
+    6
+  </div>
+  <div
+    class="more-other bg-star rounded-5 absolute right-0 bottom-0 z-[1] flex w-fit -rotate-45 items-center justify-center px-4 py-0.5 transition-all duration-300 ease-out"
+  >
+    <Icon
+      name="ic:baseline-open-in-new"
+      class="text-blacki rotate-45 text-xl"
+    />
+  </div>
+</div>
+
+<Modal title="Blog" modalId="modal-blog">
+  <div class="mt-6">
+    <!-- Featured Articles -->
+    {
+      featuredBlogs.length > 0 && (
+        <section class="mb-8">
+          <h3 class="text-star border-off-white/20 mb-4 border-b pb-2 text-lg font-semibold">
+            Featured Articles
+          </h3>
+          <div class="space-y-4">
+            {featuredBlogs.map((blog) => (
+              <article class="blog-card featured bg-charcoal border-off-white/10 hover:border-star/30 group rounded-lg border p-6 transition-all duration-300">
+                <div class="mb-3 flex items-start justify-between">
+                  <div class="text-off-white/60 flex items-center gap-2 text-sm">
+                    <time datetime={blog.publishedAt}>
+                      {new Date(blog.publishedAt).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </time>
+                    <span>•</span>
+                    <span>{blog.readTime}</span>
+                  </div>
+                  <span class="bg-star/20 text-star rounded px-2 py-1 text-xs font-medium">
+                    Featured
+                  </span>
+                </div>
+
+                <h4 class="text-off-white group-hover:text-star mb-3 text-xl font-bold transition-colors">
+                  <a href={`/blog/${blog.slug}`} class="hover:underline">
+                    {blog.title}
+                  </a>
+                </h4>
+
+                <p class="text-off-white/80 mb-4 line-clamp-2">
+                  {blog.excerpt}
+                </p>
+
+                <div class="flex items-center justify-between">
+                  <div class="flex flex-wrap gap-2">
+                    {blog.tags.slice(0, 3).map((tag) => (
+                      <span class="bg-blacki text-off-white/70 rounded px-2 py-1 text-xs">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={`/blog/${blog.slug}`}
+                    class="text-star hover:text-star/80 flex items-center gap-1 text-sm font-medium transition-colors"
+                  >
+                    Read more
+                    <Icon name="ic:baseline-arrow-forward" class="h-4 w-4" />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <!-- All Articles -->
+    <section>
+      <h3
+        class="text-star border-off-white/20 mb-4 border-b pb-2 text-lg font-semibold"
+      >
+        All Articles
+      </h3>
+      <div class="space-y-3">
+        {
+          otherBlogs.map((blog) => (
+            <article class="blog-card bg-charcoal/50 border-off-white/5 hover:border-off-white/20 hover:bg-charcoal/70 group rounded-lg border p-4 transition-all duration-300">
+              <div class="mb-2 flex items-start justify-between">
+                <div class="text-off-white/60 flex items-center gap-2 text-sm">
+                  <time datetime={blog.publishedAt}>
+                    {new Date(blog.publishedAt).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </time>
+                  <span>•</span>
+                  <span>{blog.readTime}</span>
+                </div>
+              </div>
+
+              <h4 class="text-off-white group-hover:text-star mb-2 text-lg font-semibold transition-colors">
+                <a href={`/blog/${blog.slug}`} class="hover:underline">
+                  {blog.title}
+                </a>
+              </h4>
+
+              <p class="text-off-white/70 mb-3 line-clamp-2 text-sm">
+                {blog.excerpt}
+              </p>
+
+              <div class="flex items-center justify-between">
+                <div class="flex flex-wrap gap-1">
+                  {blog.tags.slice(0, 2).map((tag) => (
+                    <span class="bg-blacki text-off-white/60 rounded px-2 py-0.5 text-xs">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href={`/blog/${blog.slug}`}
+                  class="text-star hover:text-star/80 flex items-center gap-1 text-sm transition-colors"
+                >
+                  Read
+                  <Icon name="ic:baseline-arrow-forward" class="h-3 w-3" />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</Modal>
+
+<script>
+  const modalBlog = document.getElementById("modal-blog");
+  const moreBlog = document.getElementById("more-blog");
+  const closeBlogBtn = document.getElementById("modal-blog-close");
+  const scrollToTop = document.getElementById("scrollToTop");
+  const modalContainer = modalBlog.querySelector(".modal-container");
+
+  function handleOpenModal(isOpen: boolean) {
+    const anyModalOpen = document.querySelector(".modal.modal-open");
+    const powerOff = window.sessionStorage.getItem("power") === "off";
+    if (powerOff || (isOpen && anyModalOpen && anyModalOpen !== modalBlog)) {
+      return;
+    }
+
+    if (isOpen) {
+      modalBlog.classList.add("modal-open");
+      scrollToTop.classList.add("hidden");
+      document.body.style.overflow = "hidden";
+    } else {
+      modalContainer.scrollTo({ top: 0, behavior: "smooth" });
+      modalBlog.classList.remove("modal-open");
+      scrollToTop.classList.remove("hidden");
+      if (!document.querySelector(".modal.modal-open")) {
+        document.body.style.overflow = "";
+      }
+    }
+  }
+
+  addEventListener("keydown", (event) => {
+    if (event.key === "6") {
+      handleOpenModal(true);
+    }
+    if (event.key === "Escape") {
+      handleOpenModal(false);
+    }
+  });
+  moreBlog.addEventListener("click", () => {
+    handleOpenModal(true);
+  });
+  closeBlogBtn.addEventListener("click", () => {
+    handleOpenModal(false);
+  });
+  modalBlog.addEventListener("click", (event: any) => {
+    if (modalBlog.classList.contains("modal-open")) {
+      if (!modalContainer.contains(event.target)) {
+        handleOpenModal(false);
+      }
+    }
+  });
+</script>
+
+<style is:global lang="scss">
+  #modal-blog {
+    .modal-container {
+      max-width: 50rem !important;
+    }
+  }
+
+  .blog-card {
+    &.featured {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--color-star), transparent);
+        border-radius: 8px 8px 0 0;
+      }
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .blog-card h4 a {
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+</style>
