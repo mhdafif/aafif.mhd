@@ -2,11 +2,14 @@
 FROM node:22-alpine AS builder
 WORKDIR /app
 
-# Pasang pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Husky tidak perlu jalan di dalam build (tidak ada .git)
+ENV HUSKY=0
 
-# Salin dependency files
+# Salin dependency files dulu (biar cache install optimal)
 COPY pnpm-lock.yaml package.json ./
+
+# Pasang pnpm sesuai versi di field "packageManager"
+RUN corepack enable
 RUN pnpm install --frozen-lockfile
 
 # Salin semua file proyek

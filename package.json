@@ -2,6 +2,7 @@
   "name": "my-cv",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
     "predev": "if [ $(node -v) != \"$(cat .nvmrc)\" ]; then echo \"Error: Node.js version does not match the required version. Please use Node.js $(cat .nvmrc).\"; exit 1; fi",
     "dev": "astro dev --host --port 4322",
