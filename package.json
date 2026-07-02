@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "predev": "if [ $(node -v) != \"$(cat .nvmrc)\" ]; then echo \"Error: Node.js version does not match the required version. Please use Node.js $(cat .nvmrc).\"; exit 1; fi",
-    "dev": "astro dev --host --port 4321",
+    "dev": "astro dev --host --port 4322",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -34,5 +34,13 @@
     "sharp": "^0.34.2",
     "svgo": "^3.3.2",
     "vite-plugin-devtools-json": "^0.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "sharp",
+      "@vercel/speed-insights"
+    ]
   }
 }
